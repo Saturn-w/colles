@@ -25,15 +25,15 @@
             font-family: 'Geist Mono', monospace;
             margin: 0;
             padding: 0;
-            overflow: hidden;
-            height: 100vh;
+            min-height: 100vh;
             display: flex;
             flex-direction: column;
         }
 
         header {
-            padding: 10px 40px 0px 40px;
+            padding: 20px 40px;
             flex-shrink: 0;
+            border-bottom: 1px solid var(--border-color);
         }
 
         .site-title {
@@ -42,68 +42,19 @@
             font-weight: 400;
             color: #fff;
             letter-spacing: -0.5px;
-            padding-bottom: 8px;
-            border-bottom: 1px solid var(--border-color);
             text-align: center;
             line-height: 1;
         }
         
-        .main-layout {
-            display: flex;
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 40px 20px;
             width: 100%;
-            flex-grow: 1;
-            overflow: hidden;
-        }
-
-        /* Panneau de gauche - 40% */
-        .left-panel {
-            flex: 4;
-            min-width: 0;
-            padding: 40px;
-            overflow-y: auto;
             box-sizing: border-box;
-            border-right: 1px solid var(--border-color);
         }
 
-        /* Panneau de droite - 60% */
-        .right-panel {
-            flex: 6;
-            display: flex;
-            flex-direction: column;
-            height: 100%;
-            background-color: #000;
-        }
-
-        /* PDF Viewer */
-        #pdf-viewer {
-            flex: 1;
-            width: 100%;
-            height: 100%;
-            border: none;
-            display: none;
-        }
-
-        #empty-state {
-            flex: 1;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            color: var(--text-dim);
-            text-align: center;
-        }
-
-        #empty-state .icon {
-            font-size: 48px;
-            margin-bottom: 20px;
-            opacity: 0.3;
-        }
-
-        #empty-state .text {
-            font-size: 14px;
-        }
-
-        /* Toolbar gauche */
+        /* Toolbar */
         .toolbar {
             display: flex;
             justify-content: space-between;
@@ -125,11 +76,16 @@
             border-bottom: 1px solid #333;
             color: var(--text-dim);
             padding: 5px 0;
-            width: 150px;
+            width: 200px;
             font-family: inherit;
             outline: none;
             font-size: 13px;
             text-align: right;
+        }
+
+        #search-input:focus {
+            border-bottom-color: var(--accent);
+            color: var(--text-main);
         }
 
         /* Liste des documents */
@@ -164,9 +120,8 @@
             transform: translateY(-2px); 
         }
         
-        .row.selected { 
-            border-color: var(--accent); 
-            background-color: rgba(52, 152, 219, 0.1); 
+        .row:active { 
+            transform: translateY(0); 
         }
 
         .row.main-doc {
@@ -212,14 +167,6 @@
             text-transform: uppercase;
         }
 
-        .meta { 
-            margin-left: auto; 
-            font-size: 11px; 
-            opacity: 0.5; 
-            padding-left: 10px;
-            flex-shrink: 0;
-        }
-
         .section-title {
             font-size: 12px;
             text-transform: uppercase;
@@ -233,29 +180,58 @@
             margin-top: 0;
         }
 
+        footer {
+            text-align: center;
+            padding: 40px 20px;
+            color: var(--text-dim);
+            font-size: 12px;
+        }
+
         /* --- Mobile Responsive --- */
-        @media (max-width: 900px) {
-            body { overflow: auto; height: auto; }
-            .main-layout { flex-direction: column; height: auto; }
-            .left-panel { flex: none; width: 100%; border-right: none; border-bottom: 1px solid var(--border-color); padding: 20px; }
-            .right-panel { flex: none; width: 100%; height: 400px; }
+        @media (max-width: 768px) {
+            .container {
+                padding: 30px 15px;
+            }
+
+            header {
+                padding: 15px 20px;
+            }
+
+            .toolbar {
+                flex-direction: column;
+                gap: 15px;
+                align-items: flex-start;
+            }
+
+            #search-input {
+                width: 100%;
+                text-align: left;
+            }
+
+            .row {
+                padding: 15px;
+            }
+
+            .name {
+                font-size: 14px;
+            }
         }
 
         /* Scrollbar styling */
-        .left-panel::-webkit-scrollbar {
+        body::-webkit-scrollbar {
             width: 8px;
         }
 
-        .left-panel::-webkit-scrollbar-track {
+        body::-webkit-scrollbar-track {
             background: var(--bg-color);
         }
 
-        .left-panel::-webkit-scrollbar-thumb {
+        body::-webkit-scrollbar-thumb {
             background: var(--border-color);
             border-radius: 4px;
         }
 
-        .left-panel::-webkit-scrollbar-thumb:hover {
+        body::-webkit-scrollbar-thumb:hover {
             background: #444;
         }
     </style>
@@ -266,158 +242,161 @@
         <div class="site-title">Questions de Cours - PSI</div>
     </header>
 
-    <div class="main-layout">
+    <div class="container">
+        <div class="toolbar">
+            <div class="category-title">Documents</div>
+            <input type="text" id="search-input" placeholder="Rechercher">
+        </div>
         
-        <div class="left-panel">
-            <div class="toolbar">
-                <div class="category-title">Documents</div>
-                <input type="text" id="search-input" placeholder="Rechercher">
-            </div>
-            
-            <div id="file-list">
-                <!-- Document complet -->
-                <div class="section-title">📚 Document complet</div>
-                <ul>
-                    <li>
-                        <div class="row main-doc" onclick="openPDF('main.pdf', 'Programme complet')">
-                            <span class="icon">📄</span>
-                            <span class="badge">Full</span>
-                            <span class="name">Programme complet - Toutes les semaines</span>
-                        </div>
-                    </li>
-                </ul>
+        <!-- Document complet -->
+        <div class="section-title">📚 Document complet</div>
+        <ul>
+            <li>
+                <a href="main.pdf" target="_blank">
+                    <div class="row main-doc">
+                        <span class="icon">📄</span>
+                        <span class="badge">Full</span>
+                        <span class="name">Programme complet - Toutes les semaines</span>
+                    </div>
+                </a>
+            </li>
+        </ul>
 
-                <!-- Semaines par ordre décroissant -->
-                <div class="section-title">📖 Semaines individuelles</div>
-                <ul id="weeks-list">
-                    <li>
-                        <div class="row" onclick="openPDF('main_s19.pdf', 'Semaine 19')">
-                            <span class="icon">📄</span>
-                            <span class="name">Semaine 19 - Équations Différentielles</span>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="row" onclick="openPDF('main_s18.pdf', 'Semaine 18')">
-                            <span class="icon">📄</span>
-                            <span class="name">Semaine 18 - Intégration sur un intervalle quelconque</span>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="row" onclick="openPDF('main_s17.pdf', 'Semaine 17')">
-                            <span class="icon">📄</span>
-                            <span class="name">Semaine 17 - Espaces préhilbertiens (2)</span>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="row" onclick="openPDF('main_s16.pdf', 'Semaine 16')">
-                            <span class="icon">📄</span>
-                            <span class="name">Semaine 16 - Espaces préhilbertiens (1)</span>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="row" onclick="openPDF('main_s15.pdf', 'Semaine 15')">
-                            <span class="icon">📄</span>
-                            <span class="name">Semaine 15 - Variables aléatoires discrètes (2)</span>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="row" onclick="openPDF('main_s14.pdf', 'Semaine 14')">
-                            <span class="icon">📄</span>
-                            <span class="name">Semaine 14 - Variables aléatoires discrètes (1)</span>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="row" onclick="openPDF('main_s13.pdf', 'Semaine 13')">
-                            <span class="icon">📄</span>
-                            <span class="name">Semaine 13 - Espaces probabilisés</span>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="row" onclick="openPDF('main_s12.pdf', 'Semaine 12')">
-                            <span class="icon">📄</span>
-                            <span class="name">Semaine 12 - Séries entières</span>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="row" style="opacity: 0.3; cursor: default; pointer-events: none;">
-                            <span class="icon">⋯</span>
-                            <span class="name">Semaines 6-11 (non disponibles)</span>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="row" onclick="openPDF('main_s5.pdf', 'Semaine 5')">
-                            <span class="icon">📄</span>
-                            <span class="name">Semaine 5 - Fonctions vectorielles</span>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="row" onclick="openPDF('main_s4.pdf', 'Semaine 4')">
-                            <span class="icon">📄</span>
-                            <span class="name">Semaine 4 - Algèbre linéaire (Partie 2 suite)</span>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="row" onclick="openPDF('main_s3.pdf', 'Semaine 3')">
-                            <span class="icon">📄</span>
-                            <span class="name">Semaine 3 - Algèbre linéaire (Partie 2)</span>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="row" onclick="openPDF('main_s2.pdf', 'Semaine 2')">
-                            <span class="icon">📄</span>
-                            <span class="name">Semaine 2 - Suites et séries numériques</span>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="row" onclick="openPDF('main_s1.pdf', 'Semaine 1')">
-                            <span class="icon">📄</span>
-                            <span class="name">Semaine 1 - Algèbre linéaire (Partie 1)</span>
-                        </div>
-                    </li>
-                </ul>
-            </div>
-        </div>
-
-        <div class="right-panel">
-            <div id="empty-state">
-                <div class="icon">📄</div>
-                <div class="text">Sélectionnez un PDF pour l'afficher</div>
-            </div>
-            <embed id="pdf-viewer" type="application/pdf">
-        </div>
-
+        <!-- Semaines par ordre décroissant -->
+        <div class="section-title">📖 Semaines individuelles</div>
+        <ul id="weeks-list">
+            <li>
+                <a href="main_s19.pdf" target="_blank">
+                    <div class="row">
+                        <span class="icon">📄</span>
+                        <span class="name">Semaine 19 - Équations Différentielles</span>
+                    </div>
+                </a>
+            </li>
+            <li>
+                <a href="main_s18.pdf" target="_blank">
+                    <div class="row">
+                        <span class="icon">📄</span>
+                        <span class="name">Semaine 18 - Intégration sur un intervalle quelconque</span>
+                    </div>
+                </a>
+            </li>
+            <li>
+                <a href="main_s17.pdf" target="_blank">
+                    <div class="row">
+                        <span class="icon">📄</span>
+                        <span class="name">Semaine 17 - Espaces préhilbertiens (2)</span>
+                    </div>
+                </a>
+            </li>
+            <li>
+                <a href="main_s16.pdf" target="_blank">
+                    <div class="row">
+                        <span class="icon">📄</span>
+                        <span class="name">Semaine 16 - Espaces préhilbertiens (1)</span>
+                    </div>
+                </a>
+            </li>
+            <li>
+                <a href="main_s15.pdf" target="_blank">
+                    <div class="row">
+                        <span class="icon">📄</span>
+                        <span class="name">Semaine 15 - Variables aléatoires discrètes (2)</span>
+                    </div>
+                </a>
+            </li>
+            <li>
+                <a href="main_s14.pdf" target="_blank">
+                    <div class="row">
+                        <span class="icon">📄</span>
+                        <span class="name">Semaine 14 - Variables aléatoires discrètes (1)</span>
+                    </div>
+                </a>
+            </li>
+            <li>
+                <a href="main_s13.pdf" target="_blank">
+                    <div class="row">
+                        <span class="icon">📄</span>
+                        <span class="name">Semaine 13 - Espaces probabilisés</span>
+                    </div>
+                </a>
+            </li>
+            <li>
+                <a href="main_s12.pdf" target="_blank">
+                    <div class="row">
+                        <span class="icon">📄</span>
+                        <span class="name">Semaine 12 - Séries entières</span>
+                    </div>
+                </a>
+            </li>
+            <li>
+                <div class="row" style="opacity: 0.3; cursor: default; pointer-events: none;">
+                    <span class="icon">⋯</span>
+                    <span class="name">Semaines 6-11 (non disponibles)</span>
+                </div>
+            </li>
+            <li>
+                <a href="main_s5.pdf" target="_blank">
+                    <div class="row">
+                        <span class="icon">📄</span>
+                        <span class="name">Semaine 5 - Fonctions vectorielles</span>
+                    </div>
+                </a>
+            </li>
+            <li>
+                <a href="main_s4.pdf" target="_blank">
+                    <div class="row">
+                        <span class="icon">📄</span>
+                        <span class="name">Semaine 4 - Algèbre linéaire (Partie 2 suite)</span>
+                    </div>
+                </a>
+            </li>
+            <li>
+                <a href="main_s3.pdf" target="_blank">
+                    <div class="row">
+                        <span class="icon">📄</span>
+                        <span class="name">Semaine 3 - Algèbre linéaire (Partie 2)</span>
+                    </div>
+                </a>
+            </li>
+            <li>
+                <a href="main_s2.pdf" target="_blank">
+                    <div class="row">
+                        <span class="icon">📄</span>
+                        <span class="name">Semaine 2 - Suites et séries numériques</span>
+                    </div>
+                </a>
+            </li>
+            <li>
+                <a href="main_s1.pdf" target="_blank">
+                    <div class="row">
+                        <span class="icon">📄</span>
+                        <span class="name">Semaine 1 - Algèbre linéaire (Partie 1)</span>
+                    </div>
+                </a>
+            </li>
+        </ul>
     </div>
 
+    <footer>
+        Généré automatiquement via GitHub Actions & LaTeX
+    </footer>
+
     <script>
-        let selectedRow = null;
-
-        function openPDF(url, name) {
-            const viewer = document.getElementById('pdf-viewer');
-            const emptyState = document.getElementById('empty-state');
-            
-            viewer.src = url;
-            viewer.style.display = 'block';
-            emptyState.style.display = 'none';
-
-            if (selectedRow) {
-                selectedRow.classList.remove('selected');
-            }
-            selectedRow = event.currentTarget;
-            selectedRow.classList.add('selected');
-        }
-
         // Recherche simple
         document.getElementById('search-input').addEventListener('input', (e) => {
             const term = e.target.value.toLowerCase();
-            const rows = document.querySelectorAll('#weeks-list .row');
+            const items = document.querySelectorAll('#weeks-list li');
             
-            rows.forEach(row => {
-                const name = row.querySelector('.name').textContent.toLowerCase();
-                const li = row.parentElement;
-                if (name.includes(term)) {
-                    li.style.display = 'block';
-                } else {
-                    li.style.display = 'none';
+            items.forEach(item => {
+                const nameEl = item.querySelector('.name');
+                if (nameEl) {
+                    const name = nameEl.textContent.toLowerCase();
+                    if (name.includes(term)) {
+                        item.style.display = 'block';
+                    } else {
+                        item.style.display = 'none';
+                    }
                 }
             });
         });

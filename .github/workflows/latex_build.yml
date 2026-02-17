@@ -21,6 +21,11 @@ jobs:
           sudo apt-get update
           sudo apt-get install -y texlive-latex-extra texlive-fonts-recommended texlive-fonts-extra texlive-science
           
+          # Compile main.tex (full document)
+          echo "Compiling main.tex..."
+          pdflatex -interaction=nonstopmode "main.tex"
+          pdflatex -interaction=nonstopmode "main.tex"
+          
           # Compile all main_sX.tex files
           for file in main_s*.tex; do
             echo "Compiling $file..."
