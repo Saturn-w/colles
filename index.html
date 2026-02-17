@@ -2,45 +2,425 @@
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Questions de Cours - PSI</title>
+    
+    <meta name="theme-color" content="#0f0f0f">
+
     <style>
-        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; max-width: 800px; margin: 0 auto; padding: 20px; line-height: 1.6; color: #333; }
-        h1 { color: #0056b3; border-bottom: 2px solid #eee; padding-bottom: 10px; }
-        .week-list { list-style: none; padding: 0; }
-        .week-item { background: #f8f9fa; margin-bottom: 10px; padding: 15px; border-radius: 8px; border-left: 5px solid #0056b3; transition: transform 0.2s; }
-        .week-item:hover { transform: translateX(5px); background: #e9ecef; }
-        .week-link { text-decoration: none; color: #333; font-weight: bold; display: block; font-size: 1.1em; }
-        .week-link:hover { color: #0056b3; }
-        .meta { font-size: 0.85em; color: #666; margin-top: 5px; }
+        @import url('https://fonts.googleapis.com/css2?family=Geist+Mono:wght@100..900&display=swap');
+
+        :root {
+            --bg-color: #0f0f0f;
+            --card-bg: #1a1a1a;
+            --border-color: #2a2a2a;
+            --text-main: #e0e0e0;
+            --text-dim: #888;
+            --accent: #3498db;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            font-family: 'Geist Mono', monospace;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        header {
+            padding: 10px 40px 0px 40px;
+            flex-shrink: 0;
+        }
+
+        .site-title {
+            font-family: 'Geist Mono', monospace;
+            font-size: 18px;
+            font-weight: 400;
+            color: #fff;
+            letter-spacing: -0.5px;
+            padding-bottom: 8px;
+            border-bottom: 1px solid var(--border-color);
+            text-align: center;
+            line-height: 1;
+        }
+        
+        .main-layout {
+            display: flex;
+            width: 100%;
+            flex-grow: 1;
+            overflow: hidden;
+        }
+
+        /* Panneau de gauche - 40% */
+        .left-panel {
+            flex: 4;
+            min-width: 0;
+            padding: 40px;
+            overflow-y: auto;
+            box-sizing: border-box;
+            border-right: 1px solid var(--border-color);
+        }
+
+        /* Panneau de droite - 60% */
+        .right-panel {
+            flex: 6;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+            background-color: #000;
+        }
+
+        /* PDF Viewer */
+        #pdf-viewer {
+            flex: 1;
+            width: 100%;
+            height: 100%;
+            border: none;
+            display: none;
+        }
+
+        #empty-state {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-dim);
+            text-align: center;
+        }
+
+        #empty-state .icon {
+            font-size: 48px;
+            margin-bottom: 20px;
+            opacity: 0.3;
+        }
+
+        #empty-state .text {
+            font-size: 14px;
+        }
+
+        /* Toolbar gauche */
+        .toolbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+        }
+
+        .category-title {
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--text-main);
+            font-weight: bold;
+        }
+
+        #search-input {
+            background: transparent;
+            border: none;
+            border-bottom: 1px solid #333;
+            color: var(--text-dim);
+            padding: 5px 0;
+            width: 150px;
+            font-family: inherit;
+            outline: none;
+            font-size: 13px;
+            text-align: right;
+        }
+
+        /* Liste des documents */
+        ul { 
+            list-style: none; 
+            padding-left: 0; 
+            margin: 0; 
+        }
+        
+        li { 
+            margin: 10px 0; 
+        }
+
+        .row { 
+            display: flex; 
+            align-items: center; 
+            padding: 18px 20px; 
+            border-radius: 6px; 
+            cursor: pointer; 
+            user-select: none; 
+            transition: all 0.2s ease;
+            white-space: nowrap;
+            overflow: hidden;
+            background-color: var(--card-bg); 
+            border: 1px solid var(--border-color); 
+            color: var(--text-main); 
+        }
+        
+        .row:hover { 
+            background-color: #222; 
+            border-color: #444; 
+            transform: translateY(-2px); 
+        }
+        
+        .row.selected { 
+            border-color: var(--accent); 
+            background-color: rgba(52, 152, 219, 0.1); 
+        }
+
+        .row.main-doc {
+            border-color: var(--accent);
+            background: linear-gradient(135deg, rgba(52, 152, 219, 0.15), rgba(52, 152, 219, 0.05));
+        }
+
+        .row.main-doc:hover {
+            background: linear-gradient(135deg, rgba(52, 152, 219, 0.25), rgba(52, 152, 219, 0.1));
+            border-color: #5dade2;
+        }
+        
+        .row a { 
+            text-decoration: none; 
+            color: inherit; 
+            display: flex; 
+            align-items: center; 
+            width: 100%; 
+            overflow: hidden; 
+        }
+        
+        .icon { 
+            margin-right: 15px; 
+            font-size: 20px;
+            flex-shrink: 0;
+        }
+        
+        .name { 
+            font-size: 15px; 
+            text-overflow: ellipsis; 
+            overflow: hidden; 
+            flex-grow: 1; 
+        }
+
+        .badge {
+            background-color: var(--accent);
+            color: #fff;
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-size: 10px;
+            font-weight: bold;
+            margin-right: 10px;
+            text-transform: uppercase;
+        }
+
+        .meta { 
+            margin-left: auto; 
+            font-size: 11px; 
+            opacity: 0.5; 
+            padding-left: 10px;
+            flex-shrink: 0;
+        }
+
+        .section-title {
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--text-dim);
+            margin: 30px 0 15px 5px;
+            font-weight: bold;
+        }
+
+        .section-title:first-child {
+            margin-top: 0;
+        }
+
+        /* --- Mobile Responsive --- */
+        @media (max-width: 900px) {
+            body { overflow: auto; height: auto; }
+            .main-layout { flex-direction: column; height: auto; }
+            .left-panel { flex: none; width: 100%; border-right: none; border-bottom: 1px solid var(--border-color); padding: 20px; }
+            .right-panel { flex: none; width: 100%; height: 400px; }
+        }
+
+        /* Scrollbar styling */
+        .left-panel::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        .left-panel::-webkit-scrollbar-track {
+            background: var(--bg-color);
+        }
+
+        .left-panel::-webkit-scrollbar-thumb {
+            background: var(--border-color);
+            border-radius: 4px;
+        }
+
+        .left-panel::-webkit-scrollbar-thumb:hover {
+            background: #444;
+        }
     </style>
 </head>
 <body>
-    <h1>Recueil de Questions de Cours (Colles) - PSI</h1>
-    <p>Liste des fiches par semaine. Les fichiers sont générés automatiquement.</p>
-    
-    <ul class="week-list">
-        <!-- Semaines générées -->
-        <li class="week-item"><a class="week-link" href="main_s1.pdf">Semaine 1 - Algèbre linéaire (Partie 1)</a></li>
-        <li class="week-item"><a class="week-link" href="main_s2.pdf">Semaine 2 - Suites et séries numériques</a></li>
-        <li class="week-item"><a class="week-link" href="main_s3.pdf">Semaine 3 - Algèbre linéaire (Partie 2)</a></li>
-        <li class="week-item"><a class="week-link" href="main_s4.pdf">Semaine 4 - Algèbre linéaire (Partie 2 suite)</a></li>
-        <li class="week-item"><a class="week-link" href="main_s5.pdf">Semaine 5 - Fonctions vectorielles</a></li>
+
+    <header>
+        <div class="site-title">Questions de Cours - PSI</div>
+    </header>
+
+    <div class="main-layout">
         
-        <li class="week-item" style="border-left-color: #ccc;"><span style="color: #999;">...</span></li>
+        <div class="left-panel">
+            <div class="toolbar">
+                <div class="category-title">Documents</div>
+                <input type="text" id="search-input" placeholder="Rechercher">
+            </div>
+            
+            <div id="file-list">
+                <!-- Document complet -->
+                <div class="section-title">📚 Document complet</div>
+                <ul>
+                    <li>
+                        <div class="row main-doc" onclick="openPDF('main.pdf', 'Programme complet')">
+                            <span class="icon">📄</span>
+                            <span class="badge">Full</span>
+                            <span class="name">Programme complet - Toutes les semaines</span>
+                        </div>
+                    </li>
+                </ul>
 
-        <li class="week-item"><a class="week-link" href="main_s12.pdf">Semaine 12 - Séries entières</a></li>
-        <li class="week-item"><a class="week-link" href="main_s13.pdf">Semaine 13 - Espaces probabilisés</a></li>
-        <li class="week-item"><a class="week-link" href="main_s14.pdf">Semaine 14 - Variables aléatoires discrètes (1)</a></li>
-        <li class="week-item"><a class="week-link" href="main_s15.pdf">Semaine 15 - Variables aléatoires discrètes (2)</a></li>
-        <li class="week-item"><a class="week-link" href="main_s16.pdf">Semaine 16 - Espaces préhilbertiens (1)</a></li>
-        <li class="week-item"><a class="week-link" href="main_s17.pdf">Semaine 17 - Espaces préhilbertiens (2)</a></li>
-        <li class="week-item"><a class="week-link" href="main_s18.pdf">Semaine 18 - Intégration sur un intervalle quelconque</a></li>
-        <li class="week-item"><a class="week-link" href="main_s19.pdf">Semaine 19 - Équations Différentielles</a></li>
-    </ul>
+                <!-- Semaines par ordre décroissant -->
+                <div class="section-title">📖 Semaines individuelles</div>
+                <ul id="weeks-list">
+                    <li>
+                        <div class="row" onclick="openPDF('main_s19.pdf', 'Semaine 19')">
+                            <span class="icon">📄</span>
+                            <span class="name">Semaine 19 - Équations Différentielles</span>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="row" onclick="openPDF('main_s18.pdf', 'Semaine 18')">
+                            <span class="icon">📄</span>
+                            <span class="name">Semaine 18 - Intégration sur un intervalle quelconque</span>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="row" onclick="openPDF('main_s17.pdf', 'Semaine 17')">
+                            <span class="icon">📄</span>
+                            <span class="name">Semaine 17 - Espaces préhilbertiens (2)</span>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="row" onclick="openPDF('main_s16.pdf', 'Semaine 16')">
+                            <span class="icon">📄</span>
+                            <span class="name">Semaine 16 - Espaces préhilbertiens (1)</span>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="row" onclick="openPDF('main_s15.pdf', 'Semaine 15')">
+                            <span class="icon">📄</span>
+                            <span class="name">Semaine 15 - Variables aléatoires discrètes (2)</span>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="row" onclick="openPDF('main_s14.pdf', 'Semaine 14')">
+                            <span class="icon">📄</span>
+                            <span class="name">Semaine 14 - Variables aléatoires discrètes (1)</span>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="row" onclick="openPDF('main_s13.pdf', 'Semaine 13')">
+                            <span class="icon">📄</span>
+                            <span class="name">Semaine 13 - Espaces probabilisés</span>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="row" onclick="openPDF('main_s12.pdf', 'Semaine 12')">
+                            <span class="icon">📄</span>
+                            <span class="name">Semaine 12 - Séries entières</span>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="row" style="opacity: 0.3; cursor: default; pointer-events: none;">
+                            <span class="icon">⋯</span>
+                            <span class="name">Semaines 6-11 (non disponibles)</span>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="row" onclick="openPDF('main_s5.pdf', 'Semaine 5')">
+                            <span class="icon">📄</span>
+                            <span class="name">Semaine 5 - Fonctions vectorielles</span>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="row" onclick="openPDF('main_s4.pdf', 'Semaine 4')">
+                            <span class="icon">📄</span>
+                            <span class="name">Semaine 4 - Algèbre linéaire (Partie 2 suite)</span>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="row" onclick="openPDF('main_s3.pdf', 'Semaine 3')">
+                            <span class="icon">📄</span>
+                            <span class="name">Semaine 3 - Algèbre linéaire (Partie 2)</span>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="row" onclick="openPDF('main_s2.pdf', 'Semaine 2')">
+                            <span class="icon">📄</span>
+                            <span class="name">Semaine 2 - Suites et séries numériques</span>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="row" onclick="openPDF('main_s1.pdf', 'Semaine 1')">
+                            <span class="icon">📄</span>
+                            <span class="name">Semaine 1 - Algèbre linéaire (Partie 1)</span>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
 
-    <p style="margin-top: 40px; font-size: 0.9em; color: #888; text-align: center;">
-        Généré via GitHub Actions & LaTeX
-    </p>
+        <div class="right-panel">
+            <div id="empty-state">
+                <div class="icon">📄</div>
+                <div class="text">Sélectionnez un PDF pour l'afficher</div>
+            </div>
+            <embed id="pdf-viewer" type="application/pdf">
+        </div>
+
+    </div>
+
+    <script>
+        let selectedRow = null;
+
+        function openPDF(url, name) {
+            const viewer = document.getElementById('pdf-viewer');
+            const emptyState = document.getElementById('empty-state');
+            
+            viewer.src = url;
+            viewer.style.display = 'block';
+            emptyState.style.display = 'none';
+
+            if (selectedRow) {
+                selectedRow.classList.remove('selected');
+            }
+            selectedRow = event.currentTarget;
+            selectedRow.classList.add('selected');
+        }
+
+        // Recherche simple
+        document.getElementById('search-input').addEventListener('input', (e) => {
+            const term = e.target.value.toLowerCase();
+            const rows = document.querySelectorAll('#weeks-list .row');
+            
+            rows.forEach(row => {
+                const name = row.querySelector('.name').textContent.toLowerCase();
+                const li = row.parentElement;
+                if (name.includes(term)) {
+                    li.style.display = 'block';
+                } else {
+                    li.style.display = 'none';
+                }
+            });
+        });
+    </script>
 </body>
 </html>
