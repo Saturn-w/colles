@@ -1,0 +1,77 @@
+
+
+% Partie "Question" / Titre en bleu
+\noindent \color{questionblue}
+\subsection{ Base de $\mathbb{K}_n[X]$ constituée de polynômes interpolateurs de Lagrange en $n+1$ points distincts de $\mathbb{K}$.}
+
+% Partie "Réponse" en noir
+\color{black}
+\vspace{0.3cm}
+Soit $n+1$ points de $\mathbb{K}$ distincts : $(a_0, \dots, a_n)$.\\
+Posons pour tout $i \in \llbracket 0, n \rrbracket$ :
+\[
+    L_i = \prod_{\substack{j=0 \\ j \neq i}}^n \frac{X - a_j}{a_i - a_j}
+\]
+
+\noindent On a les propriétés suivantes :
+\begin{itemize}
+    \item $\deg(L_i) = n$
+    \item $\forall k \neq i$, $a_k$ sont racines de $L_i$
+    \item $L_i(a_i) = 1$
+\end{itemize}
+
+\vspace{0.5cm}
+
+% Nouvelle définition (souvent mise en valeur en couleur dans les corrections)
+\noindent \color{questionblue}
+Posons l'application $\psi$ :
+\[
+\begin{array}{ccccc}
+\psi & : & \mathbb{K}_n[X] & \longrightarrow & \mathbb{K}^{n+1} \\
+ & & P & \longmapsto & (P(a_0), P(a_1), \dots, P(a_n))
+\end{array}
+\]
+
+\color{black}
+\noindent \textbf{$\psi$ est linéaire} (évident car $\psi(\lambda P + Q) = \lambda \psi(P) + \psi(Q)$).
+
+\bigskip
+
+\noindent \textbf{Injectivité :}
+Soit $P \in \ker(\psi)$, alors :
+\[ P(a_0) = \dots = P(a_n) = 0 \]
+Le polynôme $P$ (de degré $\le n$) possède donc $n+1$ racines distinctes.\\
+Donc $P = 0$ (le polynôme nul).\\
+Donc $\ker(\psi) = \{0\}$, ce qui implique que $\psi$ est \textbf{injective}.
+
+\bigskip
+
+\noindent \textbf{Bijectivité :}
+Nous sommes en dimension finie et l'espace de départ et d'arrivée ont la même dimension ($\dim(\mathbb{K}_n[X]) = n+1 = \dim(\mathbb{K}^{n+1})$).\\
+Puisque $\psi$ est injective, elle est bijective.\\
+Donc $\psi$ est un \textbf{isomorphisme} de $\mathbb{K}_n[X]$ dans $\mathbb{K}^{n+1}$.
+
+\bigskip
+
+\noindent \textbf{Image de la base :}
+On a pour tout $i \in \llbracket 0, n \rrbracket$ :
+\[
+    \psi(L_i) = (0, 0, \dots, \underbrace{1}_{i-\text{ème place}}, 0, \dots, 0) = e_{i+1}
+\]
+On en déduit que l'image de la famille $(L_i)_i$ par $\psi$ est la base canonique $B_c$ de $\mathbb{K}^{n+1}$.
+\[
+    (L_0, \dots, L_n) = \psi^{-1}(B_c)
+\]
+Or, la réciproque d'un isomorphisme est un isomorphisme (transforme une base en une base).
+
+\vspace{0.3cm}
+
+\noindent \fbox{
+    \begin{minipage}{\textwidth}
+        \centering
+        Donc $(L_k)_{0 \le k \le n}$ est une base de $\mathbb{K}_n[X]$.
+    \end{minipage}
+}
+
+
+

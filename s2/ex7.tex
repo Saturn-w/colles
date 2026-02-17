@@ -1,0 +1,177 @@
+\subsection{Étude de la nature des séries de terme général}
+
+\color{black}
+\vspace{0.5cm}
+
+% --- Question a ---
+\subsubsection{$u_n = \left(1+\frac{1}{n}\right)^n - e$}
+\vspace{0.5cm}
+
+\noindent $\forall n > 1$,
+\[ u_n = e^{n \ln(1+\frac{1}{n})} - e = e^{n \left( \frac{1}{n} - \frac{1}{2n^2} + o\left(\frac{1}{n^2}\right) \right)} - e \]
+
+\vspace{0.2cm}
+
+\[ = e^{1 - \frac{1}{2n} + o\left(\frac{1}{n}\right)} - e = e \left( e^{-\frac{1}{2n} + o\left(\frac{1}{n}\right)} - 1 \right) \]
+
+\vspace{0.2cm}
+
+\[ = e \left( 1 - \frac{1}{2n} + o\left(\frac{1}{n}\right) - 1 \right) = e \left( -\frac{1}{2n} + o\left(\frac{1}{n^2}\right) \right) \]
+
+\vspace{0.2cm}
+
+\[ \text{Donc } \quad u_n \sim -\frac{e}{2n} \]
+
+\vspace{0.3cm}
+
+\noindent Or $\sum \frac{1}{n}$ Diverge.
+\noindent Donc D'après le théorème de comparaison des Séries à termes positifs :
+
+\vspace{0.2cm}
+\noindent \fbox{$\sum u_n$ Diverge}
+
+
+% --- Question b ---
+\subsubsection{$u_n = \frac{2 \times 4 \times 6 \times \dots \times 2n}{n^n}$}
+\vspace{0.5cm}
+
+\[ \frac{u_{n+1}}{u_n} = \frac{2n+2}{(n+1)^{n+1}} \times n^n = \frac{(2n+2) \times n^n}{(n+1)(n+1)^n} \]
+
+\vspace{0.2cm}
+
+\[ = \frac{2(n+1)}{(n+1)} \times \frac{1}{(1+\frac{1}{n})^n} = 2 \times \frac{1}{e^{n \ln(1+\frac{1}{n})}} \]
+
+\vspace{0.2cm}
+
+\[ \xrightarrow{n \to +\infty} \frac{2}{e} \]
+
+\vspace{0.3cm}
+
+\noindent Donc $\lim_{n \to +\infty} \frac{u_{n+1}}{u_n} = \frac{2}{e} < 1$.
+\noindent D'après le critère de d'Alembert :
+
+\vspace{0.2cm}
+\noindent \fbox{$\sum u_n$ converge}
+
+
+% --- Question c ---
+\subsubsection{$u_n = \frac{(-1)^n}{\ln(n)}$}
+\vspace{0.5cm}
+
+\begin{itemize}
+    \setlength\itemsep{0.3cm}
+    \item $\sum u_n$ est une série alternée
+    \item $\forall n \ge 2, \quad |u_n| = \frac{1}{\ln(n)}$, $(|u_n|)$ est décroissante et converge vers 0
+\end{itemize}
+
+\vspace{0.3cm}
+
+\noindent Donc d'après le Critère Spécial des Séries alternées :
+
+\vspace{0.2cm}
+\noindent \fbox{$\sum u_n$ converge}
+
+
+% --- Question d ---
+\subsubsection{$u_n = \frac{\ln(n)}{n^2}$}
+\vspace{0.5cm}
+
+\[ \forall n \ge 1, \quad u_n = \frac{1}{n^{3/2}} \times \frac{\ln(n)}{n^{1/2}} \]
+
+\vspace{0.3cm}
+
+\noindent Or $\frac{\ln(n)}{\sqrt{n}} \xrightarrow{n \to +\infty} 0$ par CC.
+\noindent Donc $u_n = o\left(\frac{1}{n^{3/2}}\right)$.
+
+\vspace{0.3cm}
+
+\noindent Or $\sum \frac{1}{n^{3/2}}$ est une série de Riemann convergente.
+\noindent D'après le théorème des Séries à termes positifs :
+
+\vspace{0.2cm}
+\noindent \fbox{$\sum u_n$ converge}
+
+
+% --- Question e ---
+\subsubsection{$u_n = \left( n \times \sin\left(\frac{0,4}{n}\right) \right)^n$}
+\vspace{0.5cm}
+
+\noindent On sait que $\forall x \in \mathbb{R}, \quad |\sin(x)| \le |x|$
+\noindent $\sin'(x) = \cos(x)$ or $|\cos(x)| \le 1$.
+
+\vspace{0.2cm}
+
+\noindent D'après le théorème des accroissements finis $\sin$ est 1-lipschitzienne ($|\sin x - \sin 0| \le 1|x-0|$).
+
+\vspace{0.3cm}
+
+\noindent Donc $\left| n \sin\left(\frac{0,4}{n}\right) \right| \le n \frac{0,4}{n} = 0,4$.
+
+\noindent Or $t \to t^n$ est croissante sur $\mathbb{R}_+$.
+\noindent Donc $0 \le u_n \le (0,4)^n$.
+
+\vspace{0.3cm}
+
+\noindent Or $\sum (0,4)^n$ converge.
+\noindent Donc D'après le théorème de comparaison des Séries à termes positifs :
+
+\vspace{0.2cm}
+\noindent \fbox{$\sum u_n$ converge}
+
+
+% --- Question f ---
+\subsubsection{$u_n = \frac{n^2-2}{n!}$}
+\vspace{0.5cm}
+
+\[ \forall n \ge 2, \quad \frac{u_{n+1}}{u_n} = \frac{(n+1)^2-2}{(n+1)!} \times \frac{n!}{n^2-2} \]
+
+\vspace{0.2cm}
+
+\[ = \frac{(n+1)^2-2}{(n+1)(n^2-2)} \sim \frac{n^2}{n^3} \xrightarrow{n \to +\infty} 0 \]
+
+\vspace{0.3cm}
+
+\noindent D'après la Règle de d'Alembert :
+
+\vspace{0.2cm}
+\noindent \fbox{La série $\sum u_n$ converge}
+
+
+% --- Question g ---
+\subsubsection{$u_n = \sqrt{1 + \frac{(-1)^n}{n}} - 1$}
+\vspace{0.5cm}
+
+\[ \forall n > 1, \quad u_n = 1 + \frac{1}{2} \frac{(-1)^n}{n} - \frac{1}{8} \frac{(-1)^{2n}}{n^2} + O\left(\frac{1}{n^3}\right) - 1 \]
+
+\vspace{0.2cm}
+
+\[ = \frac{(-1)^n}{2n} + O\left(\frac{1}{n^2}\right) \]
+
+\vspace{0.3cm}
+
+\noindent Or D'après le TSSA $\sum \frac{(-1)^n}{2n}$ converge et $\sum \frac{1}{n^2}$ est ACV.
+\noindent Donc par combinaison linéaire de Série convergente :
+
+\vspace{0.2cm}
+\noindent \fbox{$\sum u_n$ converge}
+
+
+% --- Question h ---
+\subsubsection{$u_n = \frac{1}{\sqrt{n} \ln(n)}$ (Une série de Bertrand)}
+\vspace{0.5cm}
+
+\[ \forall n \ge 2, \quad u_n = \frac{1}{\sqrt{n} \ln(n)} = \frac{1}{n} \times \frac{\sqrt{n}}{\ln(n)} \]
+
+\vspace{0.3cm}
+
+\noindent Or $\frac{\sqrt{n}}{\ln(n)} \xrightarrow{n \to +\infty} +\infty$ Par croissance comparée.
+\noindent Donc $\exists n_0 \in \mathbb{N}, \forall n \ge n_0, \quad \frac{\sqrt{n}}{\ln(n)} \ge 1$.
+
+\vspace{0.3cm}
+
+\noindent Donc $\forall n \ge n_0, \quad u_n \ge \frac{1}{n}$.
+\noindent Or $\sum \frac{1}{n}$ diverge.
+\noindent Donc D'après le théorème des séries à termes positifs :
+
+\vspace{0.2cm}
+\noindent \fbox{$\sum u_n$ diverge.}

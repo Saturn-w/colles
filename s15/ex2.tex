@@ -1,0 +1,32 @@
+\subsection{Démonstration de l'Inégalité de Cauchy-Schwarz sur covariance }
+
+\color{black}
+\vspace{0.5cm}
+
+\noindent $X, Y \in \mathcal{L}_2(\Omega)$ \\
+\noindent Soit $\lambda \in \mathbb{R}$ \\
+\noindent Posons \quad $P(\lambda) = V(\lambda X + Y)$ \\
+\noindent \phantom{Posons $P(\lambda)$} $= V(\lambda X) + 2 \text{cov}(\lambda X, Y) + V(Y)$ \\
+\noindent \phantom{Posons $P(\lambda)$} $= \lambda^2 V(X) + 2 \lambda \text{cov}(X, Y) + V(Y)$
+
+\vspace{0.3cm}
+
+\noindent On reconnaît un polynôme en $\lambda$ de degré $\le 2$
+
+\vspace{0.3cm}
+
+\noindent Or la variance est toujours positive : \\
+  $P(\lambda) \ge 0 \quad (\forall \lambda \in \mathbb{R})$ \\
+\noindent Donc $\Delta \le 0$
+
+\vspace{0.3cm}
+
+\noindent Or $\Delta = (2 \text{cov}(X, Y))^2 - 4 V(X) V(Y)$
+
+\vspace{0.3cm}
+
+\noindent Donc \quad \fbox{$\text{cov}(X, Y)^2 \le V(X) V(Y)$}
+
+\vspace{0.5cm}
+
+\noindent $t \mapsto \sqrt{t} \nearrow$ sur $\mathbb{R}_+$ Donc \quad \fbox{$|\text{cov}(X, Y)| \le \sigma(X) \sigma(Y)$}

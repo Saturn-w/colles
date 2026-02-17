@@ -1,0 +1,51 @@
+\subsection{Déterminer le rayon de convergence et calcul de \\ la somme de la série réelle \\ $\sum_n \frac{n^2-1}{n!}$}
+
+\color{black}
+\vspace{0.5cm}
+
+\noindent \textbf{Rayon de convergence :}
+
+\vspace{0.3cm}
+
+\noindent $\forall n \in \mathbb{N}^*, \quad a_n = \left| \frac{n^2-1}{n!} \right|$
+
+\vspace{0.3cm}
+
+\noindent $\frac{a_{n+1}}{a_n} = \frac{1}{(n+1)} \times \frac{(n+1)^2-1}{n^2-1} = \frac{n^2+2n}{(n+1)(n+1)(n-1)} \sim \frac{n^2}{n^3} \to_{n \to +\infty} 0$
+
+\vspace{0.3cm}
+
+\noindent D'après la règle de d'Alembert \\
+\noindent Le rayon de convergence $R$ est \fbox{$R = +\infty$}
+
+\vspace{0.8cm}
+
+\noindent \textbf{Calcul de la somme}
+
+\vspace{0.3cm}
+
+\noindent $n^2-1 = n(n-1) + n - 1$
+
+\vspace{0.3cm}
+
+\noindent $\sum_{n=0}^{+\infty} \frac{n(n-1) + n - 1}{n!}$
+
+\vspace{0.3cm}
+
+\noindent $\bullet \sum_{n=0}^{+\infty} \frac{n(n-1)}{n!} = \sum_{n=2}^{+\infty} \frac{1}{(n-2)!} = \sum_{k=0}^{+\infty} \frac{1}{k!} = e$
+
+\vspace{0.3cm}
+
+\noindent $\bullet \sum_{n=0}^{+\infty} \frac{n}{n!} = \sum_{n=1}^{+\infty} \frac{1}{(n-1)!} = \sum_{k=0}^{+\infty} \frac{1}{k!} = e$
+
+\vspace{0.3cm}
+
+\noindent $\bullet \sum_{n=0}^{+\infty} \frac{1}{n!} = e$
+
+\vspace{0.3cm}
+
+\noindent Donc on a $\sum_{n=0}^{+\infty} \frac{n^2-1}{n!} = e + e - e = e$
+
+\vspace{0.5cm}
+
+\noindent Donc \fbox{$\sum_{n=0}^{+\infty} \frac{n^2-1}{n!} = e$}

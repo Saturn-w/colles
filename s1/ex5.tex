@@ -1,0 +1,70 @@
+
+% Partie Titre / Question en bleu
+\noindent \color{questionblue}
+\subsection{ Soient $f$ et $g$ deux endomorphismes d'un espace vectoriel $E$ tels que $f \circ g = g \circ f$, $f \circ g \circ f = f$ et $g \circ f \circ g = g$.\\
+Montrer que $\text{Im } f$ et $\ker g$ sont supplémentaires dans $E$.}
+
+% Partie Réponse en noir
+\color{black}
+\vspace{0.4cm}
+
+\noindent \textbf{(M1) Par analyse-synthèse}
+
+\noindent Montrons que $\forall x \in E, \exists! (x_1, x_2) \in \text{Im } f \times \ker g$ tel que $x = x_1 + x_2$.
+
+\vspace{0.3cm}
+\noindent \underline{Analyse :}
+Soit $x \in E$.
+Supposons que $x = x_1 + x_2$ avec $x_1 \in \text{Im } f$ et $x_2 \in \ker g$.
+\[ \exists t_1 \in E \text{ tq } x_1 = f(t_1) \]
+On applique $g$ :
+\[ g(x) = g(x_1) + g(x_2) = g(x_1) = g(f(t_1)) \]
+On applique $f$ :
+\[ f \circ g(x) = f \circ g \circ f(t_1) = f(t_1) = x_1 \]
+Donc $x_1$ est déterminé de manière unique, et $x_2 = x - x_1$ aussi.
+
+\vspace{0.3cm}
+\noindent \underline{Synthèse :}
+Posons :
+\[ \begin{cases} x_1 = f \circ g(x) \\ x_2 = x - f \circ g(x) \end{cases} \]
+
+\begin{itemize}
+    \item On a bien $x_1 + x_2 = f \circ g(x) + x - f \circ g(x) = x$.
+    \item $x_1 = f(g(x)) \in \text{Im}(f)$.
+    \item $g(x_2) = g(x - f \circ g(x)) = g(x) - g \circ f \circ g(x)$.\\
+    Or $g \circ f \circ g = g$, donc $g(x_2) = g(x) - g(x) = 0$. Donc $x_2 \in \ker g$.
+\end{itemize}
+
+\noindent \fbox{ Donc $\text{Im } f \oplus \ker g = E$. }
+
+\vspace{0.8cm}
+
+\noindent \textbf{(M2) Par les projecteurs}
+
+\noindent Par hypothèse $f \circ g \circ f = f$.
+Donc :
+\[ (f \circ g) \circ (f \circ g) = f \circ g \circ f \circ g = f \circ g \]
+Donc $f \circ g$ est un \textbf{projecteur}.
+D'après les propriétés des projecteurs :
+\[ \text{Im}(f \circ g) \oplus \ker(f \circ g) = E \]
+
+\noindent De plus :
+\begin{itemize}
+    \item $\text{Im}(f \circ g) \subset \text{Im } f$.
+    \item $\text{Im } f = \text{Im}(f \circ g \circ f) \subset \text{Im}(f \circ g)$.
+    \item $\ker g \subset \ker(f \circ g)$ (évident car si $g(x)=0$ alors $f(g(x))=0$).
+    \item $\ker(f \circ g) \subset \ker(g \circ f \circ g) = \ker g$ (en composant par $g$ à gauche).
+\end{itemize}
+
+\noindent Donc par double inclusion :
+\[ \text{Im}(f \circ g) = \text{Im } f \quad \text{et} \quad \ker(f \circ g) = \ker g \]
+
+\vspace{0.3cm}
+
+\noindent \fbox{
+    \begin{minipage}{\textwidth}
+        \centering
+        Donc \quad $\text{Im } f \oplus \ker g = E$.
+    \end{minipage}
+}
+

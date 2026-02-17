@@ -1,0 +1,45 @@
+\subsection{Démonstration du Critère Spécial des Séries Alternées}
+
+\color{black}
+\vspace{0.3cm}
+
+\noindent $\sum u_n$ est une série alternée.\\
+$(|u_n|)_{n \in \mathbb{N}}$ $\searrow$ et converge vers 0.
+
+\vspace{0.3cm}
+\noindent Posons $\forall n \in \mathbb{N}, \quad a_n = S_{2n} = \sum_{k=0}^{2n} u_k$\\
+\hspace*{3cm} $b_n = S_{2n+1} = \sum_{k=0}^{2n+1} u_k$
+
+\vspace{0.3cm}
+\noindent On suppose ici que $\forall n \in \mathbb{N}, \quad u_n (-1)^n \ge 0$.\\
+Donc $|u_n| = (-1)^n u_n$.
+
+\vspace{0.5cm}
+\noindent \textbf{Montrons que $(a_n)$ et $(b_n)$ sont des suites adjacentes :}
+
+\noindent Soit $n \in \mathbb{N}$,
+\begin{itemize}
+    \item $a_{n+1} - a_n = S_{2n+2} - S_{2n} = \sum_{k=2n+1}^{2n+2} u_k = u_{2n+2} + u_{2n+1}$
+    \[ = |u_{2n+2}| - |u_{2n+1}| \]
+    $\le 0$ \quad car $|u_n|$ est une suite décroissante.
+    \noindent Donc $(a_n)$ est décroissante.
+
+    \item $b_{n+1} - b_n = S_{2n+3} - S_{2n+1} = u_{2n+3} + u_{2n+2} \ge 0$
+    \[ = -|u_{2n+3}| + |u_{2n+2}| \ge 0 \quad \text{car } |u_n| \searrow \]
+    \noindent Donc $(b_n)$ est une suite croissante.
+
+    \item $a_n - b_n = S_{2n} - S_{2n+1} = -u_{2n+1} = |u_{2n+1}| \xrightarrow{n \to +\infty} 0$
+\end{itemize}
+
+\vspace{0.3cm}
+\noindent Donc $(a_n)$ et $(b_n)$ sont adjacentes.\\
+Donc elles convergent vers la même limite $l$.\\
+Donc $(S_n)$ converge.
+
+\vspace{0.3cm}
+\noindent \fbox{
+    \begin{minipage}{\textwidth}
+        \centering
+        Donc \quad $\sum u_n$ converge.
+    \end{minipage}
+}

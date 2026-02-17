@@ -1,0 +1,21 @@
+\subsection{Convergence de $(u_{2n})$ et $(u_{2n+1})$}
+
+\color{black}
+\vspace{0.5cm}
+
+\noindent Soit $\varepsilon > 0$. Montrons que $\exists N \in \mathbb{N}, \forall n \ge N, |u_n - l| \le \varepsilon$
+
+\vspace{0.3cm}
+\noindent On sait que $\exists N_1 \in \mathbb{N}, \forall n \ge N_1, \quad |u_{2n} - l| \le \varepsilon$ \\
+\hspace*{2.1cm} $\exists N_2 \in \mathbb{N}, \forall n \ge N_2, \quad |u_{2n+1} - l| \le \varepsilon$
+
+\vspace{0.5cm}
+\noindent Posons $N = \max(2N_1, 2N_2 + 1)$ \\
+Alors $\forall p \ge N, \quad |u_p - l| \le \varepsilon$
+
+\vspace{0.3cm}
+\noindent \hspace*{1cm} car si $p$ pair \quad $p \ge 2N_1$ \\
+\hspace*{1.7cm} si $p$ impair \quad $p \ge 2N_2 + 1$
+
+\vspace{0.5cm}
+\noindent Donc $(u_n)$ converge vers $l$

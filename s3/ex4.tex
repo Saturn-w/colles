@@ -1,0 +1,40 @@
+\subsection{ Soient $E$ un $\mathbb{K}$-espace vectoriel de dimension finie \\
+et $p_1, \dots, p_n$ des projecteurs de $E$ dont la somme vaut $Id_E$. \\
+On note $f_1, \dots, f_n$ les images respectives de $p_1, \dots, p_n$. \\
+\null\hfill Montrer que $\bigoplus_{k=1}^n f_k = E$ \hfill\null}
+
+\color{black}
+\vspace{0.5cm}
+
+
+
+\vspace{0.5cm}
+
+\noindent Soit $x \in E$, par hypothèse
+\[ \sum_{k=1}^n p_k(x) = x \]
+
+\vspace{0.5cm}
+
+\noindent Tout vecteur de $E$ se décompose selon les $f_k$
+\[ \text{Donc } \quad E = \sum_{k=1}^n f_k \]
+
+\vspace{0.5cm}
+
+\[ \sum_{k=1}^n \dim f_k = \sum_{k=1}^n \text{rg}(p_k) \]
+
+\vspace{0.5cm}
+
+\noindent Or pour toute projection \quad $\text{rg}(p_k) = \text{tr}(p_k)$
+\[ \implies \sum_{k=1}^n \dim f_k = \sum_{k=1}^n \text{tr}(p_k) = \text{tr}\left( \sum_{k=1}^n p_k \right) \quad \text{car tr est linéaire} \]
+
+\vspace{0.3cm}
+
+\[ = \text{tr}(\text{id}) = \dim E = n \]
+
+\vspace{0.5cm}
+
+\noindent Donc $\sum_{k=1}^n \dim(f_k) = \dim E$
+
+\vspace{0.5cm}
+
+\noindent Donc \quad \fbox{$E = \bigoplus_{k=1}^n f_k$}

@@ -1,0 +1,61 @@
+\subsection{Soient $X, Y$ deux variables aléatoires indépendantes suivant des lois \\ 
+géométriques $\mathcal{G}(p)$ et $\mathcal{G}(q)$ avec $p, q \in ]0, 1[$. \\ 
+Soit $E$ l'événement : "La matrice $\begin{pmatrix} X & 1 \\ 0 & Y \end{pmatrix}$ est diagonalisable". \\ 
+Calculer $P(E)$.}
+
+\color{black}
+\vspace{0.5cm}
+
+\noindent $\begin{cases} X, Y \perp \!\! \perp \\ X \sim \mathcal{G}(p), \enspace Y \sim \mathcal{G}(q) \end{cases} \quad p, q \in ]0, 1[$
+
+\vspace{0.3cm}
+
+\noindent Posons $E = \text{"} \begin{pmatrix} X & 1 \\ 0 & Y \end{pmatrix} \text{ est diagonalisable"}$ \\
+\noindent $E = \{ \omega \in \Omega, \begin{pmatrix} X(\omega) & 1 \\ 0 & Y(\omega) \end{pmatrix} \text{ est diagonalisable} \}$
+
+\vspace{0.3cm}
+
+\noindent Posons $A = \begin{pmatrix} x & 1 \\ 0 & y \end{pmatrix} \quad (x, y) \in \mathbb{R}^2$
+
+\vspace{0.3cm}
+
+\noindent $\rightarrow$ Si $x \neq y$ alors $A$ possède 2 vap distinctes. \\
+\noindent Donc $A$ est diagonalisable car $A \in \mathcal{M}_2(\mathbb{R})$.
+
+\vspace{0.3cm}
+
+\noindent $\rightarrow$ Si $x = y$ alors $Sp(A) = \{x\}$. \\
+\noindent Alors $A$ diagonalisable $\iff A$ semblable à $xI_2 \iff A = xI_2$ (faux). \\
+\noindent Donc $A$ non diagonalisable.
+
+\vspace{0.3cm}
+
+\noindent D'où $A$ diagonalisable $\iff x \neq y$.
+
+\vspace{0.3cm}
+
+\noindent On en déduit que $E = (X \neq Y)$
+
+\vspace{0.3cm}
+
+\noindent $P(E) = P(X \neq Y) = 1 - P(X = Y)$
+
+\vspace{0.3cm}
+
+\noindent Or $(X=k)_{k \in \mathbb{N}^*}$ est un SCE.
+
+\vspace{0.3cm}
+
+\noindent Donc $P(X=Y) = \sum_{k=1}^{+\infty} P(X=Y, X=k) = \sum_{k=1}^{+\infty} P(X=k, Y=k)$ \\
+\noindent \phantom{Donc $P(X=Y)$} $= \sum_{k=1}^{+\infty} P(X=k) P(Y=k) \quad$ car $X, Y \perp \!\! \perp$ \\
+\noindent \phantom{Donc $P(X=Y)$} $= \sum_{k=1}^{+\infty} p(1-p)^{k-1} q(1-q)^{k-1}$
+
+\vspace{0.3cm}
+
+\noindent Série géométrique de raison $(1-p)(1-q) \in ]0, 1[$.
+\[ P(X=Y) = \frac{pq}{1 - (1-p)(1-q)} = \frac{pq}{p+q-pq} \]
+
+\vspace{0.5cm}
+
+\noindent D'où :
+\[ \fbox{$P(E) = \frac{p+q-2pq}{p+q-pq}$} \]

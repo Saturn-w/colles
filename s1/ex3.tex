@@ -1,0 +1,77 @@
+
+% Partie Titre / Question en bleu
+\noindent \color{questionblue}
+\subsection{ Démonstration du théorème du rang}
+
+\vspace{0.2cm}
+\noindent Soit $E$ un espace vectoriel de dimension finie (evdf), $F$ un espace vectoriel (ev).\\
+Soit $f \in \mathcal{L}(E, F)$.\\
+\textbf{Montrer que $\dim E = \text{rg } f + \dim \ker f$.}
+
+% Partie Réponse en noir
+\color{black}
+\vspace{0.4cm}
+
+\noindent $\ker f \subset E$. Donc $\ker f$ admet un supplémentaire dans $E$ (car $E$ est de dimension finie).\\
+En posant $G$ ce supplémentaire, on a :
+\[ \ker f \oplus G = E \]
+
+\vspace{0.2cm}
+
+\noindent Posons l'application $f_{|G}$ :
+\[
+\begin{array}{ccccc}
+f_{|G} & : & G & \longrightarrow & \text{Im}(f) \\
+ & & x & \longmapsto & f(x)
+\end{array}
+\]
+\begin{itemize}
+    \item Elle est bien définie car $\forall x \in G, f(x) \in \text{Im}(f)$.
+    \item Elle est linéaire.
+\end{itemize}
+
+\vspace{0.3cm}
+\noindent \underline{Montrons que $f_{|G}$ est un isomorphisme.}
+
+\begin{itemize}
+    \item \textbf{Injectivité :}
+    \[ \ker f_{|G} = \ker f \cap G \]
+    Or $\ker f \oplus G = E$, donc l'intersection est réduite au vecteur nul :
+    \[ \ker f \cap G = \{0\} \]
+    Donc $f_{|G}$ est injectif (en dimension finie).
+
+    \vspace{0.3cm}
+
+    \item \textbf{Surjectivité :}
+    On a $\text{Im } f_{|G} = \{ f(x) \mid x \in G \} \subset \text{Im } f$.
+
+    \noindent Montrons que $\text{Im } f \subset \text{Im } f_{|G}$.
+    Soit $y \in \text{Im } f$. Il existe $x \in E$ tel que $f(x) = y$.
+    Or $E = \ker f \oplus G$.
+    Donc $\exists (x_1, x_2) \in \ker f \times G$ tel que $x = x_1 + x_2$.
+
+    On a alors :
+    \[ y = f(x_1 + x_2) = \underbrace{f(x_1)}_{=0} + f(x_2) = f(x_2) \]
+    Comme $x_2 \in G$, on a $f(x_2) \in \text{Im } f_{|G}$. Donc $y \in \text{Im } f_{|G}$.
+
+    \noindent Donc $\text{Im } f = \text{Im } f_{|G}$. Donc $f_{|G}$ est surjectif.
+\end{itemize}
+
+\vspace{0.3cm}
+
+\noindent Donc $f_{|G}$ est un \textbf{isomorphisme} de $G$ sur $\text{Im } f$.
+
+\noindent On en déduit que :
+\[ \dim(\text{Im } f) = \dim G \]
+
+\noindent Or, comme $E = \ker f \oplus G$, on a $\dim E = \dim G + \dim \ker f$.
+
+\vspace{0.3cm}
+
+\noindent \fbox{
+    \begin{minipage}{\textwidth}
+        \centering
+        Donc \quad $\dim E = \dim(\text{Im } f) + \dim \ker f$.
+    \end{minipage}
+}
+

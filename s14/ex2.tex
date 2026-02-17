@@ -1,0 +1,42 @@
+\subsection{ 
+Démonstration de l'espérance de la loi géométrique\\
+$X \hookrightarrow \mathcal{G}(p)$. \\ }
+
+\color{black}
+\vspace{0.5cm}
+Soit $X \hookrightarrow \mathcal{G}(p)$. \\ 
+Montrer que $X$ est d'espérance finie et calculer $E(X)$.
+
+
+\vspace{0.3cm}
+
+\noindent $X(\Omega) = \mathbb{N}^* \quad \forall n \in \mathbb{N}^*$ \\
+\noindent $P(X=n) = q^{n-1}p \quad$ où $q = 1-p$
+
+\vspace{0.3cm}
+
+\noindent $X$ d'esp finie $\iff \sum_n n P(X=n) \text{ CV (SATP)}$ \\
+\noindent \phantom{$X$ d'esp finie} $\iff \sum_n n q^{n-1}p \text{ CV}$
+
+\vspace{0.3cm}
+
+\noindent On sait que \\
+\noindent $\forall x \in ]-1, 1[, \quad \frac{1}{1-x} = \sum_{n=0}^{+\infty} x^n$
+
+\vspace{0.3cm}
+
+\noindent Par dérivation terme à terme d'une SE \\
+\noindent $\frac{1}{(1-x)^2} = \sum_{n=1}^{+\infty} n x^{n-1}$
+
+\vspace{0.3cm}
+
+\noindent Or $q \in ]0, 1[$ \\
+\noindent Donc $\sum n q^{n-1} \text{ CV}$ \quad Donc $X$ est d'esp finie
+
+\vspace{0.3cm}
+
+\noindent et $E(X) = \sum_{n=1}^{+\infty} n q^{n-1} p = \frac{1}{(1-q)^2} p = \frac{p}{p^2} = \frac{1}{p}$
+
+\vspace{0.5cm}
+
+\noindent Donc \fbox{$E(X) = \frac{1}{p}$}

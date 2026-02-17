@@ -1,0 +1,57 @@
+\subsection{On munit $\mathbb{N}^*$ de la probabilité $P$ donnée par $P(\{n\}) = \frac{1}{\zeta(\alpha)n^\alpha}$ où $\alpha > 1$ \\ 
+et $\zeta(\alpha) = \sum_{n=1}^{+\infty} \frac{1}{n^\alpha}$. \\ 
+a) Montrer que $P$ est bien une probabilité sur $(\mathbb{N}^*, \mathcal{P}(\mathbb{N}^*))$. \\ 
+b) Les événements $2\mathbb{N}^*$ et $3\mathbb{N}^*$ sont-ils indépendants ?}
+
+\color{black}
+\vspace{0.5cm}
+
+\noindent \textbf{a) Montrons que $P$ est bien une probabilité}
+
+\vspace{0.3cm}
+
+\noindent $\bullet$ Pour tout $n \in \mathbb{N}^*$, on a $n \ge 1$ et $\alpha > 1$, donc $\frac{1}{n^\alpha} > 0$. \\
+\noindent Comme $\zeta(\alpha)$ est une somme de termes strictement positifs, $\zeta(\alpha) > 0$.\\
+\noindent Ainsi, $\forall n \in \mathbb{N}^*, \enspace P(\{n\}) \ge 0$.
+
+\vspace{0.3cm}
+
+\noindent $\bullet$ Calculons la somme des probabilités élémentaires :
+\[ \sum_{n=1}^{+\infty} P(\{n\}) = \sum_{n=1}^{+\infty} \frac{1}{\zeta(\alpha) n^\alpha} = \frac{1}{\zeta(\alpha)} \sum_{n=1}^{+\infty} \frac{1}{n^\alpha} \]
+
+\vspace{0.3cm}
+
+\noindent Par définition de la fonction zêta de Riemann : $\sum_{n=1}^{+\infty} \frac{1}{n^\alpha} = \zeta(\alpha)$.
+\noindent D'où \quad $\sum_{n=1}^{+\infty} P(\{n\}) = \frac{\zeta(\alpha)}{\zeta(\alpha)} = 1$.
+
+\vspace{0.3cm}
+
+\noindent \fbox{$P$ est donc bien une probabilité sur $(\mathbb{N}^*, \mathcal{P}(\mathbb{N}^*))$.}
+
+\vspace{0.8cm}
+
+\noindent \textbf{b) Étudions l'indépendance de $2\mathbb{N}^*$ et $3\mathbb{N}^*$}
+
+\vspace{0.3cm}
+
+\noindent $\bullet$ Calculons $P(2\mathbb{N}^*)$ :
+\[ P(2\mathbb{N}^*) = \sum_{k=1}^{+\infty} P(\{2k\}) = \sum_{k=1}^{+\infty} \frac{1}{\zeta(\alpha) (2k)^\alpha} = \frac{1}{2^\alpha \zeta(\alpha)} \sum_{k=1}^{+\infty} \frac{1}{k^\alpha} = \frac{\zeta(\alpha)}{2^\alpha \zeta(\alpha)} = \frac{1}{2^\alpha} \]
+
+\vspace{0.3cm}
+
+\noindent $\bullet$ De même pour $P(3\mathbb{N}^*)$ : \quad $P(3\mathbb{N}^*) = \frac{1}{3^\alpha}$.
+
+\vspace{0.3cm}
+
+\noindent $\bullet$ L'intersection $2\mathbb{N}^* \cap 3\mathbb{N}^*$ correspond aux entiers multiples de 2 et de 3, soit $6\mathbb{N}^*$.
+\[ P(2\mathbb{N}^* \cap 3\mathbb{N}^*) = P(6\mathbb{N}^*) = \frac{1}{6^\alpha} \]
+
+\vspace{0.3cm}
+
+\noindent $\bullet$ On compare $P(2\mathbb{N}^* \cap 3\mathbb{N}^*)$ et $P(2\mathbb{N}^*) \times P(3\mathbb{N}^*)$ :
+\[ P(2\mathbb{N}^*) \times P(3\mathbb{N}^*) = \frac{1}{2^\alpha} \times \frac{1}{3^\alpha} = \frac{1}{(2 \times 3)^\alpha} = \frac{1}{6^\alpha} \]
+
+\vspace{0.5cm}
+
+\noindent On a $P(2\mathbb{N}^* \cap 3\mathbb{N}^*) = P(2\mathbb{N}^*) P(3\mathbb{N}^*)$, donc :
+\[ \fbox{Les événements $2\mathbb{N}^*$ et $3\mathbb{N}^*$ sont indépendants.} \]

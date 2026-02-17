@@ -1,0 +1,57 @@
+
+% Partie Titre / Question en bleu
+\noindent \color{questionblue}
+\subsection{ Soit $(a_0, \dots, a_n)$, $n+1$ réels différents. \\
+Montrer que $\exists (c_0, \dots, c_n) \in \mathbb{K}^{n+1}$ \\
+$\forall P \in \mathbb{K}_n[X] \quad \int_0^1 2P(t) + P'(t) dt = \sum_{k=0}^n c_k P(a_k)$}
+
+% Partie Réponse en noir
+\color{black}
+\vspace{0.5cm}
+
+\noindent \textbf{(M1) Polynômes de Lagrange}
+
+\noindent Soit $(L_0, \dots, L_n)$ Base de $\mathbb{R}_n[X]$ formée de polynômes interpolateurs \\
+de Lagrange sur $(a_0, \dots, a_n)$
+
+\vspace{0.3cm}
+\noindent Donc $\forall P \in \mathbb{R}_n[X] \quad P = \sum_{k=0}^n P(a_k) L_k$
+
+\vspace{0.3cm}
+\noindent Alors $\int_0^1 2P(t) + P'(t) dt = \int_0^1 \sum_{k=0}^n P(a_k) (2 L_k(t) + L_k'(t)) dt$
+
+\[ = \sum_{k=0}^n P(a_k) \underbrace{\int_0^1 2 L_k(t) + L_k'(t) dt}_{\text{on pose } c_k \text{ cette constante}} \]
+
+\noindent Donc $\exists (c_0, \dots, c_n) \in \mathbb{R}^{n+1}$ tel que \dots
+
+\vspace{0.8cm}
+
+\noindent \textbf{(M2)} Posons $\forall k \in \llbracket 0, n \rrbracket \quad f_k : \begin{array}{l} \mathbb{R}_n[X] \to \mathbb{R} \\ P \mapsto P(a_k) \end{array}$ forme linéaire
+\[ \varphi : \begin{array}{l} \mathbb{R}_n[X] \to \mathbb{R} \\ P \mapsto \int_0^1 2P(t) + P'(t) dt \end{array} \text{forme linéaire} \]
+
+\noindent Montrons que $(f_0, \dots, f_n)$ Base de $\mathcal{L}(\mathbb{R}_n[X], \mathbb{R})$
+
+\vspace{0.3cm}
+\noindent Soit $(\lambda_0, \dots, \lambda_n) \in \mathbb{R}^{n+1}$ tel que $\sum_{k=0}^n \lambda_k f_k = 0$
+\noindent On a $\forall P \in \mathbb{R}_n[X], \quad \sum_{k=0}^n \lambda_k P(a_k) = 0$
+
+\vspace{0.3cm}
+\noindent Soit $j \in \llbracket 0, n \rrbracket$, posons \quad $P_j = \prod_{\substack{k=0 \\ k \neq j}}^n (X - a_k) \in \mathbb{R}_n[X]$
+
+\noindent Alors $\sum_{k=0}^n \lambda_k P_j(a_k) = 0$
+\[ \implies \lambda_j P_j(a_j) = 0 \implies \lambda_j = 0 \]
+\hspace*{3cm} $= 0$ si $k \neq j$ \\
+\hspace*{3cm} $\neq 0$ si $k=j$
+
+\vspace{0.3cm}
+\noindent Donc la famille est libre
+\noindent Or Card$(f_0, \dots, f_n) = n+1$
+\noindent $\dim(\mathcal{L}(\mathbb{R}_n[X], \mathbb{R})) = n+1$
+\noindent Donc c'est une base de $\mathcal{L}(\mathbb{R}_n[X], \mathbb{R})$
+
+\vspace{0.5cm}
+
+\noindent Donc $\exists! (c_0, \dots, c_n) \in \mathbb{R}^{n+1}$ tel que
+\[ \varphi = \sum_{k=0}^n c_k f_k \]
+
+\noindent $\forall P \in \mathbb{R}_n[X], \quad \varphi(P) = \sum_{k=0}^n c_k f_k(P) = \sum_{k=0}^n c_k P(a_k)$

@@ -1,0 +1,47 @@
+
+
+% Partie Titre / Question en bleu
+\noindent \color{questionblue}
+\subsection{ Soient $n \in \mathbb{N}^*$, $A \in \mathcal{M}_n(\mathbb{R})$ et $\varphi$ une forme linéaire de $\mathcal{M}_n(\mathbb{R})$. \\
+Trouver une condition nécessaire et suffisante pour que \\
+$f : \mathcal{M}_n(\mathbb{R}) \longrightarrow \mathcal{M}_n(\mathbb{R})$ soit un automorphisme. \\
+\hspace*{1cm} $M \longmapsto -\varphi(M)A + M$}
+
+% Partie Réponse en noir
+\color{black}
+\vspace{0.5cm}
+
+\noindent $f$ est un endomorphisme de $\mathcal{M}_n(\mathbb{R})$ car $\varphi$ est linéaire \\
+et $\mathcal{M}_n(\mathbb{R}) \to \mathcal{M}_n(\mathbb{R})$.
+
+\vspace{0.2cm}
+\noindent $\mathcal{M}_n(\mathbb{R})$ evdf \\
+Donc $f$ bijectif $\iff f$ injectif \\
+Donc $f$ automorphisme $\iff \ker f = \{0\}$
+
+\vspace{0.5cm}
+
+\noindent \textbf{Si $\ker(f) \neq \{0\}$} Alors $\exists M \in \mathcal{M}_n(\mathbb{R})$ tel que $f(M) = 0$, et $M \neq 0$
+
+\[ \implies -\varphi(M)A + M = 0 \quad \implies M = \varphi(M)A \quad \implies M \in \text{Vect}(A) \]
+
+\noindent Alors $\exists \alpha \in \mathbb{R}, \quad M = \alpha A \quad (\alpha \neq 0 \text{ car } M \neq 0)$
+
+\[ M = \alpha A = \varphi(M) A = \varphi(\alpha A) A = \alpha \varphi(A) A \quad \text{car } \varphi \text{ forme linéaire} \]
+
+\noindent Donc $\alpha A = \alpha \varphi(A) A$
+
+\noindent Donc \quad \fbox{$\varphi(A) = 1$}
+
+\vspace{0.5cm}
+
+\noindent \textbf{Réciproquement} si $\varphi(A) = 1$ \\
+Alors $f(A) = -\varphi(A)A + A = -1 \times A + A = 0$ \\
+Or $A \neq 0$ car $\varphi(A) = 1$
+
+\vspace{0.3cm}
+\noindent Donc $\ker f \neq \{0\} \iff \varphi(A) = 1$
+
+\vspace{0.3cm}
+\noindent Donc $f$ automorphisme $\iff \ker f = \{0\} \iff \varphi(A) \neq 1$
+

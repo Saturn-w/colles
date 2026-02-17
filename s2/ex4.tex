@@ -1,0 +1,36 @@
+\subsection{Convergence d'une suite d'entiers ($(u_n) \in \mathbb{Z}^{\mathbb{N}}$)}
+
+\color{black}
+\vspace{0.3cm}
+
+\noindent \textbf{Question :} Soit $(u_n)_{n \in \mathbb{N}} \in \mathbb{Z}^{\mathbb{N}}$.\\
+Montrer que $(u_n)$ converge $\iff (u_n)$ est stationnaire.
+
+\vspace{0.5cm}
+
+\noindent \textbf{($\Leftarrow$)} Si $(u_n)$ est stationnaire.
+\[ \exists n_0 \in \mathbb{N}, \forall n \ge n_0, \quad u_n = u_{n_0} \]
+Donc $(u_n)$ converge vers $u_{n_0}$.
+
+\vspace{0.5cm}
+
+\noindent \textbf{($\Rightarrow$)} Si $(u_n)_{n \in \mathbb{N}}$ converge vers $l$ sa limite.
+\noindent Alors pour $\varepsilon = \frac{1}{4}$.
+\[ \exists n_0 \in \mathbb{N}, \forall n \ge n_0, \quad |u_n - l| \le \frac{1}{4} \]
+
+\noindent On regarde la distance entre deux termes au-delà de $n_0$ :
+\[ |u_n - u_{n_0}| \le |u_n - l| + |l - u_{n_0}| \le \frac{1}{4} + \frac{1}{4} = \frac{1}{2} \]
+
+\noindent Or, $(u_n) \in \mathbb{Z}^{\mathbb{N}}$, donc la différence $u_n - u_{n_0}$ est un entier relatif.
+\noindent Un entier dont la valeur absolue est inférieure ou égale à $1/2$ est nécessairement nul.
+\[ |u_n - u_{n_0}| \le \frac{1}{2} \implies |u_n - u_{n_0}| = 0 \]
+
+\noindent Donc $\forall n \ge n_0, \quad u_n = u_{n_0}$.
+
+\vspace{0.3cm}
+\noindent \fbox{
+    \begin{minipage}{\textwidth}
+        \centering
+        Donc la suite est stationnaire.
+    \end{minipage}
+}

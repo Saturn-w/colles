@@ -1,0 +1,75 @@
+\subsection{Résoudre $y'' + 4y = 2 \sin^2(x)$.}
+
+\color{black}
+\vspace{0.5cm}
+
+\noindent On sait que $\cos(2x) = 2\cos^2(x) - 1 = 1 - 2\sin^2(x)$ \\
+\noindent Donc $2\sin^2(x) = 1 - \cos(2x)$
+
+\vspace{0.3cm}
+
+\noindent $(E) \quad y'' + 4y = 1 - \cos(2x)$
+
+\vspace{0.3cm}
+
+\noindent $(E_H) \quad y'' + 4y = 0$ \\
+\noindent $(*)$ \quad $r^2 + 4 = 0 \iff r = \pm 2i$
+
+\vspace{0.3cm}
+
+\noindent $Sol(E_H) = Vect(x \mapsto \cos(2x), x \mapsto \sin(2x))$
+
+\vspace{0.3cm}
+
+\noindent \textbf{* Solution particulière}
+
+\vspace{0.3cm}
+
+\noindent Posons $(E_1) \quad y'' + 4y = 1$ \\
+\noindent \phantom{Posons} $(E_2) \quad y'' + 4y = -\cos(2x)$
+
+\vspace{0.3cm}
+
+\noindent $\rightarrow$ Solution particulière de $(E_1)$ \\
+\noindent $\psi_1 : x \mapsto \frac{1}{4}$ sol part évidente
+
+\vspace{0.3cm}
+
+\noindent $\rightarrow$ Sol part de $(E_2)$ \\
+\noindent On pose $E_{\mathbb{C}} : z'' + 4z = -e^{2ix}$ \\
+\noindent $Sol_{E_{\mathbb{C}, H}} = Vect(x \mapsto e^{2ix}, x \mapsto e^{-2ix})$
+
+\vspace{0.3cm}
+
+\noindent $\psi_2(x) = \lambda x e^{2ix}$ \\
+\noindent $\psi_2$ est solution de $E_{\mathbb{C}}$
+
+\vspace{0.3cm}
+
+\noindent $\forall x \in \mathbb{R}, \quad \psi_2'(x) = \lambda e^{2ix}(1+2ix)$ \\
+\noindent \phantom{$\forall x \in \mathbb{R}, \quad$} $\psi_2''(x) = \lambda e^{2ix}(2i + 2i(1+2ix))$ \\
+\noindent \phantom{$\forall x \in \mathbb{R}, \quad \psi_2''(x)$} $= \lambda e^{2ix}(4i - 4x)$
+
+\vspace{0.3cm}
+
+\noindent $\forall x \in \mathbb{R}, \quad \lambda e^{2ix}(4i - 4x) + 4\lambda x e^{2ix} = -e^{2ix}$ \\
+\noindent $\iff 4i\lambda = -1$ \\
+\noindent $\iff \lambda = \frac{-1}{4i} \iff \lambda = \frac{i}{4}$
+
+\vspace{0.3cm}
+
+\noindent $\Rightarrow \psi_2(x) = \frac{ix}{4} e^{2ix}$
+
+\vspace{0.3cm}
+
+\noindent Donc $Re(\psi_2)$ est sol part de $(E_2)$. \\
+\noindent $g_2 : x \mapsto -\frac{x}{4} \sin(2x)$
+
+\vspace{0.3cm}
+
+\noindent Donc d'après le principe de superposition : \\
+\noindent $\psi_p : x \mapsto \frac{1}{4} - \frac{x}{4} \sin(2x)$ est sol part de $E$
+
+\vspace{0.5cm}
+
+\noindent \fbox{$Sol_{\mathbb{R}}(E) = \left\{ x \mapsto \left(A - \frac{x}{4}\right)\sin(2x) + B\cos(2x) + \frac{1}{4}, \enspace (A,B) \in \mathbb{R}^2 \right\}$}

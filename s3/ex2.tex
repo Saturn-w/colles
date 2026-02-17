@@ -1,0 +1,80 @@
+\subsection{ Soit $E = \mathbb{R}_3[X]$.\newline
+On pose $F = \text{Vect}(X^2+1)$, $G = \text{Vect}(X^2+2)$. $H = \{ P \in E \mid P(1) = P(0) = 0 \}$. \\ 
+a) Montrer que la somme $F+G+H$ est directe. \\
+b) Montrer que $F \oplus G \oplus H = E$.}
+
+\color{black}
+\vspace{0.8cm}
+
+\noindent \textbf{a)} Soit $P_F, P_G, P_H \in F, G, H$
+\noindent tel que \quad $P_F + P_G + P_H = 0$
+
+\vspace{0.5cm}
+
+\noindent $P_F \in F$ Donc $\exists a \in \mathbb{R}, \quad P_F = a(X^2+1)$
+
+\noindent $P_G \in G$ Donc $\exists b \in \mathbb{R}, \quad P_G = b(X^2+2)$
+
+\noindent $P_H \in H$ Donc $P_H(1) = P_H(0) = 0$
+
+\vspace{0.5cm}
+
+\noindent Alors \quad $a(X^2+1) + b(X^2+2) + P_H = 0$
+
+\vspace{0.3cm}
+
+\noindent Evalué en $0$ : \quad $a + 2b = 0$
+
+\noindent Evalué en $1$ : \quad $2a + 3b = 0$
+
+\vspace{0.5cm}
+
+\noindent En faisant $2L_1 - L_2$ : \quad $b = 0$
+
+\noindent En injectant ce résultat : \quad $a = 0$
+
+\vspace{0.3cm}
+
+\noindent Donc $P_F = P_G = 0$
+
+\noindent Or $P_F + P_G + P_H = 0$
+
+\noindent Donc $P_H = 0$
+
+\vspace{0.5cm}
+
+\noindent \underline{Donc la somme est directe.}
+
+\vspace{1cm}
+
+\noindent \textbf{b)} $H = \{ P \in \mathbb{R}_3[X], P(0) = P(1) = 0 \}$
+
+\vspace{0.2cm}
+\[ = \{ P \in \mathbb{R}_3[X], X(X-1) \text{ divise } P \} \]
+
+\vspace{0.2cm}
+\[ = \{ P \in \mathbb{R}_3[X], \exists Q \in \mathbb{R}_1[X], P = X(X-1)Q \} \]
+
+\vspace{0.2cm}
+\[ = \{ X(X-1)(\alpha X + \beta), (\alpha, \beta) \in \mathbb{R}^2 \} \]
+
+\vspace{0.2cm}
+\[ = \text{Vect}(\underbrace{X^2(X-1), X(X-1)}_{B_H}) \]
+
+\vspace{0.5cm}
+
+\noindent $B_H$ est une famille génératrice de $H$, et libre car échelonnée en degré.
+
+\noindent Donc $\dim H = 2$, \quad $\dim F = 1$, \quad $\dim G = 1$
+
+\vspace{0.5cm}
+
+\noindent Donc $\dim H + \dim F + \dim G = \dim \mathbb{R}_3[X]$ \quad ($= 4$)
+
+\vspace{0.3cm}
+
+\noindent Or $F+G+H$ est une somme directe.
+
+\vspace{0.3cm}
+
+\noindent Donc \quad \fbox{$F \oplus G \oplus H = E = \mathbb{R}_3[X]$}

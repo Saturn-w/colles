@@ -1,0 +1,68 @@
+\subsection{On lance une pièce dont la probabilité de tomber sur pile est $p$. \\ 
+On note $A_n$ : "au $n^e$ lancer on fait pour la première fois deux piles consécutifs". \\ 
+On note $a_n$ la probabilité de cet évènement. \\ 
+(a) Calculer $a_1, a_2, a_3$. \\ 
+(b) Soit $n \in \mathbb{N}$ avec $n \ge 3$. En utilisant le SCE $(F_1, P_1 \cap F_2, P_1 \cap P_2)$, trouver une \\ 
+relation reliant $a_n$ à $a_{n-1}$ et $a_{n-2}$. \\ 
+(c) Pourquoi est-il quasi-certain d'obtenir deux piles consécutifs ?}
+
+\color{black}
+\vspace{0.5cm}
+
+\noindent \textbf{a) $A_1 = \emptyset \quad a_1 = 0 \quad$ car il n'y a qu'un tour} \\
+\noindent $A_2 = P_1 \cap P_2 \quad a_2 = p^2 \quad$ car les lancers sont indépendants \\
+\noindent $A_3 = \overline{P_1} \cap P_2 \cap P_3 = p^2(1-p)$
+
+\vspace{0.8cm}
+
+\noindent \textbf{b)} \\
+\noindent D'après la formule des probabilités totales : \\
+\noindent $P(A_n) = P_{F_1}(A_n) P(F_1) + P_{P_1 \cap F_2}(A_n) P(P_1 \cap F_2) + P_{P_1 \cap P_2}(A_n) P(P_1 \cap P_2)$
+
+\vspace{0.3cm}
+
+\noindent $P_{F_1}(A_n)$ ? \\
+\noindent Si $F_1$ est réalisé alors réaliser $A_n$ revient à réaliser $A_{n-1}$ \\
+\noindent sur les $n-1$ lancers après le 1er \\
+\noindent $P_{F_1}(A_n) = P(A_{n-1})$
+
+\vspace{0.3cm}
+
+\noindent $P_{P_1 \cap F_2}(A_n)$ ? \\
+\noindent Pareil mais au $(n-2)$ème lancer après le 2nd \\
+\noindent $P_{P_1 \cap F_2}(A_n) = P(A_{n-2})$
+
+\vspace{0.3cm}
+
+\noindent $P_{P_1 \cap P_2}(A_n) = 0 \quad$ car $A_2$ est réalisé
+
+\vspace{0.3cm}
+
+\noindent Donc $\forall n \ge 3$ \\
+\noindent \fbox{$a_n = a_{n-1}(1-p) + a_{n-2} p(1-p) + 0$}
+
+\vspace{0.8cm}
+
+\noindent \textbf{c) On pose $C$ : "On obtient 2 piles consécutifs"} \\
+\noindent $C = \bigcup_{n \in \mathbb{N}^*} A_n \quad$ les $(A_n)$ sont 2 à 2 incompatibles \\
+\noindent Donc par $\sigma$-additivité \quad $P(C) = \sum_{n=1}^{+\infty} P(A_n) = \sum_{n=1}^{+\infty} a_n$
+
+\vspace{0.3cm}
+
+\noindent On a $\sum_{n=3}^{+\infty} a_n = (1-p) \sum_{n=3}^{+\infty} a_{n-1} + p(1-p) \sum_{n=3}^{+\infty} a_{n-2}$ \\
+\noindent \phantom{On a $\sum_{n=3}^{+\infty} a_n$} $= (1-p) \sum_{n=2}^{+\infty} a_n + p(1-p) \sum_{n=1}^{+\infty} a_n$
+
+\vspace{0.3cm}
+
+\noindent Donc \quad $P(C) - a_1 - a_2 = (1-p)(P(C) - a_1) + p(1-p)P(C)$ \\
+\noindent Donc \quad $P(C) \times p^2 = a_1 + a_2 - a_1 + pa_1$ \\
+\noindent \phantom{Donc $P(C) \times p^2$} $= a_2 + pa_1 \quad$ Or $a_1=0$ \quad $a_2=p^2$
+
+\vspace{0.3cm}
+
+\noindent Donc \quad $P(C) p^2 = p^2$ \\
+\noindent Donc \quad $P(C) = 1$
+
+\vspace{0.3cm}
+
+\noindent \fbox{Donc $C$ est quasi certain.}

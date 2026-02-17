@@ -1,0 +1,48 @@
+\subsection{Soit $A \in M_n(\mathbb{R})$ nilpotente telle que $A^T A = AA^T$. Montrer que $A = O_n$.}
+
+\color{black}
+\vspace{0.5cm}
+
+Posons $B = AA^T$
+
+\vspace{0.3cm}
+
+$B$ est symétrique réelle donc diagonalisable.
+\[ \exists P \in GL_n(\mathbb{R}), \quad P^{-1} B P = \begin{pmatrix} \lambda_1 & & \\ & \ddots & \\ & & \lambda_n \end{pmatrix} \]
+
+\vspace{0.3cm}
+
+$A$ nilpotente $\Rightarrow \exists q \in \mathbb{N}, \enspace A^q = 0$
+
+\vspace{0.3cm}
+
+$\Rightarrow B^q = (AA^T)^q = A^q (A^T)^q = 0 \quad$ car $A$ et $A^T$ commutent.
+
+\vspace{0.3cm}
+
+$\Rightarrow B$ nilpotente.
+
+\vspace{0.3cm}
+
+Donc $Sp(B) = \{0\}$ car $X^q$ poly annulateur.
+
+\vspace{0.3cm}
+
+Donc $B$ semblable à 0. \\
+$B = 0$
+
+\vspace{0.3cm}
+
+$\forall X \in \mathbb{R}^n, \quad X^T A^T A X = X^T 0 X = 0$
+
+\vspace{0.3cm}
+
+$(AX)^T AX = \|AX\|^2 \Rightarrow AX = 0$
+
+\vspace{0.3cm}
+
+$\Rightarrow A = 0$
+
+\vspace{0.5cm}
+
+Donc \fbox{$A = O_n$}

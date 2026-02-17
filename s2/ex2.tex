@@ -1,0 +1,51 @@
+\subsection{Démonstration de la règle de d'Alembert ($l < 1$)}
+
+\color{black}
+\vspace{0.3cm}
+
+\noindent Soit $(u_n)$ une suite strictement positive.
+\[ \lim_{n \to +\infty} \frac{u_{n+1}}{u_n} = l < 1 \]
+
+\noindent \textbf{Montrons que $\sum u_n$ converge.}
+
+\vspace{0.3cm}
+\noindent Soit $\alpha \in ]l, 1[$. Posons $\varepsilon = \alpha - l > 0$.
+\[ \exists n_0 \in \mathbb{N}, \forall n \ge n_0, \quad l - \varepsilon \le \frac{u_{n+1}}{u_n} \le l + \varepsilon = \alpha \]
+
+\noindent Or $u_n > 0$. Donc $\forall n \ge n_0, \quad u_{n+1} \le \alpha u_n$.
+
+\vspace{0.3cm}
+\noindent On cherche à montrer par récurrence simple que $\mathcal{P}(n) : "u_n \le \alpha^{n-n_0} u_{n_0}"$.
+
+\begin{itemize}
+    \item \textbf{Initialisation à $n_0$ :}
+    \[ u_{n_0} \le \alpha^{n_0 - n_0} u_{n_0} = 1 \times u_{n_0} \quad \text{(Vrai)} \]
+
+    \item \textbf{Hérédité :}
+    Soit $n \ge n_0$. Supposons $\mathcal{P}(n)$.
+    \noindent On sait que $u_{n+1} \le \alpha u_n$.
+    \noindent D'après l'hypothèse de récurrence :
+    \[ u_{n+1} \le \alpha u_n \le \alpha (\alpha^{n-n_0} u_{n_0}) \]
+    \[ u_{n+1} \le \alpha^{n+1-n_0} u_{n_0} \]
+    \noindent Donc $\mathcal{P}(n+1)$ est vérifiée.
+\end{itemize}
+
+\noindent Donc $\forall n \ge n_0, \quad u_n \le \alpha^{n-n_0} u_{n_0}$.
+
+\vspace{0.3cm}
+
+\noindent On a donc $\forall n \ge n_0, \quad 0 \le u_n \le \alpha^n (\alpha^{-n_0} u_{n_0})$.
+\[ \text{Donc } \quad u_n = O(\alpha^n) \]
+
+\noindent Or $\sum \alpha^n$ converge (série géométrique car $|\alpha| < 1$, ici $0 < \alpha < 1$).
+
+\vspace{0.2cm}
+\noindent D'après le théorème de comparaison des séries à termes positifs :
+
+
+\noindent \fbox{
+    \begin{minipage}{\textwidth}
+        \centering
+        $\sum u_n$ converge.
+    \end{minipage}
+}

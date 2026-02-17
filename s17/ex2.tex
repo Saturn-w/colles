@@ -1,0 +1,40 @@
+\subsection{$\forall f \in SO(E), \exists ! \theta \in ]-\pi, \pi] \text{ tq } \forall B \text{ bond de } E, mat_B(f) = R_\theta$}
+
+\color{black}
+\vspace{0.5cm}
+
+$(E, (\cdot | \cdot))$ espace euclidien \\
+$f \in SO(E)$
+
+\vspace{0.3cm}
+
+Posons $B_0$ bond de $E, \quad A = mat_{B_0}(f)$ \\
+Alors $A \in SO(2)$ car matrice représentative dans une bond de $f \in SO(E)$ \\
+Donc $\exists \theta \in \mathbb{R}, \quad A = R_\theta = \begin{pmatrix} \cos \theta & -\sin \theta \\ \sin \theta & \cos \theta \end{pmatrix}$
+
+\vspace{0.8cm}
+
+\subsubsection{Montrons que $\theta$ ne dépend pas de la base choisie}
+
+Soit $B'$ une autre bond de $E$ \\
+$A' = mat_{B'}(f)$
+
+\vspace{0.3cm}
+
+D'après les formules de changements de base \\
+Avec $P = P_{B_0 \to B'}$ \\
+$A' = P^{-1} A P$
+
+\vspace{0.3cm}
+
+$P$ est une matrice de passage d'une bond à l'autre. Donc $P \in SO(2)$ \\
+Donc $\exists \alpha \in \mathbb{R}$, tq $P = R_\alpha$ \\
+$P^{-1} = P^T = (R_\alpha)^T = R_{-\alpha}$
+
+\vspace{0.3cm}
+
+Donc $A' = R_{-\alpha} R_\theta R_\alpha = R_{\theta + \alpha - \alpha} = R_\theta$
+
+\vspace{0.8cm}
+
+Donc \fbox{$\exists ! \theta \in ]-\pi, \pi] \text{ tq } \forall B \text{ bond de } E, mat_B(f) = \begin{pmatrix} \cos \theta & -\sin \theta \\ \sin \theta & \cos \theta \end{pmatrix}$}

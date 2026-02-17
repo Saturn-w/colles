@@ -1,0 +1,51 @@
+\subsection{Démonstration de la Stabilité  de la loi de Poisson \\ 
+Soient $X_1 \sim \mathcal{P}(\lambda_1)$ et $X_2 \sim \mathcal{P}(\lambda_2)$ deux variables aléatoires indépendantes. \\ 
+Montrer que $X_1 + X_2 \sim \mathcal{P}(\lambda_1 + \lambda_2)$.}
+
+\color{black}
+\vspace{0.5cm}
+
+\noindent $X_1 \hookrightarrow \mathcal{P}(\lambda_1) \quad X_2 \hookrightarrow \mathcal{P}(\lambda_2) \quad X_1 \perp X_2$
+
+\vspace{0.3cm}
+
+\noindent $(X_1 + X_2)(\Omega) = \mathbb{N}$
+
+\vspace{0.3cm}
+
+\noindent Soit $n \in \mathbb{N}$, \\
+\noindent $P(X_1 + X_2 = n) = \sum_{k=0}^{+\infty} P(X_1=k, X_1 + X_2 = n) \quad \begin{matrix} \text{car } (X_1=k)_{k \in \mathbb{N}} \text{ SCE} \\ \text{formule P. totales} \end{matrix}$
+
+\vspace{0.3cm}
+
+\noindent \phantom{$P(X_1 + X_2 = n)$} $= \sum_{k=0}^{+\infty} P(X_1=k) P(X_2=n-k) \quad \text{car } X_1 \perp X_2$
+
+\vspace{0.3cm}
+
+\noindent \phantom{$P(X_1 + X_2 = n) = \sum_{k=0}^{+\infty} P(X_1=k)$} $\underbrace{P(X_2=n-k)}_{=0 \text{ si } n-k < 0 \text{ i.e. } n < k}$
+
+\vspace{0.3cm}
+
+\noindent Donc \\
+\noindent \phantom{$P(X_1 + X_2 = n)$} $= \sum_{k=0}^{n} P(X_1=k) P(X_2=n-k)$
+
+\vspace{0.3cm}
+
+\noindent \phantom{$P(X_1 + X_2 = n)$} $= \sum_{k=0}^{n} \frac{\lambda_1^k}{k!} e^{-\lambda_1} \times \frac{\lambda_2^{n-k}}{(n-k)!} e^{-\lambda_2} \times \frac{n!}{n!}$
+
+\vspace{0.3cm}
+
+\noindent \phantom{$P(X_1 + X_2 = n)$} $= \frac{1}{n!} e^{-(\lambda_1+\lambda_2)} \sum_{k=0}^{n} \binom{n}{k} \lambda_1^k \lambda_2^{n-k}$
+
+\vspace{0.3cm}
+
+\noindent \phantom{$P(X_1 + X_2 = n)$} $= \frac{1}{n!} e^{-(\lambda_1+\lambda_2)} (\lambda_1 + \lambda_2)^n$
+
+\vspace{0.8cm}
+
+\noindent On reconnaît la loi de Poisson \\
+\noindent $P(X=n) = \frac{(\lambda_1 + \lambda_2)^n}{n!} e^{-(\lambda_1 + \lambda_2)}$
+
+\vspace{0.5cm}
+
+\noindent \fbox{$X_1 + X_2 \hookrightarrow \mathcal{P}(\lambda_1 + \lambda_2)$}

@@ -1,0 +1,90 @@
+\subsection{Soit $x > 0$ et soit $X$ la variable aléatoire discrète à valeurs dans $\mathbb{N}$ dont la loi de probabilité est : $\forall n \in \mathbb{N}, P(X=n) = \frac{x^{2n}}{\text{ch}(x)(2n)!}$}
+
+\subsubsection{Vérifier que cette définition est cohérente et calculer la fonction génératrice $G_X$ (on distinguera les valeurs positives et négatives).}
+
+
+\[
+P(X=n) = \frac{x^{2n}}{\text{ch}(x)(2n)!}
+\]
+
+$X(\Omega) = \mathbb{N}$
+
+On a bien $\forall n \in \mathbb{N}, \quad P(X=n) \geqslant 0$
+
+\[
+\sum_{n=0}^{+\infty} P(X=n) = \sum_{n=0}^{+\infty} \frac{x^{2n}}{\text{ch}(x)(2n)!} = \frac{1}{\text{ch}(x)} \text{ch}(x) = 1
+\]
+
+Donc c'est bien une loi de probabilité.
+
+\underline{Si $t \geqslant 0$}
+
+\begin{align*}
+    G_X(t) &= \sum_{n=0}^{+\infty} P(X=n)t^n = \sum_{n=0}^{+\infty} \frac{x^{2n}}{\text{ch}(x)(2n)!} t^n \\
+    &= \sum_{n=0}^{+\infty} \frac{(x\sqrt{t})^{2n}}{(2n)!} \frac{1}{\text{ch}(x)}
+\end{align*}
+
+\[
+\boxed{G_X(t) = \frac{\text{ch}(x\sqrt{t})}{\text{ch}(x)}}
+\]
+
+\underline{Si $t \leqslant 0$}
+
+Alors $t = -|t|$
+
+\[
+\sum_{n=0}^{+\infty} \frac{x^{2n} t^n}{(2n)!} = \sum_{n=0}^{+\infty} \frac{(-1)^n (x\sqrt{|t|})^{2n}}{(2n)!}
+\]
+
+On reconnaît \quad $\cos(u) = \sum_{n=0}^{+\infty} \frac{(-1)^n u^{2n}}{(2n)!}$
+
+Donc \quad \boxed{G_X(t) = \frac{\cos(x\sqrt{|t|})}{\text{ch}(x)}}
+
+
+\subsubsection{En déduire E(X) et V (X)}
+
+\subsection*{b) \underline{E(X)?}}
+
+$R = +\infty$. Donc $G_X \in \mathcal{C}^\infty(\mathbb{R})$
+
+Donc $G_X$ est dérivable en 1.
+Donc $E(X)$ existe et $E(X) = G'_X(1)$
+
+$\forall t > 0, \quad G_X(t) = \frac{\text{ch}(x\sqrt{t})}{\text{ch}(x)}$
+
+Donc \quad $G'_X(t) = \frac{x}{2\sqrt{t}} \frac{\text{sh}(x\sqrt{t})}{\text{ch}(x)}$
+
+Donc \quad $E(X) = \frac{x}{2} \frac{\text{sh}(x)}{\text{ch}(x)}$
+
+\vspace{0.5cm}
+
+\underline{V(X)?}
+
+$G_X$ est 2 fois dérivable en 1 et par dérivation terme à terme d'une série entière.
+
+$\forall t > 0, \quad G''_X(t) = \sum_{n=2}^{+\infty} P(X=n) n(n-1) t^{n-2}$
+
+En particulier en $t=1$
+\[
+G''_X(1) = \sum_{n=2}^{+\infty} P(X=n) n(n-1)
+\]
+
+D'après la formule de transfert on a $X(X-1)$ d'espérance finie
+et $E(X^2 - X) = G''_X(1)$
+
+$X^2 = (X^2 - X) + X$ est d'espérance finie. Donc admet une variance.
+
+\begin{align*}
+    V(X) &= E(X^2) - E(X)^2 \\
+    &= E(X^2 - X) + E(X) - E(X)^2
+\end{align*}
+
+$\forall t > 0 \quad G''_X(t) = \frac{-x}{4t^{3/2}} \frac{\text{sh}(x\sqrt{t})}{\text{ch}(x)}$
+
+\[
+G''_X(1) = \frac{-x}{4} \frac{\text{sh}(x)}{\text{ch}(x)}
+\]
+
+\[
+V(X) = \frac{-x}{4} \frac{\text{sh}(x)}{\text{ch}(x)} + \frac{x^2}{4} + \frac{x \text{sh}(x)}{2\text{ch}(x)} - \frac{x^2 \text{sh}^2(x)}{4\text{ch}^2(x)}
+\]

@@ -1,0 +1,174 @@
+\documentclass[a4paper,11pt,titlepage]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath, amssymb, stmaryrd}
+\usepackage{xcolor}
+\usepackage[margin=2.5cm]{geometry}
+\usepackage{fancybox}
+\usepackage{hyperref} % Pour rendre la table des matières cliquable
+\usepackage{needspace}
+
+\usepackage{tocloft}
+\setlength{\cftbeforesecskip}{0.9cm} % Ajuste la valeur (ex: 1em, 15pt, etc.)
+
+\setlength{\cftbeforesubsecskip}{0.05cm}
+
+\usepackage[nobottomtitles*]{titlesec} % On ajoute l'option à l'import
+\renewcommand{\bottomtitlespace}{2cm}
+
+% Définition des couleurs
+\definecolor{questionblue}{RGB}{0, 0, 205}
+
+%cache les rectangles rouge sde sliens
+\hypersetup{hidelinks}
+
+% Sécurité : Définit l'espace nécessaire AVANT chaque titre
+\newcommand{\sectionbreak}{\needspace{6\baselineskip}}
+\newcommand{\subsectionbreak}{\needspace{10\baselineskip}}
+\newcommand{\subsubsectionbreak}{\needspace{5\baselineskip}}
+
+
+% Configuration des titres pour correspondre à ton style (1.1 en Bleu)
+% Sections (Semaines)
+\titleformat{\section}
+  {\normalfont\Large\bfseries\color{black}}{\thesection}{1em}{}
+  % Subsections (Exercices) 
+\titleformat{\subsection}
+  {\normalfont\large\bfseries\color{questionblue}}{\thesubsection}{1em}{}
+% Subsubsections (Questions) 
+\renewcommand{\thesubsubsection}{\alph{subsubsection})}
+\titleformat{\subsubsection}
+  {\normalfont\large\bfseries\color{questionblue}}{\thesubsubsection}{0.5em}{}
+
+
+%\pretocmd{\section}{\addtocontents{toc}{\protect\filbreak}}{}{}
+
+
+\begin{document}
+
+% Page de titre et Table des matières
+\title{Programmes de colles\\
+\large PSI}
+\date{}
+\maketitle
+\newpage
+\tableofcontents
+\newpage
+
+% Début du Chapitre
+\section{Semaine 1 - Algèbre linéaire - première partie}
+
+% Importation des exercices (suppose qu'ils sont dans un dossier "s1")
+% Les fichiers s1exX.tex ne doivent contenir QUE le corps du texte (pas de \begin{document})
+
+\input{s1/ex1}
+\include{s1/ex2}
+\include{s1/ex3}
+\include{s1/ex4}
+\include{s1/ex5}
+\include{s1/ex6}
+\include{s1/ex7}
+\include{s1/ex8}
+\include{s1/ex9}
+
+\section{Semaine 2 - Suites et séries numériques}
+\input{s2/ex1}
+\input{s2/ex2}
+\include{s2/ex3}
+\include{s2/ex4}
+\include{s2/ex5}
+\include{s2/ex6}
+\include{s2/ex7}
+
+
+\addtocontents{toc}{\protect\newpage}
+
+\section{Semaine 3 - Algèbre linéaire - Seconde partie}
+\input{s3/ex1}
+\include{s3/ex2}
+\include{s3/ex3}
+\include{s3/ex4}
+
+\section{Semaine 4 - Algèbre linéaire - Seconde partie}
+
+\input{s4/ex1}
+\input{s4/ex2}
+\include{s4/ex3}
+\include{s4/ex4}
+\include{s4/ex5}
+
+\section{Semaine 5 - Fonctions vectorielles}
+\input{s5/ex1}
+
+
+\clearpage
+\section{Semaine 12 - Séries entières}
+\input{s12/ex1}
+\include{s12/ex2}
+\include{s12/ex3}
+\include{s12/ex4}
+\include{s12/ex5}
+\include{s12/ex6}
+\include{s12/ex7}
+
+
+\clearpage
+\section{Semaine 13 - Espaces probabilisés}
+\input{s13/ex1}
+\include{s13/ex2}
+\include{s13/ex3}
+\include{s13/ex4}
+\include{s13/ex5}
+
+\clearpage
+\section{Semaine 14 - Variables aléatoires discrètes}
+\input{s14/ex1}
+\include{s14/ex2}
+\include{s14/ex3}
+\include{s14/ex4}
+\include{s14/ex5}
+
+\section{Semaine 15 -  Variables aléatoires discrètes}
+\input{s15/ex1}
+\include{s15/ex2}
+\include{s15/ex3}
+\include{s15/ex4}
+\include{s15/ex5}
+\include{s15/ex6}
+
+
+\section{Semaine 16 - Espaces préhilbertiens - euclidiens}
+\input{s16/ex1}
+\include{s16/ex2}
+\include{s16/ex3}
+\include{s16/ex4}
+\include{s16/ex5}
+\include{s16/ex6}
+
+\section{Semaine 17 - Espaces préhilbertiens - euclidiens}
+\input{s17/ex1}
+\include{s17/ex2}
+\include{s17/ex3}
+\include{s17/ex4}
+\include{s17/ex5}
+\include{s17/ex6}
+
+\section{Semaine 18 - Intégration sur un intervalle quelconque}
+\input{s18/ex1}
+\include{s18/ex2}
+\include{s18/ex3}
+\include{s18/ex4}
+\include{s18/ex5}
+\include{s18/ex6}
+
+\section{Semaine 19 - Équations Différentielles}
+\input{s19/ex1}
+\include{s19/ex2}
+\include{s19/ex3}
+\include{s19/ex4}
+\include{s19/ex5}
+\include{s19/ex6}
+
+
+
+\end{document}

@@ -1,0 +1,88 @@
+\subsection{Donner les éléments géométriques de la transformation de $\mathbb{R}^3$ dans la matrice dans la base canonique est : \\ $A = \frac{1}{3}\begin{pmatrix} 1 & 2 & -2 \\ 2 & 1 & 2 \\ -2 & 2 & 1 \end{pmatrix}$ ou $C = \begin{pmatrix} 0 & 1 & 0 \\ -1 & 0 & 0 \\ 0 & 0 & 1 \end{pmatrix}$}
+
+\color{black}
+\vspace{0.5cm}
+
+\subsubsection{Cas de la matrice $A$}
+
+\vspace{0.3cm}
+
+En posant $(C_1, C_2, C_3)$ ses colonnes :
+
+\vspace{0.3cm}
+
+$\|C_1\|^2 = \frac{1}{3^2}(9) = 1$ \quad ; \quad $\|C_2\|^2 = \frac{1}{3^2}(4+4+1) = 1$
+
+\vspace{0.3cm}
+
+$(C_1 | C_2) = \frac{1}{9}(2+2-4) = 0$
+
+\vspace{0.3cm}
+
+$(C_1 \wedge C_2) = \frac{1}{9} \begin{pmatrix} 1 \\ 2 \\ -2 \end{pmatrix} \wedge \begin{pmatrix} 2 \\ 1 \\ 2 \end{pmatrix} = \frac{1}{9} \begin{pmatrix} 6 \\ -6 \\ -3 \end{pmatrix} = \frac{1}{3} \begin{pmatrix} 2 \\ -2 \\ -1 \end{pmatrix}$
+
+\vspace{0.3cm}
+
+Donc $(C_1, C_2, C_3)$ BON de $\mathbb{R}^3$. \\
+Donc $f \in \mathcal{O}(E)$.
+
+\vspace{0.3cm}
+
+Or $A$ est symétrique. \\
+Donc $f$ est une symétrie orthogonale.
+
+\vspace{0.3cm}
+
+$\begin{cases} A^T A = I_3 \\ A^T = A \end{cases} \implies \begin{cases} A^2 = I_3 \\ A \in \mathcal{O}(3) \end{cases} \implies \begin{cases} f \text{ sym} \\ f \text{ isom} \end{cases}$
+
+\vspace{0.3cm}
+
+$AX = X \iff (A-I)X = 0$ \\
+$\iff \begin{pmatrix} -2 & 2 & -2 \\ 2 & -2 & 2 \\ -2 & 2 & -2 \end{pmatrix} \begin{pmatrix} x \\ y \\ z \end{pmatrix} = \begin{pmatrix} 0 \\ 0 \\ 0 \end{pmatrix}$
+
+\vspace{0.5cm}
+
+Donc \fbox{$f$ est la réflexion par rapport à $P = a^\perp$ avec $a = (1, -1, 1)$}
+
+\vspace{0.8cm}
+
+\subsubsection{Cas de la matrice $C$}
+
+\vspace{0.3cm}
+
+Posons $C_1, C_2, C_3$ les vecteurs colonnes de $C$. \\
+$\|C_1\| = \|C_2\| = 1$ \\
+$(C_1 | C_2) = 0$
+
+\vspace{0.3cm}
+
+$C_1 \wedge C_2 = \begin{pmatrix} 0 \\ -1 \\ 0 \end{pmatrix} \wedge \begin{pmatrix} 1 \\ 0 \\ 0 \end{pmatrix} = \begin{pmatrix} 0 \\ 0 \\ 1 \end{pmatrix} = C_3$
+
+\vspace{0.3cm}
+
+Donc $f \in \mathcal{SO}(\mathbb{R}^3)$. $f$ est une rotation.
+
+\vspace{0.3cm}
+
+\textbf{Axe :} on cherche $E_1(f)$. \\
+Or $f(e_3) = e_3$ donc $e_3 \in E_1(f)$. Or $\dim(E_1(f)) = 1$. \\
+Donc $E_1(f) = \mathbb{R} e_3$. On oriente l'axe par $e_3$.
+
+\vspace{0.3cm}
+
+\textbf{Angle :} $\text{Tr}(f) = 1 + 2 \cos \theta = 1$ \\
+$\cos \theta = 0 \iff \theta \equiv \pm \pi/2 \pmod{2\pi}$
+
+\vspace{0.3cm}
+
+$e_1 \notin \text{Vect}(e_3)$ \\
+$\text{sg} \sin \theta = \text{sg} (\text{det}(e_3, e_1, f(e_1)))$ \\
+$= \text{sg} \begin{vmatrix} 0 & 1 & 0 \\ 0 & 0 & -1 \\ 1 & 0 & 0 \end{vmatrix} = -1$
+
+\vspace{0.3cm}
+
+Donc $\theta \equiv -\pi/2 \pmod{2\pi}$.
+
+\vspace{0.5cm}
+
+Donc \fbox{$f = \text{rot}_{e_3, -\pi/2}$}

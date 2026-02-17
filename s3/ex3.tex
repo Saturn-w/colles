@@ -1,0 +1,68 @@
+\subsection{ Soit $f$ un endomorphisme de $E$. Montrer que \\
+\null\hfill $\ker(f^3-f) = \ker f \oplus \ker(f-\text{id}) \oplus \ker(f+\text{id})$ \hfill\null}
+
+\color{black}
+\vspace{0.5cm}
+
+\noindent $\subset $ $f^3 - f = f(f^2 - \text{id}) = f(f-\text{id}) \circ (f+\text{id})$
+
+\vspace{0.5cm}
+
+ Donc $\ker(f+\text{id}) \subset \ker(f^3-f)$
+
+\vspace{0.2cm}
+ $\ker(f-\text{id}) \subset \ker(f^3-f)$
+
+\vspace{0.2cm}
+ $\ker f \subset \ker(f^3-f)$
+
+\vspace{0.3cm}
+
+ $\ker f + \ker(f+\text{id}) + \ker(f-\text{id}) \subset \ker(f^3-f)$
+
+\vspace{0.5cm}
+
+\noindent $\supset$ Montrons que $\ker(f^3-f) \subset \ker f \oplus \ker(f-\text{id}) \oplus \ker(f+\text{id})$
+
+\noindent Montrons $\exists! (x_0, x_1, x_{-1}) \in \dots$
+
+\vspace{0.5cm}
+
+\noindent \underline{Analyse} :
+
+ Soit $x \in \ker(f^3-f)$
+ 
+ Soit $x_0, x_1, x_{-1} \in \ker f \times \ker(f-\text{id}) \times \ker(f+\text{id})$
+ tel que $x = x_0 + x_1 + x_{-1}$
+
+\vspace{0.5cm}
+
+ $\begin{cases} f(x) = f(x_0) + f(x_1) + f(x_{-1}) = 0 + x_1 - x_{-1} \\ f^2(x) = x_1 + x_{-1} \end{cases}$
+
+\vspace{0.3cm}
+
+ Donc \quad $x_1 = \frac{f(x) + f^2(x)}{2}$ \quad $x_{-1} = \frac{f^2(x) - f(x)}{2} \quad x_0 = x - f^2(x)$
+
+\vspace{0.5cm}
+
+ Par analyse on a unicité de la décomposition.
+
+\vspace{0.3cm}
+
+\noindent \underline{Synthèse} :
+
+ $x_0 + x_1 + x_{-1} = x - f^2(x) + \frac{f(x)+f^2(x)}{2} + \frac{f^2(x)-f(x)}{2} = x$
+
+\vspace{0.5cm}
+
+ $f(x_0) = f(x) - f^3(x) = 0 \quad$ car $x \in \ker(f^3-f)$
+ \vspace{0.2cm}
+
+ $f(x_1) = \frac{1}{2}(f^2(x)+f^3(x)) = \frac{1}{2}(f(x)+f^2(x)) = x_1 \quad$ (donc $x_1 \in \ker(f-\text{id})$)
+  \vspace{0.2cm}
+
+ $f(x_{-1}) = \frac{1}{2}(f^3(x)-f^2(x)) = \frac{1}{2}(f^2(x)-f(x)) = -x_{-1}$
+
+\vspace{0.5cm}
+
+\noindent Donc \quad \fbox{$\ker(f^3-f) = \ker f \oplus \ker(f-\text{id}) \oplus \ker(f+\text{id})$}

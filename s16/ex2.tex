@@ -1,0 +1,59 @@
+\subsection{Soit $p$ projecteur. \\  $p$ projecteur orthogonal $\iff \forall x \in E, \|p(x)\| \leq \|x\|$}
+\color{black}
+\vspace{0.5cm}
+
+ $(\Leftarrow)$
+\color{black}
+\vspace{0.5cm}
+
+Montrons que $\text{Im}(p)$ et $\ker(p)$ orthogonaux.
+
+\vspace{0.3cm}
+Soit $x \in \ker(p)$, $y \in \text{Im}(p)$
+\vspace{0.3cm}
+$\forall \lambda \in \mathbb{R}, \|p(x+\lambda y)\|^2 \leq \|x+\lambda y\|^2$
+
+\vspace{0.3cm}
+Donc $\|\lambda p(y)\|^2 \leq \|x + \lambda y\|^2$ \\
+(avec $p(y)=y$)
+
+\vspace{0.3cm}
+Donc $\lambda^2 \|y\|^2 \leq \|x\|^2 + \lambda^2 \|y\|^2 + 2\lambda (x|y)$
+
+\vspace{0.3cm}
+Donc $\forall \lambda \in \mathbb{R}, \quad 0 \leq \|x\|^2 + 2\lambda (x|y)$
+
+\vspace{0.3cm}
+Si $(x|y)$ non nul, alors $\|x\|^2 + 2\lambda (x|y)$ change de signe \\
+(Polynôme de degré 1) \\
+Impossible
+
+\vspace{0.3cm}
+Donc $(x|y) = 0$
+
+\vspace{0.3cm}
+\fbox{Donc $\ker(p)$ et $\text{Im } p$ sont orthogonaux}
+
+$(\Rightarrow)$
+\color{black}
+\vspace{0.5cm}
+
+$p$ est un projecteur orthogonal \\
+$p$ projection sur $\text{Im}(p)$ parallèlement à $\ker(p)=(\text{Im } p)^\perp$ \\
+Donc $\ker(p)$ est orthogonal à $\text{Im } p$
+
+\vspace{0.3cm}
+Soit $x \in E$, $\exists ! (x_I, x_{I^\perp}) \in \text{Im}(p) \times \text{Im}(p)^\perp$ tel que $x = x_I + x_{I^\perp}$
+
+\vspace{0.3cm}
+$p(x) = x_I \quad \text{Donc } \|p(x)\|^2 = \|x_I\|^2$
+
+\vspace{0.3cm}
+D'après le théorème de pythagore \\
+$\|x\|^2 = \|x_I\|^2 + \|x_{I^\perp}\|^2$
+
+\vspace{0.3cm}
+Donc $\|p(x)\|^2 \leq \|x\|^2$
+
+\vspace{0.3cm}
+\fbox{Donc $\|p(x)\| \leq \|x\|$}

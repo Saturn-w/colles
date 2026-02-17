@@ -1,0 +1,32 @@
+\subsection{ Démonstration du théorème des Accroissements finis. \\
+$f$ continue sur  $[a, b]$,  dérivable sur $]a, b[$ \\
+Montrons que  $$\exists c \in ]a, b[, f(b) - f(a) = f'(c)(b-a)$$}
+
+\color{black}
+\vspace{0.5cm}
+
+\noindent Posons $\varphi : x \longmapsto f(x) - f(a) - k(x-a)$
+
+\vspace{0.2cm}
+\noindent On choisit $k$ tel que $\varphi(b) = 0$ :
+\noindent $\varphi(b) = 0 \implies f(b) - f(a) = k(b-a)$
+\[ \implies \quad k = \frac{f(b)-f(a)}{b-a} \]
+
+\vspace{0.5cm}
+
+\noindent Par hypothèse sur $f$, $\varphi$ est continue sur $[a, b]$, dérivable sur $]a, b[$
+
+\vspace{0.3cm}
+
+\noindent $\varphi(b) = 0$ et $\varphi(a) = 0$
+\noindent $\varphi(a) = \varphi(b)$ \quad D'après le théorème de Rolle
+\noindent $\exists c \in ]a, b[, \quad \varphi'(c) = 0$
+
+\vspace{0.5cm}
+
+\noindent Or $\forall x \in ]a, b[, \quad \varphi'(x) = f'(x) - k$
+\noindent Donc \quad $k = f'(c)$
+
+\vspace{0.5cm}
+
+\noindent Donc \quad \fbox{$\exists c \in ]a, b[, \quad f(b) - f(a) = f'(c)(b-a)$}

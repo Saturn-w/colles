@@ -1,0 +1,57 @@
+
+
+% Partie Question en bleu
+\noindent \color{questionblue}
+\subsection{ Soit $f$ nilpotent sur $E$, un espace vectoriel de dimension $n$. \\
+Montrer qu'il existe $p \le n$ tel que $f^p = 0$.}
+
+% Partie Réponse en noir
+\color{black}
+\vspace{0.3cm}
+\noindent Posons $A = \{ k \in \mathbb{N} \mid f^k = 0 \}$ et $p = \min(A)$.
+\begin{itemize}
+    \item On a $f^0 = \text{id}$, donc $p \neq 0$ (d'où $\boxed{p \ge 1}$).
+    \item $p-1 \notin A$ car $p = \min(A)$. Donc $f^{p-1} \neq 0$.
+\end{itemize}
+
+\vspace{0.3cm}
+
+\noindent \textbf{Montrons que $p \le n$.}
+
+Puisque $f^{p-1} \neq 0$, il existe $x \in E$ tel que $f^{p-1}(x) \neq 0$.
+
+\noindent \underline{Montrons que la famille $(x, f(x), \dots, f^{p-1}(x))$ est libre.}
+
+Soit $(\lambda_0, \dots, \lambda_{p-1}) \in \mathbb{K}^p$ tel que :
+\[ \sum_{k=0}^{p-1} \lambda_k f^k(x) = 0 \]
+
+\noindent Montrons que $\forall k \in \llbracket 0, p-1 \rrbracket, \lambda_k = 0$.
+\noindent Par l'absurde, supposons qu'ils ne sont pas tous nuls.
+Posons $k_0 = \min \{ k \in \llbracket 0, p-1 \rrbracket \mid \lambda_k \neq 0 \}$.
+
+\noindent On a donc l'équation $(1)$ :
+\[ \lambda_{k_0} f^{k_0}(x) + \dots + \lambda_{p-1} f^{p-1}(x) = 0 \quad (1) \]
+
+\noindent On applique l'endomorphisme $f^{p-k_0-1}$ à $(1)$ :
+\[ \lambda_{k_0} \underbrace{f^{p-1}(x)}_{\neq 0} + \underbrace{0 + \dots + 0}_{\text{car } f^j = 0 \text{ si } j \ge p} = 0 \]
+
+Or par construction, $\lambda_{k_0} \neq 0$ et $f^{p-1}(x) \neq 0$. Le produit devrait être non nul.
+\[ \rightarrow \textbf{Absurde.} \]
+
+\noindent Donc la famille est libre.
+
+\vspace{0.3cm}
+
+Or, le cardinal d'une famille libre est inférieur ou égal à la dimension de l'espace.
+\[ \text{card}(x, f(x), \dots, f^{p-1}(x)) \le \dim E \]
+Cette famille contient $p$ vecteurs (de l'indice $0$ à $p-1$).
+
+\vspace{0.3cm}
+
+\noindent \fbox{
+    \begin{minipage}{\textwidth}
+        \centering
+        Donc \quad $p \le n$.
+    \end{minipage}
+}
+

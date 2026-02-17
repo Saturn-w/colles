@@ -1,0 +1,38 @@
+\subsection{Démonstration de l'Inégalité de Markov }
+
+\color{black}
+\vspace{0.5cm}
+
+
+- $X$ v.a.d positive, d'espérance finie \\ 
+- Soit $a > 0$ \\ 
+Montrer que $P(X \ge a) \le \frac{E(X)}{a}$
+\vspace{0.3cm}
+
+\noindent $E(X) = \sum_{x \in X(\Omega)} x P(X=x) \quad (x P(X=x))_{x \in X(\Omega)} \text{ famille sommable}$
+
+\vspace{0.3cm}
+
+\noindent On peut sommer par paquets :
+\[ E(X) = \sum_{\substack{x \in X(\Omega) \\ x \ge a}} x P(X=x) + \sum_{\substack{x \in X(\Omega) \\ x < a}} x P(X=x) \]
+
+\vspace{0.3cm}
+
+\noindent $\bullet$ Or $X \ge 0$ donc $x \ge 0$, d'où $\sum_{\substack{x \in X(\Omega) \\ x < a}} x P(X=x) \ge 0$
+
+\vspace{0.3cm}
+
+\noindent $\bullet$ On a donc :
+\[ E(X) = \sum_{\substack{x \in X(\Omega) \\ x \ge a}} x P(X=x) + \sum_{\substack{x \in X(\Omega) \\ x < a}} x P(X=x)  \ge a \sum_{\substack{x \in X(\Omega) \\ x \ge a}} P(X=x) + 0 \]
+
+\vspace{0.3cm}
+
+\noindent Or $\sum_{\substack{x \in X(\Omega) \\ x \ge a}} P(X=x) = P(X \ge a)$
+
+\vspace{0.3cm}
+
+\noindent Donc $E(X) \ge a P(X \ge a) \quad$ car $a > 0$
+
+\vspace{0.5cm}
+
+\noindent Donc \quad \fbox{$P(X \ge a) \le \frac{E(X)}{a}$}

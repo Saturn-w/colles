@@ -1,0 +1,50 @@
+\subsection{Soit $A \in S_n(\mathbb{R})$. Montrer que $A \in S_n^+(\mathbb{R})$ si et seulement si \\ il existe $B \in \mathcal{M}_n(\mathbb{R})$ telle que $A = B^T B$.}
+
+\color{black}
+\vspace{0.5cm}
+
+\textbf{\large ($\Leftarrow$)} $\exists B \in \mathcal{M}_n(\mathbb{R})$ tq $A = B^T B$
+
+\vspace{0.3cm}
+
+$\bullet \ A^T = (B^T B)^T = B^T (B^T)^T = B^T B = A$ \quad Donc $A \in S_n(\mathbb{R})$
+
+\vspace{0.3cm}
+
+$\bullet \ $ Soit $X \in \mathbb{R}^n$
+\[ X^T A X = X^T B^T B X = (BX)^T BX = \|BX\|^2 \ge 0 \]
+
+\vspace{0.3cm}
+
+Donc $A \in S_n^+(\mathbb{R})$
+
+\vspace{0.8cm}
+
+\textbf{\large ($\Rightarrow$)} $A \in S_n^+(\mathbb{R})$
+
+\vspace{0.3cm}
+
+$A$ est symétrique réelle donc d'après le théorème spectral : \\
+$\exists P \in \mathcal{O}_n(\mathbb{R})$ tq $P^{-1} AP = D = \begin{pmatrix} \lambda_1 & & \\ & \ddots & \\ & & \lambda_n \end{pmatrix}$
+
+\vspace{0.3cm}
+
+Or $A \in S_n^+(\mathbb{R})$ Donc $\forall k \in \llbracket 1, n \rrbracket, \ \lambda_k \ge 0$
+
+\vspace{0.3cm}
+
+Posons $\Delta = \begin{pmatrix} \sqrt{\lambda_1} & & \\ & \ddots & \\ & & \sqrt{\lambda_n} \end{pmatrix} \quad$ d'où $D = \Delta^2$
+
+\vspace{0.3cm}
+
+$A = P \Delta^2 P^{-1} = P \Delta P^{-1} P \Delta P^{-1}$ \\
+\phantom{$A$} $= P \Delta P^T P \Delta P^T \quad$ car $P \in \mathcal{O}_n(\mathbb{R})$
+
+\vspace{0.3cm}
+
+Si on pose $B = P \Delta P^T$ \\
+Alors $B^T = B$ Donc $B$ est symétrique.
+
+\vspace{0.5cm}
+
+\fbox{$B^T B = A$}

@@ -1,0 +1,31 @@
+
+% Partie Titre / Question en bleu
+\noindent \color{questionblue}
+\subsection{ Soient $H_1$ et $H_2$ 2 hyperplans différents de $E$, espace de dim $n$. \\
+Montrer que $\dim(H_1 \cap H_2) = n-2$}
+
+% Partie Réponse en noir
+\color{black}
+\vspace{0.5cm}
+
+\noindent $H_1 \subset H_1 + H_2 \subset E \quad$ Donc $\dim(H_1+H_2) = n \text{ ou } n-1$
+
+\vspace{0.3cm}
+\noindent $\rightarrow$ Si $\dim(H_1+H_2) = n-1$ \\
+\hspace*{1cm} Alors $H_1 = H_1+H_2$ \\
+\hspace*{1cm} De même $H_2 = H_1+H_2$
+
+\noindent \hspace*{1cm} Donc $H_1 = H_2$ \quad \textbf{\underline{Absurde}}
+
+\vspace{0.3cm}
+\noindent $\rightarrow$ Donc $\dim(H_1+H_2) = n$
+
+\vspace{0.3cm}
+\noindent D'après la relation de Grassmann :
+\[ \dim(H_1+H_2) = \dim(H_1) + \dim(H_2) - \dim(H_1 \cap H_2) \]
+\[ n = (n-1) + (n-1) - \dim(H_1 \cap H_2) \]
+
+\vspace{0.5cm}
+
+\noindent Donc \quad \fbox{$\dim(H_1 \cap H_2) = n-2$}
+

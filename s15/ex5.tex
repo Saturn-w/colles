@@ -1,0 +1,79 @@
+\subsection{Une urne contient des boules blanches et des boules noires. 
+\\ La proportion de boules blanches est $p \in ]0, 1[$.
+\\On effectue $n$ tirages avec remise d'une boule. Soit $X_n$ la var égale au nombre de boules blanches tirées.
+\\Comment doit-on choisir $n$ pour affirmer avec un risque d'erreur $\le 5\%$ que $\frac{X_n}{n}$ est une valeur approchée de $p$ à $10^{-2}$ près ?}
+
+
+
+
+
+\[
+\text{On a} \quad U \left| \begin{array}{l} B \\ N \end{array} \right. \quad P(B) = p
+\]
+
+\vspace{0.5cm}
+
+On effectue $n$ tirages avec remis. \\
+$p$ est la probabilité d'avoir une boule blanche. \\
+$X_n$ est le nombre de boules blanches tirées.
+
+\[
+\text{Donc} \quad X_n \hookrightarrow \mathcal{B}(n, p)
+\]
+
+\vspace{0.5cm}
+
+On cherche $n$ tel que :
+\[
+P\left( \left| \frac{X_n}{n} - p \right| < 10^{-2} \right) \geqslant 0,95
+\]
+
+\begin{align*}
+    \text{On pose } \quad A &= \left( \left| \frac{X_n}{n} - p \right| < 10^{-2} \right) \\
+    \overline{A} &= \left( \left| \frac{X_n}{n} - p \right| \geqslant 10^{-2} \right)
+\end{align*}
+
+\vspace{0.1cm}
+
+Posons $Z = \frac{X_n}{n}$. De plus par linéarité :
+\[
+\begin{cases}
+    E(Z) = E(X_n) \times \frac{1}{n} \\[10pt]
+    V(Z) = V(X_n) \times \frac{1}{n^2}
+\end{cases}
+\]
+
+Or $X_n \hookrightarrow \mathcal{B}(n, p)$. Donc :
+\[
+\begin{cases}
+    E(Z) = p \\[10pt]
+    V(Z) = \frac{pq}{n}
+\end{cases}
+\]
+
+\vspace{0.1cm}
+
+D'après l'inégalité de Bienaymé-Tchebychev :
+\[
+P\left(|Z - E(Z)| \geqslant 10^{-2} \right) \leqslant \frac{V(Z)}{(10^{-2})^2} = \frac{1}{10^{-4}} \frac{pq}{n}
+\]
+
+\vspace{0.2cm}
+
+On souhaite $P(A) \geqslant 0,95 \implies P(\overline{A}) \leqslant 0,05$.
+
+Donc il suffit de prendre $n$ tel que :
+\[
+\frac{pq}{n 10^{-4}} \leqslant 0,05
+\]
+
+Donc tel que :
+\[
+\frac{pq 10^4}{5 \times 10^{-2}} = pq 10^6 \leqslant n
+\]
+
+\vspace{0.3cm}
+
+\[
+\text{Donc } \quad n \geqslant \lfloor pq 10^6 \rfloor + 1
+\]

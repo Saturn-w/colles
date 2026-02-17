@@ -1,0 +1,82 @@
+\subsection*{Soit $X$ une variable aléatoire vérifiant $X(\Omega) = \mathbb{N}^*$ et d'espérance finie.}
+
+\subsubsection{Montrer que $\frac{1}{X}$ est d'espérance finie.
+}
+
+
+$X(\Omega) = \mathbb{N}^*$ d'espérance finie. \\
+Donc \quad $X \geqslant 1$
+
+Donc \quad $0 \leqslant \frac{1}{X} \leqslant 1$
+
+Donc $\frac{1}{X}$ est borné. \\
+Donc $\frac{1}{X}$ est d'espérance finie.
+
+\subsubsection{On suppose que $X$ suit une loi géométrique de paramètre $p < 1$. \\
+Montrer que $\frac{1}{E(X)} \le E \left(\frac{1}{X}\right)$}
+
+
+
+$X \hookrightarrow \mathcal{G}(p)$
+
+D'après la formule de transfert :
+\begin{align*}
+    E\left(\frac{1}{X}\right) &= \sum_{n=1}^{+\infty} \frac{1}{n} P(X=n) \\
+    &= \sum_{n=1}^{+\infty} \frac{1}{n} p q^{n-1} \\
+    &= \frac{p}{q} \sum_{n=1}^{+\infty} \frac{q^n}{n}
+\end{align*}
+
+Or on sait que \quad $\forall x \in ]-1, 1[, \quad \sum_{n=1}^{+\infty} \frac{x^n}{n} = -\ln(1-x)$
+
+Donc \quad $E\left(\frac{1}{X}\right) = \frac{p}{q} (-\ln(1-q)) = \frac{-p \ln(p)}{q}$
+
+\vspace{0.5cm}
+
+De plus $E(X) = \frac{1}{p}$
+
+On a \quad $\frac{1}{E(X)} \leqslant E\left(\frac{1}{X}\right)$
+\begin{align*}
+    &\Rightarrow p \leqslant \frac{-p \ln(p)}{q} \\
+    &\Leftrightarrow q \leqslant -\ln(p) \\
+    &\Leftrightarrow \ln(p) \geqslant -q \\
+    &\Leftrightarrow \ln(1-q) \geqslant -q
+\end{align*}
+
+\vspace{0.5cm}
+
+On sait que \quad $\forall x > -1, \quad \ln(1+x) \leqslant x$ \\
+\phantom{On sait que} \quad $\forall x > 0, \quad \ln(x) \leqslant x-1$
+
+On a donc $\ln(1-q) \leqslant -q$
+
+Donc \quad $\frac{1}{E(X)} \leqslant E\left(\frac{1}{X}\right)$
+
+
+
+\subsubsection{Montrer cette inégalité dans le cas général.}
+
+
+
+On a vu que $\frac{1}{X}$ d'espérance finie.
+
+Posons \quad $Y = \sqrt{X}$ \quad et \quad $Z = \frac{1}{\sqrt{X}}$
+
+\[
+\begin{array}{l}
+    Y \in \mathcal{M}_2(\Omega) \\
+    Z \in \mathcal{M}_2(\Omega)
+\end{array}
+\]
+
+D'après l'Inégalité de Cauchy Schwarz :
+\[
+E(YZ)^2 \leqslant E(Y^2) E(Z^2)
+\]
+
+\[
+1 = E(1)^2 \leqslant E(X) E\left(\frac{1}{X}\right)
+\]
+
+\[
+\frac{1}{E(X)} \leqslant E\left(\frac{1}{X}\right)
+\]

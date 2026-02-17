@@ -1,0 +1,41 @@
+\subsection{Convergence de la suite $\left(\sum_{k=1}^n \frac{1}{k} - \ln(n)\right)_n$}
+
+\color{black}
+\vspace{0.3cm}
+
+\noindent Posons $\forall n \in \mathbb{N}^*, \quad u_n = \sum_{k=1}^n \frac{1}{k} - \ln(n)$
+
+\vspace{0.3cm}
+\noindent D'après le théorème des séries télescopiques :
+\[ (u_n) \text{ converge } \iff \sum (u_{n+1} - u_n) \text{ converge} \]
+
+\noindent Posons $\forall n \in \mathbb{N}^*, \quad a_n = u_{n+1} - u_n$.
+\[ a_n = \sum_{k=1}^{n+1} \frac{1}{k} - \sum_{k=1}^n \frac{1}{k} - \ln(n+1) + \ln(n) \]
+\[ a_n = \frac{1}{n+1} + \ln\left(\frac{n}{n+1}\right) = \frac{1}{n+1} - \ln\left(\frac{n+1}{n}\right) \]
+\[ a_n = \frac{1}{n\left(1+\frac{1}{n}\right)} - \ln\left(1+\frac{1}{n}\right) \]
+
+\noindent On effectue un développement limité à l'ordre 2 en $\frac{1}{n}$ (quand $n \to +\infty$) :
+\[ a_n = \frac{1}{n}\left(1 - \frac{1}{n} + o\left(\frac{1}{n}\right)\right) - \left(\frac{1}{n} - \frac{1}{2n^2} + o\left(\frac{1}{n^2}\right)\right) \]
+\[ a_n = \frac{1}{n} - \frac{1}{n^2} - \frac{1}{n} + \frac{1}{2n^2} + o\left(\frac{1}{n^2}\right) \]
+\[ a_n = -\frac{1}{2n^2} + o\left(\frac{1}{n^2}\right) \]
+
+\noindent Donc $a_n \sim \frac{-1}{2n^2}$.
+\noindent On a $|a_n| \sim \frac{1}{2n^2}$.
+\noindent Or $\sum \frac{1}{n^2}$ converge (Série de Riemann avec $\alpha = 2 > 1$).
+
+\noindent Donc d'après le théorème de comparaison des séries à termes positifs (appliqué à la convergence absolue) :
+\[ \sum a_n \text{ converge absolument} \]
+\[ \text{Donc } \sum a_n \text{ converge} \]
+
+\vspace{0.3cm}
+\noindent \fbox{
+    \begin{minipage}{\textwidth}
+        \centering
+        Donc $(u_n)_n$ converge.
+    \end{minipage}
+}
+
+\vspace{0.5cm}
+\noindent \textbf{Remarque :} On note $\gamma = \lim_{n \to +\infty} \left(\sum_{k=1}^n \frac{1}{k} - \ln(n)\right)$.
+\noindent C'est la constante d'Euler.
+\noindent Telle que $H_n = \ln(n) + \gamma + o(1)$.

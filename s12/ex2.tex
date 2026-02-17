@@ -1,0 +1,31 @@
+\subsection{Démonstration que $x \mapsto e^x$ est développable en série entière}
+
+\color{black}
+\vspace{0.5cm}
+
+\noindent Posons $f : x \mapsto e^x$ , \quad $f \in \mathcal{C}^\infty(\mathbb{R})$ \\
+\noindent $\forall n \in \mathbb{N} \quad f^{(n)} : x \mapsto e^x$
+
+\vspace{0.3cm}
+
+\noindent Donc \quad $\frac{f^{(n)}(0)}{n!} = \frac{1}{n!}$ \\
+\noindent La série de Taylor est $\sum \frac{x^n}{n!}$
+
+\vspace{0.3cm}
+
+\noindent On pose $N \in \mathbb{N}^*$ \\
+\noindent Inégalité de Taylor-Lagrange sur $[0, x]$
+\[ \left| f(x) - \sum_{n=0}^N \frac{f^{(n)}(0)}{n!} x^n \right| \le \max_{[0,x]} |f^{(N+1)}| \times \frac{|x|^{N+1}}{(N+1)!} \]
+
+\vspace{0.3cm}
+
+\noindent Posons $M = \max |f^{(N+1)}| = \max(e^x, 1)$ \\
+\noindent On a \quad $\lim_{N \to +\infty} \frac{|x|^{N+1}}{(N+1)!} = 0$ \quad par CC
+
+\vspace{0.3cm}
+
+\noindent Donc \quad $\lim_{N \to +\infty} \left| e^x - \sum_{n=0}^N \frac{x^n}{n!} \right| = 0$
+
+\vspace{0.5cm}
+
+\noindent Donc \quad \fbox{$e^x = \sum_{n=0}^{+\infty} \frac{x^n}{n!} \quad \forall x \in \mathbb{R}$}

@@ -1,0 +1,60 @@
+\subsection{si $A \in O_n(\mathbb{R})$ }
+\subsubsection{Montrer que $\sum_{1 \le i,j \le n} |a_{i,j}| \le n\sqrt{n}$.}
+
+\color{black}
+\vspace{0.5cm}
+
+Posons $B = (b_{ij})$ avec $\forall i,j, \enspace b_{ij} = \begin{cases} 1 \text{ si } a_{ij} \ge 0 \\ -1 \text{ si } a_{ij} < 0 \end{cases}$
+
+\vspace{0.3cm}
+
+Alors $\forall i,j, \enspace b_{ij} a_{ij} = |a_{ij}|$
+
+\vspace{0.3cm}
+
+Donc $(A|B) = \sum_{i,j} |a_{ij}|$
+
+\vspace{0.3cm}
+
+D'après l'inégalité de Cauchy-Schwarz :
+\[ (A|B) \le \|A\| \cdot \|B\| \]
+
+\vspace{0.3cm}
+
+Or $\|A\| = \sqrt{\text{tr}(A^T A)} = \sqrt{\text{tr}(I_n)} = \sqrt{n} \quad$ car $A \in O(n)$
+
+\vspace{0.3cm}
+
+$\|B\| = \sqrt{\sum (b_{ij})^2} = \sqrt{n^2} = n$
+
+\vspace{0.5cm}
+
+Donc \fbox{$\sum |a_{ij}| \le n \sqrt{n}$}
+
+\subsubsection{Montrer que $\left| \sum_{1 \le i,j \le n} a_{i,j} \right| \le n$.}
+
+\color{black}
+\vspace{0.5cm}
+
+$X = \begin{pmatrix} 1 \\ \vdots \\ 1 \end{pmatrix} \in \mathbb{R}^n \quad AX = \begin{pmatrix} \sum_j a_{1j} \\ \vdots \\ \sum_j a_{nj} \end{pmatrix}$
+
+\vspace{0.3cm}
+
+Donc $(X|AX) = \sum_{1 \le i,j \le n} a_{ij}$
+
+\vspace{0.3cm}
+
+D'après l'inégalité de Cauchy-Schwarz :
+\[ \left| \sum a_{ij} \right| = |(X|AX)| \le \|X\| \cdot \|AX\| \]
+
+\vspace{0.3cm}
+
+Or $\|AX\| = \|X\|$ car $A \in O_n(\mathbb{R})$ conserve les normes
+
+\vspace{0.3cm}
+
+Donc $|\sum a_{ij}| \le (X|X) = \sum_{i=1}^n 1^2 = n$
+
+\vspace{0.5cm}
+
+Donc \fbox{$\left| \sum a_{ij} \right| \le n$}

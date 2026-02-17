@@ -1,0 +1,59 @@
+\subsection{Montrer que $\forall x \in \mathbb{R}, \int_0^{+\infty} \frac{\sin(xt)}{t}e^{-t}dt = \text{Arctan}(x)$.}
+
+\color{black}
+\vspace{0.5cm}
+
+\noindent Posons $\forall x \in \mathbb{R}, \quad g(x) = \int_0^{+\infty} \frac{\sin(xt)}{t}e^{-t} dt$
+\[ f : (x,t) \longmapsto \frac{\sin(xt)}{t}e^{-t} \]
+
+\vspace{0.3cm}
+
+\noindent a) $\forall x \in \mathbb{R}, \quad t \mapsto f(x,t)$ continue sur $\mathbb{R}_+^*$ et Intégrable sur $\mathbb{R}_+^*$
+
+\vspace{0.3cm}
+
+\noindent Au $V(0)$ : pas de problème si $x=0$.
+\noindent si $x \neq 0, \quad f(x,t) \sim_{t \to 0} \frac{xt}{t} = x$
+\noindent $t \mapsto f(x,t)$ se prolonge par continuité.
+
+\vspace{0.3cm}
+
+\noindent Au $V(+\infty)$ :
+\[ |f(x,t)| \le \frac{e^{-t}}{t} \]
+\noindent Donc $f(x,t) = o(e^{-t})$
+
+\vspace{0.3cm}
+
+\noindent b) $\forall t > 0, \enspace f(\cdot, t)$ $C^1$ sur $\mathbb{R}$
+\[ t \mapsto \frac{\partial f}{\partial x}(x,t) = \cos(xt)e^{-t} \text{ continue sur } \mathbb{R}_+ \]
+
+\vspace{0.3cm}
+
+\noindent c) Hypothèse de domination :
+\[ \forall x \in \mathbb{R}, \forall t > 0, \quad \left| \frac{\partial f}{\partial x}(x,t) \right| \le e^{-t} = \varphi(t) \]
+\noindent $\varphi \in L^1(\mathbb{R}_+)$
+
+\vspace{0.3cm}
+
+\noindent D'après le théorème de dérivation des intégrales à paramètre, $g$ est $C^1$ sur $\mathbb{R}$.
+\noindent Et $\forall x \in \mathbb{R}, \quad g'(x) = \int_0^{+\infty} \cos(xt)e^{-t} dt$
+
+\vspace{0.3cm}
+
+\[ = \text{Re} \int_0^{+\infty} e^{t(-1+ix)} dt \]
+\[ = \text{Re} \left[ \frac{e^{t(-1+ix)}}{-1+ix} \right]_0^{+\infty} \]
+\[ = \text{Re} \left( \frac{-1}{-1+ix} \right) = \text{Re} \left( \frac{1}{1-ix} \right) \]
+\[ = \text{Re} \left( \frac{1+ix}{1+x^2} \right) \]
+
+\vspace{0.3cm}
+
+\noindent $g'(x) = \frac{1}{1+x^2}$
+
+\vspace{0.3cm}
+
+\noindent On en déduit $\exists C \in \mathbb{R}, \quad g(x) = \text{Arctan}(x) + C$
+\noindent Or $g(0) = 0$ Donc $C=0$
+
+\vspace{0.5cm}
+
+\noindent Donc \quad \fbox{$g(x) = \text{Arctan}(x) \quad \forall x \in \mathbb{R}$}

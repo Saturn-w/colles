@@ -1,0 +1,27 @@
+# LaTeX compilation artifacts
+*.aux
+*.fdb_latexmk
+*.fls
+*.log
+*.out
+*.pdf
+*.synctex.gz
+*.toc
+*.xdv
+*.nav
+*.snm
+*.vrb
+*.bbl
+*.blg
+
+# Editor specific
+.DS_Store
+.vscode/
+
+# Python cache (if any scripts left)
+__pycache__/
+*.pyc
+
+# Local backup files
+*.bak
+*~

@@ -1,0 +1,63 @@
+\subsection{Résoudre $(E) \enspace x^2 y'' + y = 0$ sur $\mathbb{R}_+^*$ en utilisant le changement de variable $t = \ln(x)$.}
+
+\color{black}
+\vspace{0.5cm}
+
+\noindent Posons $t = \ln(x) \enspace (\Rightarrow e^t = x)$
+
+\vspace{0.3cm}
+
+\noindent $y(x) = y(e^t)$
+\[ z(t) = z(\ln(x)) \]
+
+\vspace{0.3cm}
+
+\noindent $y$ 2 fois dérivable sur $\mathbb{R}_+^* \Rightarrow z$ 2 fois dérivable
+\noindent \phantom{$y$ 2 fois dérivable sur $\mathbb{R}_+^*$} $\Rightarrow y$ 2 fois dérivable
+
+\vspace{0.3cm}
+
+\noindent Comme $y$ sol de $E$ sur $\mathbb{R}_+^* \iff \forall x \in \mathbb{R}_+^*, \enspace x^2 y''(x) + y(x) = 0$
+
+\vspace{0.3cm}
+
+\noindent Or $x \mapsto e^x$ bijection de $\mathbb{R}$ sur $\mathbb{R}_+^*$
+
+\vspace{0.3cm}
+
+\noindent $\Rightarrow \forall t \in \mathbb{R}, \enspace (e^t)^2 y''(e^t) + y(e^t) = 0$
+\noindent or $z(t) = y(e^t)$
+
+\vspace{0.3cm}
+
+\noindent Donc $z'(t) = e^t y'(e^t)$
+\noindent $z''(t) = e^t y'(e^t) + (e^t)^2 y''(e^t)$
+
+\vspace{0.3cm}
+
+\noindent Donc $(\iff) \forall t \in \mathbb{R}, \enspace z''(t) - z'(t) + z(t) = 0 \quad (F)$
+\noindent $(\iff z \text{ sol de } (F) \enspace z'' - z' + z = 0)$
+
+\vspace{0.3cm}
+
+\noindent $(*)$ \quad $r^2 - r + 1 = 0$
+\noindent $\Delta = -3 = (i\sqrt{3})^2$
+\noindent $r = \frac{1 \pm i\sqrt{3}}{2} = \frac{1}{2} \pm i \frac{\sqrt{3}}{2}$
+
+\vspace{0.3cm}
+
+\noindent $Sol(F) = \left\{ x \mapsto e^{\frac{1}{2}x} \left( A \cos\left(\frac{\sqrt{3}}{2}x\right) + B \sin\left(\frac{\sqrt{3}}{2}x\right) \right), (A,B) \in \mathbb{R}^2 \right\}$
+
+\vspace{0.8cm}
+
+\noindent $z \in Sol(F)$
+\noindent $\Rightarrow \exists (A,B) \in \mathbb{R}^2, \enspace z : t \mapsto e^{\frac{1}{2}t} \left( A \cos\left(\frac{\sqrt{3}}{2}t\right) + B \sin\left(\frac{\sqrt{3}}{2}t\right) \right)$
+
+\vspace{0.3cm}
+
+\noindent $\Rightarrow \exists (A,B) \in \mathbb{R}^2 \text{ tel que } y(x) = z(\ln(x))$
+\noindent $y : x \mapsto e^{\frac{1}{2}\ln(x)} \left( A \cos\left(\frac{\sqrt{3}}{2}\ln(x)\right) + B \sin\left(\frac{\sqrt{3}}{2}\ln(x)\right) \right)$
+
+\vspace{0.5cm}
+
+\noindent Donc \fbox{$Sol_{\mathbb{R}_+^*}(E) = \left\{ x \mapsto \sqrt{x} \left( A \cos\left(\frac{\sqrt{3}}{2}\ln x\right) + B \sin\left(\frac{\sqrt{3}}{2}\ln x\right) \right), (A,B) \in \mathbb{R}^2 \right\}$}

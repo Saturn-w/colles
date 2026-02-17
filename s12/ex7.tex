@@ -1,0 +1,53 @@
+\subsection{Déterminer le DSE au voisinage de 0 de \\ $f(x) = \text{ch}(x) \cos(x)$.}
+
+\color{black}
+\vspace{0.5cm}
+
+\noindent \textbf{Méthode Somme de DSE}
+
+\vspace{0.3cm}
+
+\noindent $\forall x \in \mathbb{R}, \quad \text{ch}(x) = \frac{1}{2}(e^x + e^{-x})$
+
+\vspace{0.3cm}
+
+\noindent $f(x) = \frac{1}{2} ( e^x \cos(x) + e^{-x} \cos(x) )$ \\
+\noindent $f(x) = \frac{1}{2} ( h(x) + h(-x) )$
+
+\vspace{0.3cm}
+
+\noindent $\forall x \in \mathbb{R}, \quad h(x) = \text{Re}( e^x e^{ix} ) = \text{Re}( e^{x(1+i)} )$ \\
+\noindent \phantom{$\forall x \in \mathbb{R}, \quad h(x)$} $= \text{Re}\left( \sum_{n=0}^{+\infty} \frac{x^n (1+i)^n}{n!} \right)$
+
+\vspace{0.3cm}
+
+\noindent $(1+i) = \sqrt{2} \left( \frac{1}{\sqrt{2}} + i \frac{1}{\sqrt{2}} \right) = \sqrt{2} e^{i \pi / 4}$
+
+\vspace{0.3cm}
+
+\noindent Donc $h(x) = \sum_{n=0}^{+\infty} \text{Re}\left( \frac{(\sqrt{2})^n e^{i (\frac{n \pi}{4})} x^n}{n!} \right)$ \\
+\noindent \phantom{Donc $h(x)$} $= \sum_{n=0}^{+\infty} \frac{(\sqrt{2})^n \cos\left(\frac{n \pi}{4}\right) x^n}{n!}$
+
+\vspace{0.3cm}
+
+\noindent $f(x) = \frac{1}{2} \sum_{n=0}^{+\infty} \frac{(\sqrt{2})^n \cos(n \pi / 4)}{n!} (x^n + (-x)^n)$
+
+\vspace{0.3cm}
+
+\noindent Or \quad $x^n + (-x)^n = \begin{cases} 0 & \text{si } n \text{ impair} \\ 2x^n & \text{sinon} \end{cases}$
+
+\vspace{0.3cm}
+
+\noindent $f(x) = \sum_{\substack{p=0 \\ n=2p}}^{+\infty} \frac{2^p \cos\left( \frac{p \pi}{2} \right)}{(2p)!} x^{2p}$
+
+\vspace{0.3cm}
+
+\noindent Or \quad $\cos\left( \frac{p \pi}{2} \right) = \begin{cases} 0 & \text{si } p \text{ impair} \\ (-1)^{n'} & \text{sinon} \end{cases}$
+
+\vspace{0.3cm}
+
+\noindent $f(x) = \sum_{\substack{n'=0 \\ p=2n'}}^{+\infty} \frac{2^{2n'} (-1)^{n'} x^{4n'}}{(4n')!}$
+
+\vspace{0.5cm}
+
+\noindent Donc $\forall x \in \mathbb{R}$, \quad \fbox{$f(x) = \sum_{n=0}^{+\infty} \frac{4^n (-1)^n}{(4n)!} x^{4n}$}

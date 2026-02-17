@@ -1,0 +1,89 @@
+\subsection{Déterminer le rayon de convergence de la série entière \\ 
+de la variable réelle $\sum a_n z^n$ avec 
+}
+
+\color{black}
+
+\subsubsection{$a_n = \frac{\ln(n)}{n^2}$ }
+
+\vspace{0.3cm}
+
+\noindent $\forall n \ge 3 \quad 1 \le \ln(n) \le n$ \\
+\noindent $\frac{1}{n^2} \le \frac{\ln(n)}{n^2} \le \frac{1}{n}$
+
+\vspace{0.3cm}
+
+\noindent Posons $R_1$ le rayon de convergence de $\sum \frac{1}{n^2} z^n$ \\
+\noindent $R_2$ celui de $\sum \frac{1}{n} z^n$ \\
+\noindent $R$ celui de $\sum \frac{\ln(n)}{n^2} z^n$
+
+\vspace{0.3cm}
+
+\noindent D'après le théorème de comparaison
+\[ R_1 \ge R \ge R_2 \]
+
+\vspace{0.3cm}
+
+\noindent Or $R_1 = R_2 = $ le rayon de convergence de $\sum z^n$
+
+\vspace{0.3cm}
+
+\noindent Donc \fbox{$R_1 = R_2 = R = 1$}
+
+\vspace{0.8cm}
+
+\subsubsection{ $a_{2p} = \frac{1}{p!} \quad a_{2p+1} = \frac{(-1)^p}{p+1}$}
+
+\vspace{0.3cm}
+
+\noindent Posons $R$ le rayon de convergence de $\sum a_n x^n$ \\
+\noindent $R_1$ celui de $\sum a_{2p} z^{2p}$ \\
+\noindent $R_2$ celui de $\sum a_{2p+1} z^{2p+1}$
+
+\vspace{0.3cm}
+
+\noindent $\bullet$ $R_1$ : $\sum a_{2p} z^{2p} = \sum \frac{z^{2p}}{p!} = \sum \frac{(z^2)^p}{p!}$ \\
+\noindent c'est la série exponentielle, $e^{z^2}$. Donc $R_1 = +\infty$
+
+\vspace{0.3cm}
+
+\noindent $\bullet$ $R_2$ : $\sum a_{2p+1} z^{2p+1} = \sum \frac{(-1)^p z^{2p+1}}{p+1}$ \\
+\noindent Pour $|z|=1 \quad (a_n z^n)_n$ bornée \quad Donc $1 \le R_2$ \\
+\noindent Si $|z| > 1 \quad |a_n z^n| \to +\infty$ \\
+\noindent Donc $|z| > R_2$ \\
+\noindent $\left| \frac{(-1)^p z^{2p+1}}{p+1} \right| \to +\infty$ \\
+\noindent Donc $R_2 \le 1$ \\
+\noindent Donc $R_2 = 1$
+
+\vspace{0.3cm}
+
+\noindent $\sum a_n x^n = \sum a_{2n} x^{2n} + \sum a_{2n+1} x^{2n+1}$ \\
+\noindent Or $R_1 \neq R_2$ \\
+\noindent Donc \fbox{$R = \min(R_1, R_2) = 1$}
+
+\vspace{0.8cm}
+
+\subsubsection{ $a_n = n^{ième} \text{ décimale de } \sqrt{5}$}
+
+\vspace{0.3cm}
+
+\noindent $\forall n \in \mathbb{N}, \quad a_n \in \llbracket 0, 9 \rrbracket$ \\
+\noindent Pour $z=1$, $(a_n z^n)$ est bornée donc $R \ge 1$ \\
+\noindent Pour $z=1$ Montrons que $\sum a_n z^n$ diverge grossièrement
+
+\vspace{0.3cm}
+
+\noindent Par l'absurde supposons que $(a_n)$ converge vers 0 \\
+\noindent $\varepsilon = \frac{1}{2}, \quad \exists N \in \mathbb{N}, \quad \forall n > N, \quad |a_n| \le \varepsilon = \frac{1}{2}$ \\
+\noindent Donc $a_n = 0$
+
+\vspace{0.3cm}
+
+\noindent Donc $\sqrt{5} = \sum_{n=0}^{N_1} a_n 10^{-n} \quad a_n 10^{-n} = \frac{a_n}{10^n} \in \mathbb{Q}$ \\
+\noindent Donc $\sqrt{5} \in \mathbb{Q}$ Faux \\
+\noindent Donc $(a_n)$ ne converge pas vers 0, Donc $\sum a_n z^n$ DVG \\
+\noindent Donc $1 \ge R$
+
+\vspace{0.3cm}
+
+\noindent Donc \fbox{$R=1$}

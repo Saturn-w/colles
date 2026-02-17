@@ -1,0 +1,51 @@
+\subsection{Déterminer un équivalent de $I_n = \int_0^n \sqrt{1 + \left(1 - \frac{t}{n}\right)^n} dt$.}
+
+\color{black}
+\vspace{0.5cm}
+
+\noindent Posons $\frac{t}{n} = x$ changement de variable affine.
+\[ \begin{cases} t=0 \to x=0 \\ t=m \to x=1 \\ dt = m dx \end{cases} \]
+
+\vspace{0.3cm}
+
+\noindent $I_m = \int_0^1 \sqrt{1+(1-x)^m} m dx$
+
+\vspace{0.3cm}
+
+\noindent $\frac{I_m}{m} = \underbrace{\int_0^1 \sqrt{1+(1-x)^m} dx}_{J_m}$
+
+\vspace{0.3cm}
+
+\noindent Posons : $\forall m \in \mathbb{N}^*, \enspace f_m : x \longmapsto \sqrt{1+(1-x)^m}$
+
+\vspace{0.3cm}
+
+\noindent $\rightarrow \forall m \in \mathbb{N}^*, \enspace f_m$ cont sur $[0, 1]$
+
+\vspace{0.3cm}
+
+\noindent $\rightarrow$ CVS : Soit $x \in [0, 1]$
+\[ f_m(x) \xrightarrow[m \to +\infty]{} \begin{cases} \sqrt{2} & \text{si } x=0 \\ 1 & \text{si } x \in ]0, 1] \end{cases} \]
+
+\vspace{0.3cm}
+
+\noindent $f : x \longmapsto \begin{cases} \sqrt{2} & \text{si } x=0 \\ 1 & \text{si } x > 0 \end{cases} \quad f$ cont sur $]0, 1]$.
+
+\vspace{0.3cm}
+
+\noindent $\rightarrow$ HD : $\forall m \in \mathbb{N}^*, \forall x \in [0, 1]$,
+\[ |f_m(x)| \le \sqrt{2} = \varphi(x), \quad \varphi \in L^1([0, 1], \mathbb{R}_+) \]
+
+\vspace{0.3cm}
+
+\noindent Donc d'après le th de CV dominée :
+\[ \lim_{m \to +\infty} J_m = \int_0^1 f(x) dx = \int_0^1 1 dx = 1 \]
+
+\vspace{0.3cm}
+
+\noindent donc $J_m \sim 1$
+\[ \Rightarrow I_m \sim m \]
+
+\vspace{0.5cm}
+
+\noindent Donc \quad \fbox{$I_n \sim n$}

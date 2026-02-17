@@ -1,0 +1,41 @@
+\subsection{Déterminer la matrice représentative dans la base canonique de la \\ rotation $f$ d'axe dirigé et orienté par $u = (1, -1, 1)$ et d'angle $\pi/2$.}
+
+\color{black}
+\vspace{0.5cm}
+
+$f = rot_{\mathbb{R}u, \pi/2}$
+
+\vspace{0.3cm}
+
+Posons une bond adaptée à la rotation \\
+Posons $u_1 = \frac{u}{\|u\|} = \frac{1}{\sqrt{3}}(1, -1, 1)$ \\
+$u_2 = \frac{1}{\sqrt{2}}(1, 1, 0)$ \\
+$u_3 = u_1 \wedge u_2 = \frac{1}{\sqrt{6}} \begin{pmatrix} 1 \\ -1 \\ 1 \end{pmatrix} \wedge \begin{pmatrix} 1 \\ 1 \\ 0 \end{pmatrix} = \frac{1}{\sqrt{6}} \begin{pmatrix} -1 \\ 1 \\ 2 \end{pmatrix}$
+
+\vspace{0.3cm}
+
+$\mathcal{B}' = (u_1, u_2, u_3)$ \\
+On sait que $mat_{\mathcal{B}'}(f) = \begin{pmatrix} 1 & | & 0 \\ \hline 0 & | & R_{\pi/2} \end{pmatrix} = A' = \begin{pmatrix} 1 & 0 & 0 \\ 0 & 0 & -1 \\ 0 & 1 & 0 \end{pmatrix}$
+
+\vspace{0.3cm}
+
+Posons $P = Pass_{\mathcal{B}' \to \mathcal{B}c} = \begin{pmatrix} 1/\sqrt{3} & 1/\sqrt{2} & -1/\sqrt{6} \\ -1/\sqrt{3} & 1/\sqrt{2} & 1/\sqrt{6} \\ 1/\sqrt{3} & 0 & 2/\sqrt{6} \end{pmatrix}$
+
+\vspace{0.3cm}
+
+$P \in \mathcal{O}_3(\mathbb{R})$ \\
+Donc $P^{-1} = P^T$ \\
+$A' = P^{-1} A P$ \\
+On veut $A$, donc $A = P A' P^T$
+
+\vspace{0.3cm}
+
+$A = \begin{pmatrix} 1/\sqrt{3} & 1/\sqrt{2} & -1/\sqrt{6} \\ -1/\sqrt{3} & 1/\sqrt{2} & 1/\sqrt{6} \\ 1/\sqrt{3} & 0 & 2/\sqrt{6} \end{pmatrix} \begin{pmatrix} 1 & 0 & 0 \\ 0 & 0 & -1 \\ 0 & 1 & 0 \end{pmatrix} P^T$
+
+\vspace{0.3cm}
+
+$A = \begin{pmatrix} 1/\sqrt{3} & -1/\sqrt{6} & -1/\sqrt{2} \\ -1/\sqrt{3} & 1/\sqrt{6} & -1/\sqrt{2} \\ 1/\sqrt{3} & 2/\sqrt{6} & 0 \end{pmatrix} \begin{pmatrix} 1/\sqrt{3} & -1/\sqrt{3} & 1/\sqrt{3} \\ 1/\sqrt{2} & 1/\sqrt{2} & 0 \\ -1/\sqrt{6} & 1/\sqrt{6} & 2/\sqrt{6} \end{pmatrix}$
+
+\vspace{0.5cm}
+
+Donc \fbox{$A = \frac{1}{3} \begin{pmatrix} 1 & -1-\sqrt{3} & 1-\sqrt{3} \\ 1+\sqrt{3} & 1 & -1-\sqrt{3} \\ 1-\sqrt{3} & 1+\sqrt{3} & 1 \end{pmatrix}$}

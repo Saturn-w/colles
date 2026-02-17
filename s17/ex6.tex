@@ -1,0 +1,41 @@
+\subsection{Soit $f$ une isométrie d'un espace vectoriel euclidien $E$. Montrer que $f$ est \\ diagonalisable si et seulement si $f$ est une symétrie orthogonale.}
+
+\color{black}
+\vspace{0.5cm}
+
+$f \in \mathcal{O}(E)$
+
+\vspace{0.3cm}
+
+$(\Leftarrow) \quad f$ est une symétrie orthogonale \\
+\[ f \circ f = Id \]
+
+\vspace{0.3cm}
+
+Donc $X^2 - 1$ est un polynôme scindé annulateur à racines simples de $f$
+\[ X^2 - 1 = (X+1)(X-1) \]
+Donc $f$ est diagonalisable.
+
+\vspace{0.8cm}
+
+$(\Rightarrow) \quad f$ est diagonalisable \\
+Donc $\exists B = (e_1, \dots, e_n)$ Base de $E$ formée de vecteurs propres de $f$
+\[ mat_B(f) = \begin{pmatrix} \lambda_1 & & \\ & \ddots & \\ & & \lambda_n \end{pmatrix} \]
+
+\vspace{0.3cm}
+
+$\lambda_k \in Sp(f) \iff \exists x \neq 0, \enspace f(x) = \lambda x$ \\
+$f$ conserve la norme donc :
+\[ \|f(x)\| = \|x\| \Rightarrow |\lambda| \cdot \|x\| = \|x\| \]
+
+\vspace{0.3cm}
+
+Donc $|\lambda_k| = 1$. Donc $\lambda_k = \pm 1$. \\
+On en déduit que $A^2 = I_n$. \\
+Donc $f$ est une symétrie.
+
+\vspace{0.3cm}
+
+Or $f$ conserve la norme, donc :
+\vspace{0.5cm}
+\fbox{$f$ est une symétrie orthogonale}

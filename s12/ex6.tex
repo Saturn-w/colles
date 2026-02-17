@@ -1,0 +1,37 @@
+\subsection{Soit $\sum a_n z^n$ une série entière non nulle de Rayon de convergence $R > 0$. \\ 
+Déterminer le rayon de convergence de $\sum_n (a_n)^2 z^n$.}
+
+\color{black}
+\vspace{0.5cm}
+
+\noindent Posons $R'$ le rayon de convergence de $\sum (a_n)^2 z^n$ \\
+\noindent $R = \sup \{r \ge 0, (a_n r^n)_n \text{ bornée}\}$
+
+\vspace{0.3cm}
+
+\noindent $\rightarrow$ Soit $z \in \mathbb{C}$ tel que $|z| < R$ \\
+\noindent Donc $(a_n z^n)$ borné \\
+\noindent $\exists M > 0, \forall n \ge 0, \quad |a_n z^n| \le M$ \\
+\noindent $\Rightarrow |a_n z^n|^2 \le M^2$
+
+\vspace{0.3cm}
+
+\noindent Donc $((a_n)^2 z^{2n})$ borné \\
+\noindent Donc $|z|^2 \le R' \quad$ Donc $|z| \le \sqrt{R'}$ \\
+\noindent Donc $[0, R[ \subset [0, \sqrt{R'}]$ \\
+\noindent Donc $R \le \sqrt{R'}$
+
+\vspace{0.8cm}
+
+\noindent $\rightarrow$ Soit $z \in \mathbb{C}$ tel que $|z| < R'$ \\
+\noindent alors $((a_n)^2 z^n)$ borné \\
+\noindent Donc $(|a_n|^2 z^n)^{1/2}$ borné \\
+\noindent Donc $\sqrt{z} \le R \quad$ Donc $|z| \le R^2$
+
+\vspace{0.5cm}
+
+\noindent Conclusion : $[0, R'[ \subset [0, R^2] \quad$ Donc $R' \le R^2$
+
+\vspace{0.5cm}
+
+\noindent Donc \quad \fbox{$R' = R^2$}

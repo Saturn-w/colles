@@ -1,0 +1,66 @@
+\documentclass[a4paper,11pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath, amssymb, stmaryrd}
+\usepackage{xcolor}
+\usepackage[margin=2.5cm]{geometry}
+\usepackage{fancybox}
+\usepackage{needspace}
+
+\usepackage{tocloft}
+\setlength{\cftbeforesecskip}{0.9cm} % Ajuste la valeur (ex: 1em, 15pt, etc.)
+
+\setlength{\cftbeforesubsecskip}{0.05cm}
+
+\usepackage[nobottomtitles*]{titlesec} % On ajoute l'option à l'import
+\renewcommand{\bottomtitlespace}{2cm}
+
+% Définition des couleurs
+\definecolor{questionblue}{RGB}{0, 0, 205}
+
+%cache les rectangles rouge sde sliens
+
+% Sécurité : Définit l'espace nécessaire AVANT chaque titre
+\newcommand{\sectionbreak}{\needspace{6\baselineskip}}
+\newcommand{\subsectionbreak}{\needspace{10\baselineskip}}
+\newcommand{\subsubsectionbreak}{\needspace{5\baselineskip}}
+
+
+% Configuration des titres pour correspondre à ton style (1.1 en Bleu)
+% Sections (Semaines)
+\titleformat{\section}
+  {\normalfont\Large\bfseries\color{black}}{\thesection}{1em}{}
+  % Subsections (Exercices) 
+\titleformat{\subsection}
+  {\normalfont\large\bfseries\color{questionblue}}{\thesubsection}{1em}{}
+% Subsubsections (Questions) 
+\renewcommand{\thesubsubsection}{\alph{subsubsection})}
+\titleformat{\subsubsection}
+  {\normalfont\large\bfseries\color{questionblue}}{\thesubsubsection}{0.5em}{}
+
+
+%\pretocmd{\section}{\addtocontents{toc}{\protect\filbreak}}{}{}
+
+
+
+% Redéfinition de la numérotation des sous-sections
+\renewcommand{\thesubsection}{\arabic{subsection}}
+\setcounter{tocdepth}{2}
+
+% Hyperref chargé en dernier
+\usepackage{hyperref}
+\hypersetup{hidelinks}
+\begin{document}
+
+\title{Semaine 5 - Fonctions vectorielles\\
+\large PSI}
+\date{}
+\maketitle
+\tableofcontents
+
+\clearpage \input{s5/ex1}
+
+
+\clearpage
+
+\end{document}

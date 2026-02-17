@@ -1,0 +1,41 @@
+\subsection{ Soit $E$ un $\mathbb{K}$-espace vectoriel de dimension finie, $F_1, F_2, \dots, F_p$ $p$ sous-espaces de $E$. \\
+Démontrer que $\dim\left(\sum_{k=1}^p F_k\right) \le \sum_{k=1}^p \dim(F_k)$ \\
+et $\dim\left(\sum_{k=1}^p F_k\right) = \sum_{k=1}^p \dim(F_k)$  $\iff$ la somme est directe}
+
+\color{black}
+\vspace{0.5cm}
+
+\noindent Posons $\psi : \begin{array}{ccl} F_1 \times \dots \times F_p & \longrightarrow & \sum_{k=1}^p F_k \\ (x_1, \dots, x_p) & \longmapsto & \sum_{k=1}^p x_k \end{array}$
+
+\vspace{0.3cm}
+
+\begin{itemize}
+    \setlength\itemsep{0.2cm}
+    \item $\psi$ est bien définie car $\forall (x_1, \dots, x_p) \in F_1 \times \dots \times F_p, \quad \sum_{k=1}^p x_k \in \sum_{k=1}^p F_k$.
+    \item $\psi$ est linéaire (évident).
+    \item $\text{Im } \psi = \left\{ \psi(x_1, \dots, x_p), (x_1, \dots, x_p) \in F_1 \times \dots \times F_p \right\} = \sum_{k=1}^p F_k$.
+    \noindent Donc $\psi$ est surjective.
+    \item $\ker \psi = \left\{ (x_1, \dots, x_p) \in (F_1 \times \dots \times F_p) \text{ tel que } \sum_{k=1}^p x_k = 0 \right\}$.
+\end{itemize}
+
+\vspace{0.5cm}
+
+\noindent \textbf{Théorème du rang :}
+\[ \dim(F_1 \times \dots \times F_p) = \dim \text{Im } \psi + \dim \ker \psi \]
+\[ \sum_{k=1}^p \dim F_k = \dim \left( \sum_{k=1}^p F_k \right) \quad + \underbrace{\dim \ker \psi}_{\ge 0} \]
+
+\vspace{0.3cm}
+
+\noindent Donc \quad \fbox{$\dim\left(\sum_{k=1}^p F_k\right)\le \sum_{k=1}^p \dim(F_k)$ }
+
+\vspace{0.5cm}
+
+\noindent De plus $\sum_{k=1}^p \dim F_k = \dim \sum_{k=1}^p F_k$
+
+\[ \iff \dim \ker \psi = 0 \]
+\[ \iff \ker \psi = \{(0, \dots, 0)\} \]
+\[ \iff \forall (x_1, \dots, x_p) \in F_1 \times \dots \times F_p, \quad \left( \sum_{k=1}^p x_k = 0 \implies (x_1, \dots, x_p) = (0, \dots, 0) \right) \]
+
+\vspace{0.2cm}
+\noindent $\iff$ La seule décomposition du vecteur nul est la décomposition nulle.
+\noindent $\iff$ La somme est directe.

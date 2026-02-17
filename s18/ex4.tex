@@ -1,0 +1,65 @@
+\subsection{Soit $g : x \mapsto \int_0^{+\infty} \frac{Arctan(tx)}{1+t^2} dt$. }
+
+\color{black}
+\vspace{0.5cm}
+
+\subsubsection{Montrer que $g$ est continue sur $\mathbb{R}$.}
+
+
+\vspace{0.3cm}
+
+\noindent a) $\forall x \in \mathbb{R}, \quad t \longmapsto f(x,t)$ cont sur $\mathbb{R}_+$
+
+\vspace{0.3cm}
+
+\noindent b) $\forall t \ge 0, \quad x \longmapsto f(x,t)$ cont sur $\mathbb{R}$ car Arctan l'est.
+
+\vspace{0.3cm}
+
+\noindent c) Hypo de domination : $\forall x \in \mathbb{R}, \forall t \in \mathbb{R}_+$
+\[ |f(x,t)| = \left| \frac{Arctan(tx)}{1+t^2} \right| \le \frac{\pi/2}{1+t^2} = \varphi(t) \]
+
+\vspace{0.3cm}
+
+\noindent On a $\varphi \in L^1(\mathbb{R}_+, \mathbb{R}_+)$ \quad $\left( \varphi(t) \sim_{+\infty} \frac{\pi/2}{t^2} \right)$
+
+\vspace{0.3cm}
+
+\noindent Donc d'après le théo de continuité des intégrales à paramètre :
+
+\vspace{0.3cm}
+
+\noindent \fbox{$g$ est cont sur $\mathbb{R}$}
+
+\subsubsection{Déterminer la limite de $g$ en $+\infty$.}
+
+
+\vspace{0.3cm}
+
+\noindent a) $\forall x \in \mathbb{R}, \quad t \longmapsto f(x,t)$ cont sur $\mathbb{R}_+$
+
+\vspace{0.3cm}
+
+\noindent b) $\forall t \in \mathbb{R}_+, \quad f(x,t) = \frac{Arctan(tx)}{1+t^2} \xrightarrow[x \to +\infty]{} \begin{cases} 0 & \text{si } t=0 \\ \frac{\pi/2}{1+t^2} & \text{si } t > 0 \end{cases}$
+
+\vspace{0.3cm}
+
+\noindent Posons $\varphi : t \longmapsto \begin{cases} \frac{\pi/2}{1+t^2} & \text{si } t > 0 \\ 0 & \text{si } t=0 \end{cases}$
+
+\vspace{0.3cm}
+
+\noindent $\varphi$ cpmx sur $\mathbb{R}_+$
+
+\vspace{0.3cm}
+
+\noindent c) HD déjà vu
+\[ \forall x \in \mathbb{R}, \forall t \in \mathbb{R}_+, \quad |f(x,t)| \le \frac{\pi/2}{1+t^2} = \psi(t) \]
+
+\vspace{0.3cm}
+
+\noindent Donc d'après le théo de CV dominée à paramètre cont. :
+\[ \lim_{x \to +\infty} g(x) = \int_0^{+\infty} \lim_{x \to +\infty} f(x,t) dt = \int_0^{+\infty} \frac{\pi/2}{1+t^2} dt \]
+\[ = \frac{\pi}{2} [\text{Arctan}(t)]_0^{+\infty} \]
+
+
+ \fbox{$\lim_{x \to +\infty} g(x) =  \frac{\pi^2}{4}$}

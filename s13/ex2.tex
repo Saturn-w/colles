@@ -1,0 +1,67 @@
+\subsection{Une urne contient au départ une boule blanche. On joue indéfiniment à pile ou face \\ 
+avec une pièce équilibrée. Chaque fois que l'on obtient face, on rajoute une boule \\ 
+noire dans l'urne. Et la première fois que l'on obtient pile, on tire une boule dans l'urne. \\ 
+On pose $\forall n \in \mathbb{N}^*$, $P_n$ "on obtient pile pour la première fois au $n^e$ lancer" \\
+a) Déterminer un système quasi-complet d'événements. \\
+b) Quelle est la probabilité de sortir une boule blanche ?}
+
+\color{black}
+\vspace{0.5cm}
+
+\noindent \textbf{a) Montrons que $(P_n)_{n \in \mathbb{N}^*}$ est un système quasi-complet}
+
+\vspace{0.3cm}
+
+\noindent $\rightarrow$ Les $P_n$ sont 2 à 2 incompatibles : \\
+\noindent $(\forall n \neq n') \enspace P_n \cap P_{n'} = \emptyset$ car il existe une seule "première fois".
+
+\vspace{0.3cm}
+
+\noindent $\rightarrow$ Montrons que $\sum_{n \in \mathbb{N}^*} P(P_n) = 1$ :
+\\
+\noindent On pose $\forall k \in \mathbb{N}^*$, $f_k$ : "on obtient face au $k$-ième lancer".
+\noindent $\forall n \in \mathbb{N}^*$, \quad $P_n = \left( \bigcap_{k=1}^{n-1} f_k \right) \cap \overline{f_n}$
+
+\vspace{0.3cm}
+
+\noindent Donc \quad $P(P_n) = \prod_{k=1}^{n-1} \left( \frac{1}{2} \right) \times \left( \frac{1}{2} \right) = \frac{1}{2^n}$
+
+\vspace{0.3cm}
+
+\noindent D'où \quad $\sum_{n=1}^{+\infty} P(P_n) = \sum_{n=1}^{+\infty} \frac{1}{2^n}$ \quad (Série géométrique)
+\[ = \frac{1}{2} \times \frac{1}{1 - \frac{1}{2}} = 1 \]
+
+\vspace{0.3cm}
+
+\noindent Donc \fbox{$(P_n)_n$ est un système quasi-complet d'événements.}
+
+\vspace{0.8cm}
+
+\noindent \textbf{b) On pose $A$ : "on tire une boule blanche". Calculons $P(A)$ :}
+
+\vspace{0.3cm}
+
+\noindent On utilise la formule des probabilités totales :
+\[ P(A) = \sum_{n=1}^{+\infty} P(P_n) P_{P_n}(A) \]
+
+\vspace{0.3cm}
+
+\noindent $\rightarrow$ Si $P_n$ est réalisé, alors l'urne contient $\begin{cases} n-1 & \text{boules noires} \\ 1 & \text{boule blanche} \end{cases}$
+\noindent Donc \quad $P_{P_n}(A) = \frac{1}{n}$
+
+\vspace{0.3cm}
+
+\noindent Donc \quad $P(A) = \sum_{n=1}^{+\infty} \frac{1}{n} \left( \frac{1}{2} \right)^n$
+
+\vspace{0.3cm}
+
+\noindent Or on sait que $\forall x \in ]-1, 1[$, \quad $\ln(1-x) = -\sum_{n=1}^{+\infty} \frac{x^n}{n}$
+
+\vspace{0.3cm}
+
+\noindent Donc \quad $P(A) = -\ln\left(1 - \frac{1}{2}\right) = \ln(2)$
+
+\vspace{0.5cm}
+
+\noindent D'où :
+\[ \fbox{$P(A) = \ln(2)$} \]

@@ -1,0 +1,34 @@
+\subsection{Écrire dans la base canonique de $\mathbb{R}^3$, la matrice représentative de la \\ réflexion par rapport au plan $P : x - y + 2z = 0$.}
+
+\color{black}
+\vspace{0.5cm}
+
+$P = a^\perp, \quad a = (1, -1, 2)$
+
+\vspace{0.3cm}
+
+$s_P : X \longmapsto X_P - X_{P^\perp} = X - 2X_{P^\perp}$
+
+\vspace{0.3cm}
+
+Or $X_{P^\perp} = X_{\mathbb{R} a} = \frac{(X|a)}{(a|a)} a$
+
+\vspace{0.3cm}
+
+$(a|a) = 6 \quad (X|a) = x - y + 2z$
+
+\vspace{0.3cm}
+
+Donc $X_{\mathbb{R} a} = \frac{x-y+2z}{6} \begin{pmatrix} 1 \\ -1 \\ 2 \end{pmatrix}$
+
+\vspace{0.3cm}
+
+$s_p : \begin{pmatrix} x \\ y \\ z \end{pmatrix} \longmapsto \begin{pmatrix} x \\ y \\ z \end{pmatrix} - \frac{2}{6} \begin{pmatrix} x - y + 2z \\ -(x - y + 2z) \\ 2(x - y + 2z) \end{pmatrix}$
+
+\vspace{0.3cm}
+
+$s_p : \begin{pmatrix} x \\ y \\ z \end{pmatrix} \longmapsto \frac{1}{3} \begin{pmatrix} 3x - x + y - 2z \\ 3y + x - y + 2z \\ 3z - 2x + 2y - 4z \end{pmatrix}$
+
+\vspace{0.5cm}
+
+Donc \quad \fbox{$mat_{Bc}(s_p) = \frac{1}{3} \begin{pmatrix} 2 & 1 & -2 \\ 1 & 2 & 2 \\ -2 & 2 & -1 \end{pmatrix}$}

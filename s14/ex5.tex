@@ -1,0 +1,49 @@
+\subsection{Soient $X, Y$ deux variables aléatoires indépendantes suivant la loi uniforme sur $\llbracket 1, n \rrbracket$.}
+
+\color{black}
+\vspace{0.5cm}
+
+\noindent $X$ et $Y \perp \!\! \perp$ \\
+\noindent $X, Y \hookrightarrow \mathcal{U}(\llbracket 1, n \rrbracket)$
+
+\subsubsection{Calculer $P(X=Y)$ et $P(X \ge Y)$.}
+
+\noindent $\bullet \quad P(X=Y) = \sum_{k=1}^n P((X=Y) \cap (X=k)) \quad$ car $(X=k)_{k \in \llbracket 1, n \rrbracket}$ SCE \\
+\noindent \phantom{$\bullet \quad P(X=Y)$} $= \sum_{k=1}^n P(X=k, Y=k)$ \\
+\noindent \phantom{$\bullet \quad P(X=Y)$} $= \sum_{k=1}^n P(X=k) P(Y=k) \quad$ car $X, Y \perp \!\! \perp$ \\
+\noindent \phantom{$\bullet \quad P(X=Y)$} $= \sum_{k=1}^n \frac{1}{n} \times \frac{1}{n} = \frac{1}{n^2} \times n$
+
+\vspace{0.3cm}
+
+\noindent Donc \quad \fbox{$P(X=Y) = \frac{1}{n}$}
+
+\vspace{0.5cm}
+
+\noindent $\bullet \quad P(X \ge Y) = \sum_{k=1}^n P((X \ge Y) \cap (X=k)) \quad$ car $(X=k)_{1 \le k \le n}$ SCE \\
+\noindent \phantom{$\bullet \quad P(X \ge Y)$} $= \sum_{k=1}^n P(X=k, Y \le k)$ \\
+\noindent \phantom{$\bullet \quad P(X \ge Y)$} $= \sum_{k=1}^n P(X=k) P(Y \le k) \quad$ car $X, Y \perp \!\! \perp$ \\
+\noindent \phantom{$\bullet \quad P(X \ge Y)$} $= \sum_{k=1}^n \frac{1}{n} \times \frac{k}{n} = \frac{1}{n^2} \sum_{k=1}^n k$ \\
+\noindent \phantom{$\bullet \quad P(X \ge Y)$} $= \frac{1}{n^2} \frac{(n+1)n}{2}$
+
+\vspace{0.3cm}
+
+\noindent Donc \quad \fbox{$P(X \ge Y) = \frac{n+1}{2n}$}
+
+\subsubsection{Déterminer la loi de $V = \min(X, Y)$.}
+
+\noindent $V = \min(X, Y) \quad V(\Omega) = \llbracket 1, n \rrbracket$
+
+\vspace{0.3cm}
+
+\noindent Soit $k \in \llbracket 1, n \rrbracket$ \\
+\noindent $(V=k) = ((X=k) \cap (Y \ge k)) \bigsqcup ((Y=k) \cap (X > k))$
+
+\vspace{0.3cm}
+
+\noindent $P(V=k) = P(X=k) P(Y \ge k) + P(Y=k) P(X \ge k+1)$ \\
+\noindent \phantom{$P(V=k)$} $= \frac{1}{n} \times \frac{n-k+1}{n} + \frac{1}{n} \times \frac{n-(k+1)+1}{n}$ \\
+\noindent \phantom{$P(V=k)$} $= \frac{1}{n^2} [ n - k + 1 + n - k ]$
+
+\vspace{0.3cm}
+
+\noindent Donc \quad \fbox{$P(V=k) = \frac{2n - 2k + 1}{n^2}$}

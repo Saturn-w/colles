@@ -1,0 +1,76 @@
+\subsection{ Montrer que $\int_0^{+\infty} \frac{x}{e^x-1} dx = \zeta(2)$}
+
+\color{black}
+\vspace{0.5cm}
+
+$f : x \mapsto \frac{x}{e^x-1}$ cont sur $]0, +\infty[$
+
+\vspace{0.3cm}
+
+$\bullet$ au $V(0)$ : $e^x - 1 \sim x$ donc $f(x) \sim 1$ \\
+$f$ se prolonge par cont en 0
+
+\vspace{0.3cm}
+
+$\bullet$ au $V(+\infty)$ : $f(x) \sim x e^{-x}$ donc $f(x) = o_{+\infty}\left(\frac{1}{x^2}\right)$ par CC ($x^2 f(x) \xrightarrow{x \to +\infty} 0$)
+
+\vspace{0.3cm}
+
+D'après le théorème de comparaison, or $x \mapsto \frac{1}{x^2}$ int $\in L^1([1, +\infty[)$ donc $f$ aussi.
+
+\vspace{0.3cm}
+
+Conclusion : $I$ CV
+
+\vspace{0.8cm}
+
+On sait que $\forall t \in ]-1, 1[, \quad \frac{1}{1-t} = \sum_{n=0}^{+\infty} t^n$
+
+\vspace{0.3cm}
+
+$\forall x \in ]0, +\infty[ : \quad f(x) = \frac{x e^{-x}}{1 - e^{-x}} = (x e^{-x}) \sum_{n=0}^{+\infty} (e^{-x})^n \quad (\text{car } e^{-x} \in ]0, 1[)$ \\
+\phantom{$\forall x \in ]0, +\infty[ : \quad f(x)$} $= \sum_{n=0}^{+\infty} x e^{-x(1+n)}$
+
+\vspace{0.3cm}
+
+Donc $I = \int_0^{+\infty} \sum_{n=0}^{+\infty} f_n(x) dx$ en posant $\forall n \in \mathbb{N}, \enspace f_n : x \mapsto x e^{-x(n+1)}$
+
+\vspace{0.3cm}
+
+a) $\forall n \in \mathbb{N}, \enspace f_n \in L^1([0, +\infty[), \enspace f_n(x) = o_{+\infty}\left(\frac{1}{x^2}\right) \enspace \forall n \in \mathbb{N}$ 
+
+
+b) $\forall x \in ]0, +\infty[, \enspace \sum_{n=0}^{+\infty} f_n(x) = f(x)$ vu avant 
+
+
+c) $\sum \int |f_n|$ CV ?
+
+\vspace{0.3cm}
+
+Soit $n \in \mathbb{N}, \quad \int_0^{+\infty} |f_n(x)| dx = \int_0^{+\infty} x e^{-x(n+1)} dx$
+
+\vspace{0.3cm}
+
+Par IPP : \\
+$u(x) = x \quad v'(x) = e^{-x(n+1)}$ \\
+$u'(x) = 1 \quad v(x) = \frac{e^{-x(n+1)}}{-(n+1)}$ \\
+$u(x)v(x) \xrightarrow[x \to 0]{x \to +\infty} 0$
+
+\vspace{0.3cm}
+
+$\int_0^{+\infty} |f_n(x)| dx = 0 - \int_0^{+\infty} \frac{e^{-x(n+1)}}{-(n+1)} dx$ \\
+\phantom{$\int_0^{+\infty} |f_n(x)| dx$} $= \frac{1}{n+1} \left[ \frac{e^{-x(n+1)}}{-(n+1)} \right]_0^{+\infty} = \frac{1}{(n+1)^2}$
+
+\vspace{0.3cm}
+
+Or $\sum \frac{1}{(n+1)^2}$ CV donc $\sum \int |f_n|$ CV.
+
+\vspace{0.8cm}
+
+Donc d'après le théorème d'int terme à terme, on a :
+\[ I = \int \sum f = \sum_{n=0}^{+\infty} \int_0^{+\infty} f_n(x) dx \]
+\[ I = \sum_{n=0}^{+\infty} \frac{1}{(n+1)^2} = \sum_{n=1}^{+\infty} \frac{1}{n^2} = \zeta(2) \]
+
+\vspace{0.5cm}
+
+Conclusion : \fbox{$I = \zeta(2)$}

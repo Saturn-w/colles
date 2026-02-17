@@ -1,0 +1,60 @@
+\subsection{Calculer $\lim_{n \to +\infty} \int_0^{+\infty} \frac{(\sin t)^{2n}}{t^2} dt$.}
+
+\color{black}
+\vspace{0.5cm}
+
+$\forall n \in \mathbb{N}^*, \quad f_n : t \mapsto \frac{(\sin t)^{2n}}{t^2}, \quad I = \mathbb{R}_+^*$
+
+\vspace{0.3cm}
+
+$\bullet$ a) $\forall n \ge 1, \quad f_n$ continue sur $\mathbb{R}_+^*$
+
+\vspace{0.3cm}
+
+$\bullet$ b) Soit $t > 0, \quad f_n(t) = \frac{(\sin t)^{2n}}{t^2} \xrightarrow[n \to +\infty]{} \begin{cases} 0 & \text{si } t \neq \frac{\pi}{2} [\pi] \\ \frac{1}{t^2} & \text{si } t = \frac{\pi}{2} [\pi] \end{cases}$
+
+\vspace{0.3cm}
+
+Posons $f : t \mapsto \begin{cases} 0 & \text{si } t \neq \pi/2 [\pi] \\ 1/t^2 & \text{si } t = \pi/2 [\pi] \end{cases}$
+
+\vspace{0.3cm}
+
+Rappel : $f$ cpmx sur $\mathbb{R}_+^*$. Donc sur tout segment de $I$.\\
+
+
+$f_n$ converge simplement vers $f$ sur $\mathbb{R}_+^*$
+
+\vspace{0.3cm}
+
+$\bullet$ c) Hypothèse de domination
+$\forall n \in \mathbb{N}^*, \forall t \in \mathbb{R}_+^*, \quad |f_n(t)| = \frac{(\sin t)^{2n}}{t^2} \le \begin{cases} \frac{1}{t^2} & \text{si } t \in [1, +\infty[ \\ 1 & \text{si } t \in ]0, 1[ \end{cases}$
+
+\vspace{0.3cm}
+
+Posons $\varphi : t \mapsto \begin{cases} 1 & \text{si } t \in ]0, 1] \\ \frac{1}{t^2} & \text{si } t \in ]1, +\infty[ \end{cases}$
+
+\vspace{0.3cm}
+
+$\varphi$ cpmx sur $\mathbb{R}_+^*$
+$\varphi$ intégrable en 0 car prolongeable par continuité.
+$\varphi \in L^1(\mathbb{R}_+, \mathbb{R}_+)$
+
+\vspace{0.8cm}
+
+D'après le théorème de convergence dominée :
+$\forall n \in \mathbb{N}^*, f_n \in L^1(\mathbb{R}_+^*), f \in L^1(\mathbb{R}_+^*)$.
+
+\vspace{0.3cm}
+
+\[ \lim_{n \to +\infty} \int_0^{+\infty} f_n(t) dt = \int_0^{+\infty} f(t) dt \]
+
+\vspace{0.3cm}
+
+Rem : $\int_0^{+\infty} f(t) dt = \lim_{X \to +\infty} \int_0^X f(t) dt$
+$f$ nulle sauf en un nbr fini de points sur tout segment.
+Donc $\int f(t) dt = 0$.
+
+\vspace{0.5cm}
+
+D'où :
+\[ \fbox{$\lim_{n \to +\infty} \int_0^{+\infty} \frac{(\sin t)^{2n}}{t^2} dt = 0$} \]

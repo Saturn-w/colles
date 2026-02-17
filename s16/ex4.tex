@@ -1,0 +1,80 @@
+\subsection{Soit $E = \mathcal{M}_n(\mathbb{R})$. On définit $\varphi(A, B) = \text{tr}(A^T B)$.}
+
+\color{black}
+\vspace{0.5cm}
+
+\subsubsection{Montrez que $\varphi$ est un produit scalaire sur $E$.}
+
+\noindent $\bullet \quad \forall (A, B) \in E, \quad \text{tr}(A^T B) = \text{tr}((A^T B)^T) = \text{tr}(B^T A)$ \\
+\noindent Donc $\varphi(A, B) = \varphi(B, A)$. \\
+\noindent $\varphi$ est symétrique.
+
+\vspace{0.3cm}
+
+\noindent $\bullet \quad$ Par linéarité de la trace et du produit matriciel, \\
+\noindent $\varphi$ est linéaire par rapport à sa 2e variable. Donc bilinéaire car symétrique.
+
+\vspace{0.3cm}
+
+\noindent $\bullet \quad \forall A \in E, \quad \varphi(A, A) = \text{tr}(A^T A) = \sum_{1 \le i,j \le n} a_{ij} a_{ij} = \sum_{1 \le i,j \le n} (a_{ij})^2$ \\
+\noindent Donc $\varphi(A, A) \ge 0$.
+
+\vspace{0.3cm}
+
+\noindent $\bullet \quad$ Soit $A \in E$ tel que $\varphi(A, A) = 0$. \\
+\noindent Alors $\sum_{1 \le i,j \le n} (a_{ij})^2 = 0$. \\
+\noindent Par somme de termes positifs : \\
+\noindent $\forall i,j \in \llbracket 1, n \rrbracket^2, \quad a_{ij} = 0$. \\
+\noindent Donc $A = 0_n$.
+
+\vspace{0.3cm}
+
+\noindent Donc \fbox{$\varphi$ est un produit scalaire de $E = \mathcal{M}_n(\mathbb{R})$}
+
+\subsubsection{Montrez que $\mathcal{A}_n(\mathbb{R}) = \mathcal{S}_n(\mathbb{R})^\perp$}
+
+\noindent On sait que $\mathcal{A}_n(\mathbb{R}) \oplus \mathcal{S}_n(\mathbb{R}) = \mathcal{M}_n(\mathbb{R})$.
+
+\vspace{0.3cm}
+
+\noindent $\forall A \in \mathcal{A}_n(\mathbb{R}), \enspace \forall S \in \mathcal{S}_n(\mathbb{R})$ \\
+\noindent $\varphi(A, S) = \text{tr}(A^T S) = -\text{tr}(AS) \quad$ car $A \in \mathcal{A}_n(\mathbb{R})$ \\
+\noindent \phantom{$\varphi(A, S)$} $= -\text{tr}(S^T A) \quad$ car $S \in \mathcal{S}_n(\mathbb{R})$ \\
+\noindent \phantom{$\varphi(A, S)$} $= -\varphi(A, S) \quad$ car $\varphi$ symétrique
+
+\vspace{0.3cm}
+
+\noindent Donc $\varphi(A, S) = 0$.
+
+\vspace{0.3cm}
+
+\noindent Donc $\mathcal{A}_n(\mathbb{R})$ et $\mathcal{S}_n(\mathbb{R})$ sont orthogonaux. \\
+\noindent De plus ils sont supplémentaires.
+
+\vspace{0.3cm}
+
+\noindent Donc \fbox{$\mathcal{A}_n(\mathbb{R}) = \mathcal{S}_n(\mathbb{R})^\perp$}
+
+\subsubsection{Soit $A = (a_{ij})_{1 \le i,j \le n} \in \mathcal{M}_n(\mathbb{R})$. \\
+Déterminer $\inf_{M \in \mathcal{S}_n(\mathbb{R})} \sum_{1 \le i,j \le n} (a_{ij} - m_{ij})^2$}
+
+\noindent On pose cette valeur $\alpha$.
+
+\vspace{0.3cm}
+
+\noindent $\alpha = \inf_{M \in \mathcal{S}_n(\mathbb{R})} \|A - M\|^2$ \\
+\noindent \phantom{$\alpha$} $= d(A, \mathcal{S}_n(\mathbb{R}))^2$ \\
+\noindent \phantom{$\alpha$} $= \|A - p_{\mathcal{S}_n(\mathbb{R})}(A)\|^2 = \|p_{\mathcal{A}_n(\mathbb{R})}(A)\|^2$
+
+\vspace{0.3cm}
+
+\noindent Or on sait que $A$ s'écrit :
+\[ A = \underbrace{\left( \frac{A+A^T}{2} \right)}_{\in \mathcal{S}_n(\mathbb{R})} + \underbrace{\left( \frac{A-A^T}{2} \right)}_{\in \mathcal{A}_n(\mathbb{R})} \]
+
+\vspace{0.3cm}
+
+\noindent Donc $p_{\mathcal{A}_n(\mathbb{R})}(A) = \frac{A-A^T}{2} = \left( \frac{a_{ij} - a_{ji}}{2} \right)_{1 \le i,j \le n}$
+
+\vspace{0.3cm}
+
+\noindent Donc \quad \fbox{$\alpha = \left\| \frac{A-A^T}{2} \right\|^2 = \sum_{1 \le i,j \le n} \left( \frac{a_{ij} - a_{ji}}{2} \right)^2$}

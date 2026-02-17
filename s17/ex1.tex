@@ -1,0 +1,52 @@
+\subsection{$f$ isométrie vectorielle $\iff f$ transforme une b.o.n en une b.o.n de $E$.}
+
+\color{black}
+\vspace{0.5cm}
+
+($\implies$)
+
+$f$ est une isométrie vectorielle. \\
+Soit $B = (e_1, \dots, e_n)$ une bon de $E$. \\
+Montrons que $(f(e_1), \dots, f(e_n))$ est une base de $E$.
+
+\vspace{0.3cm}
+
+$\forall i,j \in \llbracket 1, n \rrbracket^2, \quad (f(e_i) | f(e_j)) = (e_i | e_j) = \delta_{i,j}$ \\
+car $f \in \mathcal{O}(E)$
+
+\vspace{0.3cm}
+
+Donc $(f(e_1), \dots, f(e_n))$ est une famille orthonormée. \\
+Donc libre (vecteurs orthogonaux non nuls). \\
+De plus $\text{card}(f(e_1), \dots, f(e_n)) = n$. \\
+Donc c'est une base de $E$.
+
+\vspace{0.8cm}
+
+($\impliedby$)
+
+Soit $B$ une bon de $E$. \\
+$f(B)$ une bon de $E$.
+
+\vspace{0.3cm}
+
+Soit $x \in E, \quad x = \sum_{k=1}^n (x|e_k)e_k \quad$ et $\quad \|x\|^2 = \sum_{k=1}^n (x|e_k)^2$
+
+\vspace{0.3cm}
+
+$f \in \mathcal{L}(E)$ Donc $f(x) = \sum_{k=1}^n (x|e_k)f(e_k)$
+
+\vspace{0.3cm}
+
+D'après le théorème de Pythagore :
+\[ \|f(x)\|^2 = \sum_{k=1}^n \|(x|e_k)f(e_k)\|^2 = \sum_{k=1}^n (x|e_k)^2 \|f(e_k)\|^2 \]
+
+\vspace{0.2cm}
+
+Or $\|f(e_k)\| = 1$
+\[ = \|x\|^2 \]
+
+\vspace{0.5cm}
+
+Donc $\|f(x)\| = \|x\|$ \\
+Donc \fbox{$f \in \mathcal{O}(E)$}

@@ -1,0 +1,128 @@
+\subsection{Soit $\Gamma : x \mapsto \int_0^{+\infty} t^{x-1}e^{-t} dt$. }
+
+\color{black}
+\vspace{0.5cm}
+
+\subsubsection{Montrer que $\Gamma$ est continue sur $\mathbb{R}_+^*$}
+
+\noindent Posons $f(x,t) = t^{x-1}e^{-t}$
+\[ \forall x > 0, \quad \Gamma(x) = \int_0^{+\infty} f(x,t) dt \]
+
+\vspace{0.3cm}
+
+\noindent a) $t \mapsto f(x,t)$ continue sur $\mathbb{R}_+^*$
+
+\vspace{0.3cm}
+
+\noindent b) $\forall t > 0, \enspace x \mapsto f(x,t) = e^{(x-1)\ln(t)} e^{-t}$ continue sur $\mathbb{R}_+^*$
+
+\vspace{0.3cm}
+
+\noindent c) Hypothèse de domination :
+
+\vspace{0.3cm}
+
+\noindent Soit $[a, b]$ un segment quelconque de $\mathbb{R}_+^*$
+\noindent $x \in [a, b]$. Soit $t > 0$.
+\[ |e^{(x-1)\ln(t)} e^{-t}| \le \begin{cases} t^{b-1} e^{-t} & \text{si } t \ge 1, \enspace \ln(t) \ge 0 \\ t^{a-1} e^{-t} & \text{si } t \in ]0, 1[, \enspace \ln(t) < 0 \end{cases} \]
+
+\vspace{0.3cm}
+
+\noindent On pose $\varphi : t \mapsto \begin{cases} t^{a-1} e^{-t} & \text{si } t \in ]0, 1[ \\ t^{b-1} e^{-t} & \text{si } t \ge 1 \end{cases}$
+
+\vspace{0.3cm}
+
+\noindent $\bullet \enspace \varphi$ cpmx sur $\mathbb{R}_+^*$
+\noindent $\bullet \enspace \varphi(t) \sim_{t \to 0} t^{a-1} = \frac{1}{t^{1-a}}$ avec $1-a < 1$
+\noindent Donc $\varphi \in L^1(]0, 1[)$
+
+\vspace{0.3cm}
+
+\noindent $\bullet$ Au voisinage de $+\infty$ :
+\noindent $\varphi(t) = o\left(\frac{1}{t^2}\right)$ car $t^2 \times t^{b-1} e^{-t} \to 0$ par CC.
+\noindent Donc $\varphi \in L^1([1, +\infty[)$
+
+\vspace{0.3cm}
+
+\noindent Donc $\varphi \in L^1(\mathbb{R}_+^*)$
+
+\vspace{0.3cm}
+
+\noindent D'après le théorème de continuité des intégrales à paramètre :
+\noindent \fbox{$\Gamma$ est continue sur $\mathbb{R}_+^*$}
+
+\subsubsection{Montrer que $\Gamma$ est de classe $C^2$ sur $\mathbb{R}_+^*$}
+
+\noindent Posons $f : (x,t) \mapsto t^{x-1}e^{-t}$
+\[ \Gamma(x) = \int_0^{+\infty} f(x,t) dt \quad \forall x > 0 \]
+
+\vspace{0.3cm}
+
+\noindent a) $\forall x > 0, \enspace t \mapsto f(x,t)$ est continue, intégrable sur $\mathbb{R}_+^*$
+
+\vspace{0.3cm}
+
+\noindent b) $\forall t > 0, \enspace x \mapsto f(x,t) = e^{(x-1)\ln(t)} e^{-t}$ est $C^2$ sur $\mathbb{R}_+^*$
+\noindent $\forall x > 0$
+\[ t \mapsto \frac{\partial f}{\partial x}(x,t) = \ln(t) e^{(x-1)\ln(t)} e^{-t} \text{ continue sur } \mathbb{R}_+^* \]
+\[ t \mapsto \frac{\partial^2 f}{\partial x^2}(x,t) = (\ln t)^2 e^{(x-1)\ln(t)} e^{-t} \text{ continue sur } \mathbb{R}_+^* \]
+
+\vspace{0.3cm}
+
+\noindent c) Hypothèse de domination :
+
+\vspace{0.3cm}
+
+\noindent Soit $[a, b] \subset \mathbb{R}_+^*$
+\noindent $\forall x \in [a, b]$
+\noindent $\forall t > 0$
+\noindent $\forall k \in \llbracket 1, 2 \rrbracket$
+\[ \left| \frac{\partial^k f}{\partial x^k}(x,t) \right| = |\ln t|^k e^{(x-1)\ln t} e^{-t} \]
+\[ \le \begin{cases} |\ln t|^k t^{b-1} e^{-t} & \text{si } t \ge 1 \text{ car } \ln(t) \ge 0 \\ |\ln t|^k t^{a-1} e^{-t} & \text{si } t < 1 \text{ car } \ln(t) < 0 \end{cases} \]
+
+\vspace{0.3cm}
+
+\noindent On pose $\psi_k : t \mapsto \begin{cases} |\ln(t)|^k t^{a-1} e^{-t} & \text{si } t \in ]0, 1[ \\ |\ln(t)|^k t^{b-1} e^{-t} & \text{si } t \ge 1 \end{cases}$
+
+\vspace{0.3cm}
+
+\noindent Montrons que $\psi_k \in L^1(\mathbb{R}_+^*)$
+
+\vspace{0.3cm}
+
+\noindent $\rightarrow \psi_k$ continue par morceaux sur $\mathbb{R}_+^*$
+\noindent $\rightarrow$ Au $V(0)$ :
+\noindent $\psi_k(t) \sim_{t \to 0} |\ln(t)|^k t^{a-1} = \frac{|\ln(t)|^k}{t^{1-a}}$
+
+\vspace{0.3cm}
+
+\noindent Soit $\alpha \in ]1-a, 1[$
+\noindent $t^\alpha \psi_k(t) \sim t^{\alpha - (1-a)} |\ln(t)|^k$
+\noindent Par CC, $t^\alpha \psi_k(t) \to 0$
+
+\vspace{0.3cm}
+
+\noindent Donc $\psi_k = o\left(\frac{1}{t^\alpha}\right)$. Or $\alpha < 1$. Donc $t \mapsto \frac{1}{t^\alpha} \in L^1(]0, 1[)$.
+\noindent D'après le théorème de comparaison, $\psi_k$ est intégrable sur $]0, 1[$.
+
+\vspace{0.3cm}
+
+\noindent $\rightarrow$ Au $V(+\infty)$ :
+\noindent $\psi_k(t) = |\ln(t)|^k t^{b-1} e^{-t}$
+\noindent $t^2 \psi_k(t) = (\ln(t))^k e^{-t/2} \times t^{b+1} e^{-t/2} \to 0$ par CC.
+
+\vspace{0.3cm}
+
+\noindent Donc $\psi_k = o\left(\frac{1}{t^2}\right)$. $t \mapsto \frac{1}{t^2} \in L^1([1, +\infty[)$.
+\noindent Donc $\psi_k \in L^1([1, +\infty[)$.
+
+\vspace{0.3cm}
+
+\noindent Donc $\psi_k \in L^1(\mathbb{R}_+^*)$.
+
+\vspace{0.5cm}
+
+\noindent Donc d'après le théorème de Dérivation des intégrales à paramètre :
+\noindent $\Gamma$ est de classe $C^2$.
+\noindent Et $\forall k \in \llbracket 1, 2 \rrbracket, \enspace \forall x > 0$ :
+\[ \fbox{$\Gamma^{(k)}(x) = \int_0^{+\infty} (\ln t)^k t^{x-1} e^{-t} dt$} \]

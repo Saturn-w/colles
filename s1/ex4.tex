@@ -1,0 +1,60 @@
+
+
+% Partie Titre / Question en bleu
+\noindent \color{questionblue}
+\subsection{ Montrer que la famille des $(n^k)_n$ (avec $k \in \mathbb{N}$) est une famille libre dans $\mathbb{R}^{\mathbb{N}}$.}
+
+% Partie Réponse en noir
+\color{black}
+\vspace{0.4cm}
+
+\noindent Posons pour tout $k \in \mathbb{N}$, $u_k = (n^k)_{n \in \mathbb{N}}$ (c'est une suite).\\
+Montrons que $(u_k)_{k \in \mathbb{N}}$ est une famille libre.
+
+\vspace{0.3cm}
+
+\noindent Soit $N \in \mathbb{N}^*$. Montrons que $(u_0, \dots, u_N)$ est libre.
+
+\noindent Soit $(\lambda_0, \dots, \lambda_N) \in \mathbb{R}^{N+1}$ tel que :
+\[ \sum_{k=0}^N \lambda_k u_k = 0 \quad \text{(suite nulle)} \]
+\textit{(C'est-à-dire que pour tout $n$, la somme vaut 0).}
+
+\vspace{0.5cm}
+
+\noindent \textbf{(M1) Méthode polynômiale}
+
+\noindent On pose un polynôme $P = \sum_{k=0}^N \lambda_k X^k$.
+
+\noindent On a $\forall n \in \mathbb{N}, \quad P(n) = 0$.
+\noindent $P$ a une infinité de racines, donc $P$ est le polynôme nul.
+\[ P = 0_{\mathbb{K}[X]} \]
+\noindent Donc $\forall k, \quad \lambda_k = 0$.
+
+\vspace{0.5cm}
+
+\noindent \textbf{(M2) Méthode par l'absurde (asymptotique)}
+
+\noindent Si les $\lambda_k$ ne sont pas tous nuls, alors on pose :
+\[ k_0 = \max \{ k \in \llbracket 0, N \rrbracket \mid \lambda_k \neq 0 \} \]
+
+\noindent On a pour tout $n \in \mathbb{N}^*$ :
+\[ \lambda_0 + \lambda_1 n + \dots + \lambda_{k_0} n^{k_0} = 0 \]
+
+\noindent On divise par le terme prépondérant $n^{k_0}$ :
+\[ \frac{\lambda_0}{n^{k_0}} + \frac{\lambda_1}{n^{k_0-1}} + \dots + \lambda_{k_0} = 0 \]
+
+\noindent Par passage à la limite quand $n \to +\infty$, tous les termes tendent vers 0 sauf le dernier :
+\[ \lambda_{k_0} = 0 \]
+
+\noindent \textbf{Absurde} par construction (car on a supposé $\lambda_{k_0} \neq 0$).
+
+\vspace{0.5cm}
+
+\noindent Donc la famille des $(u_k)_{k \in \mathbb{N}}$ est une famille libre car :\\
+\noindent \fbox{
+    \begin{minipage}{\textwidth}
+        \centering
+        Toutes ses familles finies sont libres.
+    \end{minipage}
+}
+

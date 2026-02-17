@@ -1,0 +1,61 @@
+\subsection{Deux joueurs de football tirent chacun leur tour un penalty. Le premier qui marque \\
+a gagné. Le joueur qui commence a la probabilité $p_1$ de marquer à chaque tour et \\
+le second la probabilité $p_2$ (avec $p_1, p_2 \in ]0, 1[$). \\
+(a) Quelle est la probabilité que le premier joueur gagne ? \\
+(b) Montrer qu'il est quasi-certain que le jeu se termine. \\
+(c) Pour quelle(s) valeur(s) de $p_1$ existe-t-il une valeur de $p_2$ pour laquelle le jeu est équitable ?}
+
+\color{black}
+\vspace{0.5cm}
+
+\noindent \textbf{a) On pose $J_1$ : "le 1er joueur gagne"} \\
+\noindent $J_2$ : "le 2ème joueur gagne" \\
+\noindent $\forall n \in \mathbb{N}^*$, $B_n$ : "on marque le but au n-ième tour"
+
+\vspace{0.3cm}
+
+\noindent On a $J_1 = \bigcup_{n \text{ impair}} B_n = \bigcup_{k=0}^{+\infty} B_{2k+1}$ \\
+\noindent De même $J_2 = \bigcup_{n \text{ pair}} B_n = \bigcup_{k=1}^{+\infty} B_{2k}$
+
+\vspace{0.3cm}
+
+\noindent $\bullet$ Soit $k \in \mathbb{N}$, \\
+\noindent $P(B_{2k+1}) = (1-p_1)^k (1-p_2)^k p_1$ \\
+\noindent Par $\sigma$-additivité : $P(J_1) = \sum_{k=0}^{+\infty} P(B_{2k+1})$
+\[ = \sum_{k=0}^{+\infty} (1-p_1)^k (1-p_2)^k p_1 = \frac{p_1}{1 - (1-p_1)(1-p_2) } \]
+\[ = \frac{p_1}{p_1 + p_2 - p_1 p_2} \]
+
+\vspace{0.5cm}
+
+\noindent \textbf{b) - Soit $k \ge 1$} \\
+\noindent $P(B_{2k}) = (1-p_1)^k (1-p_2)^{k-1} p_2$ \\
+\noindent Par $\sigma$-additivité \quad $P(J_2) = \sum_{k=1}^{+\infty} (1-p_1)^k (1-p_2)^{k-1} p_2$
+\[ = (1-p_1) p_2 \frac{1}{1-(1-p_1)(1-p_2)} \]
+\[ = \frac{p_2 - p_1 p_2}{p_1 + p_2 - p_1 p_2} \]
+
+\vspace{0.3cm}
+
+\noindent Posons $T$ : "le jeu se termine" \\
+\noindent $T = J_1 \cup J_2$ \\
+\noindent $P(T) = P(J_1) + P(J_2) = \frac{p_1 + p_2 - p_1 p_2}{p_1 + p_2 - p_1 p_2} = 1$
+
+\vspace{0.3cm}
+
+\noindent Donc Il est quasi certain que le jeu se termine
+
+\vspace{0.5cm}
+
+\noindent \textbf{c) Pour un jeu équitable $P(J_1) = P(J_2)$} \\
+\noindent Donc \quad $p_1 = p_2 - p_1 p_2$ \\
+\noindent $p_1 (1 + p_2) = p_2$ \\
+\noindent $p_1 = \frac{p_2}{1 + p_2}$
+
+\vspace{0.3cm}
+
+\noindent On veut $p_1 \in ]0, 1[$ \\
+\noindent $0 < \frac{p_2}{1+p_2} < 1$, \quad On a \quad $p_2 = \frac{p_1}{1-p_1}$ \\
+\noindent $0 < \frac{p_1}{1-p_1} < 1 \iff 0 < p_1 < 1-p_1 \iff 0 < p_1 < \frac{1}{2}$
+
+\vspace{0.5cm}
+
+\noindent \fbox{$0 < p_1 < \frac{1}{2}$}

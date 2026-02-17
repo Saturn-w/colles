@@ -1,0 +1,42 @@
+\subsection{Démonstration de la Variance d'une loi de Poisson $X \sim \mathcal{P}(\lambda)$ .}
+
+\color{black}
+\vspace{0.5cm}
+Soit $X \sim \mathcal{P}(\lambda)$. On sait que $E(X)=\lambda$. \\ 
+Démontrer que $X^2$ est d'espérance finie et calculer $V(X)$
+\vspace{0.4cm}
+
+\noindent $X^2$ est d'espérance finie $\iff \sum k^2 P(X=k)$ ACV (CV car termes positifs) \\
+\noindent \phantom{$X^2$ est d'espérance finie} $\iff \sum k^2 \frac{\lambda^k}{k!} e^{-\lambda}$
+
+\vspace{0.3cm}
+
+\noindent On sait que $\forall x \in \mathbb{R}, \quad e^x = \sum_{k=0}^{+\infty} \frac{x^k}{k!}$
+
+\vspace{0.3cm}
+
+\noindent Par dérivation t à t d'une SE \quad $e^x = \sum_{k=1}^{+\infty} \frac{k x^{k-1}}{k!}$
+
+\vspace{0.3cm}
+
+\noindent On multiplie par $x$ et on redérive \quad $x e^x = \sum_{k=0}^{+\infty} \frac{k x^k}{k!}$ \\
+\noindent \phantom{On multiplie par $x$ et on redérive} $e^x(1+x) = \sum_{k=1}^{+\infty} \frac{k^2 x^{k-1}}{k!}$
+
+\vspace{0.3cm}
+
+\noindent Donc $\sum \frac{k^2}{k!} \lambda^k$ CV on en déduit que $X^2$ est d'espérance finie
+
+\vspace{0.3cm}
+
+\noindent et $E(X^2) = \sum_{k=0}^{+\infty} k^2 P(X=k) = \sum_{k=1}^{+\infty} \frac{k^2 \lambda^{k-1}}{k!} \times \lambda e^{-\lambda}$ \\
+\noindent \phantom{et $E(X^2)$} $= (e^\lambda(1+\lambda)) \lambda e^{-\lambda}$ \\
+\noindent \phantom{et $E(X^2)$} $= \lambda + \lambda^2$
+
+\vspace{0.8cm}
+
+\noindent D'après la formule de Koenig Huygens : \\
+\noindent $V(X) = E(X^2) - E(X)^2 = \lambda + \lambda^2 - \lambda^2 = \lambda$
+
+\vspace{0.5cm}
+
+\noindent Donc \fbox{$V(X) = \lambda$}

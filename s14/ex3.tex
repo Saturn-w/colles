@@ -1,0 +1,80 @@
+\subsection{On considère une variable aléatoire réelle discrète $X$ définie sur un espace proba- \\
+bilisé $(\Omega, A, P)$ telle que : \\
+$X(\Omega) = \mathbb{N}$ et $\forall k \in \mathbb{N}, P(X = k) = \frac{a^k}{(1 + a)^{k+1}}$ où $a > 0$ est fixé. \\
+On désigne par $Y$ une variable aléatoire indépendante de $X$, définie sur le même \\
+espace probabilisé, et suivant la même loi que $X$. \\
+On considère la variable aléatoire $Z = X + Y$. \\
+}
+
+\color{black}
+\vspace{0.5cm}
+
+\subsubsection{Montrer que X est bien une loi.}
+
+\noindent $\rightarrow \forall k \in \mathbb{N} \quad \alpha_k \ge 0$ \\
+\noindent $\rightarrow \sum_{k=0}^{+\infty} \alpha_k = \frac{1}{1+a} \sum_{k=0}^{+\infty} \left( \frac{a}{1+a} \right)^k = \frac{1}{1+a} \times \frac{1}{1 - \frac{a}{1+a}} = 1$
+
+\vspace{0.3cm}
+
+\noindent Série géométrique de raison $q = \frac{a}{1+a} \in ]0, 1[$
+
+\vspace{0.8cm}
+
+\subsubsection{Déterminer la loi de$Z$}
+
+\noindent $X, Y$ suivent la m loi et $X \perp Y$. Posons $Z = X + Y$ \\
+\noindent $\bullet$ $Z(\Omega) = \mathbb{N}$ \\
+\noindent $\bullet$ $\forall n \in \mathbb{N} \quad P(Z=n) = P(X+Y=n), \quad (X=k)_{k \in \mathbb{N}}$ SCE
+
+\vspace{0.3cm}
+
+\noindent $P(Z=n) = \sum_{k=0}^{+\infty} P(X=k, Y=n-k)$ \\
+\noindent \phantom{$P(Z=n)$} $= \sum_{k=0}^{+\infty} P(X=k) P(Y=n-k) \quad \text{car } X \perp Y$ \\
+\vspace{0.3cm}
+
+\noindent Or $P(Y=n-k)$ $= 0 \text{ si } n-k < 0 \text{ cad si } n < k$
+\vspace{0.3cm}
+
+\vspace{0.3cm}
+
+\noindent \phantom{$P(Z=n)$} $= \sum_{k=0}^{n} \frac{a^k}{(1+a)^{k+1}} \times \frac{a^{n-k}}{(1+a)^{n-k+1}} = \sum_{k=0}^{n} \frac{a^n}{(1+a)^{n+2}}$
+
+\vspace{0.3cm}
+
+\noindent \fbox{$P(Z=n) = (n+1) \frac{a^n}{(1+a)^{n+2}}$}
+
+\vspace{0.8cm}
+
+\subsubsection{Trouver l'espérance de la variable aléatoire $S = 1/(1 + Z)$}
+
+\noindent $S$ est d'espérance finie car $0 \le S \le 1$ ($S$ bornée) \\
+\noindent D'après la formule de transfert ($f: t \mapsto \frac{1}{1+t}$) :
+\[ E(S) = \sum_{n \in \mathbb{N}} f(n) P(Z=n) = \sum_{n=0}^{+\infty} \frac{1}{1+n} (n+1) \frac{a^n}{(1+a)^{n+2}} \]
+\[ = \frac{1}{(1+a)^2} \times \frac{1}{1 - \frac{a}{1+a}} = \frac{1}{1+a} \times \frac{1}{1+a-a} \]
+
+\vspace{0.3cm}
+
+\noindent \fbox{$E(S) = \frac{1}{1+a}$}
+ FIN QC
+\vspace{0.8cm}
+\subsubsection{ Déterminer $E\left(\frac{X}{1+Z}\right)$.}
+\fbox{!} $X$ et $Z$ ne sont pas indépendantes \quad $Z=X+Y$
+
+\noindent $X$ et $Y$ suivent la même loi \quad $X$ et $Y$ jouent un rôle symétrique \\
+\noindent remarque : $\frac{X}{1+z} \le \frac{z}{1+z} \le 1$ donc $\frac{X}{1+z}$ est bornée $E\left(\frac{X}{1+z}\right)$ existe
+
+\vspace{0.3cm}
+
+\noindent Donc \fbox{$E\left(\frac{X}{1+z}\right) = E\left(\frac{Y}{1+z}\right)$}
+
+\vspace{0.3cm}
+
+\noindent Donc $2 E\left(\frac{X}{1+z}\right) = E\left(\frac{z}{1+z}\right) = E\left(\frac{z+1-1}{1+z}\right) = E(1) - E\left(\frac{1}{1+z}\right)$ \\
+\noindent \phantom{Donc $2 E\left(\frac{X}{1+z}\right)$} $= 1 - \frac{1}{1+a} = \frac{a}{1+a}$
+
+\vspace{0.3cm}
+
+\noindent \fbox{$E\left(\frac{X}{1+z}\right) = \frac{a}{2(1+a)}$}
+
+\vspace{0.8cm}
+

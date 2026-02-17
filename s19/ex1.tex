@@ -1,0 +1,95 @@
+\subsection{Soit $(E) \enspace xy' - 2y = x^4$. Résoudre $(E)$ sur $\mathbb{R}_+^*$ et $\mathbb{R}_-^*$. \\ 
+Existe-t-il des solutions sur $\mathbb{R}$ ?}
+
+\color{black}
+\vspace{0.5cm}
+
+\noindent $\rightarrow$ On normalise : \\
+\noindent Sur $I_1 = \mathbb{R}_+^* \quad y' = \frac{2}{x}y + x^3$ \\
+\noindent Sur $I_2 = \mathbb{R}_-^* \quad y' = \frac{2}{x}y + x^3$
+
+\vspace{0.3cm}
+
+\noindent $\rightarrow$ Résolution sur $I_1$ : \\
+\noindent $(E_H) \quad y' = \frac{2}{x}y$
+
+\vspace{0.3cm}
+
+\noindent Posons $\varphi_0 : x \mapsto \exp(2\ln|x|) = |x|^2 = x^2$ \\
+\noindent $(\varphi_0)$ base de $Sol_{I_1}(E_H)$
+
+\vspace{0.3cm}
+
+\noindent Sol particulière (Méthode de variation de la constante) : \\
+\noindent $\varphi_p : x \mapsto \lambda(x) \varphi_0(x)$ \quad Avec $\lambda$ dérivable \\
+\noindent $\varphi_p$ sol de $(E) \Rightarrow \forall x > 0, \enspace \lambda'(x) \varphi_0(x) = x^3$ \\
+\noindent \phantom{$\varphi_p$ sol de $(E)$} $\Rightarrow \forall x > 0, \enspace \lambda'(x) = \frac{x^3}{x^2} = x$
+
+\vspace{0.3cm}
+
+\noindent $\Rightarrow \lambda(x) = \frac{x^2}{2} + C$
+
+\vspace{0.3cm}
+
+\noindent On choisit $C=0$. Donc $\varphi_p(x) = \frac{x^2}{2} x^2 = \frac{x^4}{2}$
+
+\vspace{0.3cm}
+
+\noindent Donc \quad $Sol_{I_1}(E) = \left\{ x \mapsto \lambda x^2 + \frac{x^4}{2}, \enspace \lambda \in \mathbb{R} \right\}$
+
+\vspace{0.3cm}
+
+\noindent De même $Sol_{I_2}(E) = \left\{ x \mapsto \alpha x^2 + \frac{x^4}{2}, \enspace \alpha \in \mathbb{R} \right\}$
+
+\vspace{0.8cm}
+
+\noindent \textbf{* Trouvons les solutions sur $\mathbb{R}$.}
+
+\vspace{0.3cm}
+
+\noindent \underline{Analyse} \\
+\noindent Soit $\varphi$ solution de $(E)$ sur $\mathbb{R}$. \\
+\noindent Donc $\varphi_{|\mathbb{R}_+^*}$ sol sur $\mathbb{R}_+^*$ et $\varphi_{|\mathbb{R}_-^*}$ sol sur $\mathbb{R}_-^*$
+
+\vspace{0.3cm}
+
+\noindent Donc $\exists (\lambda, \alpha) \in \mathbb{R}^2$ tq $x \mapsto \begin{cases} \lambda x^2 + \frac{x^4}{2} & \text{si } x > 0 \\ \alpha x^2 + \frac{x^4}{2} & \text{si } x < 0 \\ \varphi(0) & \text{si } x = 0 \end{cases}$
+
+\vspace{0.3cm}
+
+\noindent Or $\varphi$ est continue en 0 \\
+\noindent $\varphi(0) = \lim_{0^+} \varphi = \lim_{0^-} \varphi = 0$
+
+\vspace{0.3cm}
+
+\noindent On sait aussi que $\varphi$ dérivable en 0 \\
+\noindent MAIS donne aucune information sur $\alpha$ et $\lambda$.
+\[ \left( \begin{matrix} \forall x > 0, \enspace \varphi'(x) = 2\lambda x + 2x^3 \xrightarrow[0]{} 0 \\ \forall x < 0, \enspace \varphi'(x) = 2\alpha x + 2x^3 \xrightarrow[0]{} 0 \end{matrix} \right. \]
+
+\vspace{0.3cm}
+
+\noindent \underline{Synthèse} \\
+\noindent Posons $\varphi : x \mapsto \begin{cases} \lambda x^2 + \frac{x^4}{2} & \text{si } x > 0 \\ \alpha x^2 + \frac{x^4}{2} & \text{si } x < 0 \end{cases} \quad \lambda, \alpha \in \mathbb{R}$
+
+\vspace{0.3cm}
+
+\noindent $\rightarrow \varphi$ est bien continue et dérivable sur $\mathbb{R}$. \\
+\noindent (pas de problème en 0 pour la continuité) \\
+\noindent $\left( \lim_{x \to 0} \varphi'(x) = 0 \quad \text{théo sur la limite des dérivées} \right)$
+
+\vspace{0.3cm}
+
+\noindent $\rightarrow \varphi$ est solution de $(E)$ sur $\mathbb{R}_+^*$ et sur $\mathbb{R}_-^*$
+
+\vspace{0.3cm}
+
+\noindent $\rightarrow$ en $x=0$ \\
+\noindent $0 \times \varphi'(0) - 2 \varphi(0) = 0$
+
+\vspace{0.3cm}
+
+\noindent Donc $\varphi \in Sol_{\mathbb{R}}(E)$
+
+\vspace{0.5cm}
+
+\noindent \fbox{$Sol_{\mathbb{R}}(E) = \left\{ x \mapsto \begin{cases} \lambda x^2 + \frac{x^4}{2} & \text{si } x \ge 0 \\ \alpha x^2 + \frac{x^4}{2} & \text{si } x < 0 \end{cases}, \enspace (\lambda, \alpha) \in \mathbb{R}^2 \right\}$}

@@ -1,0 +1,41 @@
+\subsection{Si $f \in S(E)$, alors $f \in S^+(E) \iff Sp(f) \subset \mathbb{R}_+$}
+
+\color{black}
+\vspace{0.5cm}
+
+\textbf{($\implies$)} $f \in S^+(E)$ \\
+Soit $\lambda$ vap, $\lambda \in Sp(f)$ \\
+Donc $\exists x \neq 0, \quad$ tq $f(x) = \lambda x$
+
+\vspace{0.3cm}
+
+On sait que $(x | f(x)) \ge 0$ car $f \in S^+(E)$ \\
+Donc $\lambda (x | x) \ge 0$ \\
+Donc $\lambda \ge 0$
+
+\vspace{0.8cm}
+
+\textbf{($\impliedby$)} $Sp(f) \subset \mathbb{R}_+$ \\
+$f \in S(E)$ Donc $\exists B = (u_1, \dots, u_n)$ Bon de $E$ formée de \\
+vecteurs propres de $f$. D'après le théorème spectral :
+
+\vspace{0.3cm}
+
+$\forall k \in \llbracket 1, n \rrbracket, \quad \exists \lambda_k \in \mathbb{R}, \quad f(u_k) = \lambda_k u_k \quad , \quad \lambda_k \ge 0$
+
+\vspace{0.3cm}
+
+Soit $x \in E, \quad \exists! (x_1, \dots, x_n) \in \mathbb{R}^n$ \\
+tel que $x = \sum_{k=1}^n x_k u_k$
+
+\vspace{0.3cm}
+
+$f(x) = \sum_{k=1}^n x_k f(u_k) = \sum_{k=1}^n x_k \lambda_k u_k$
+
+\vspace{0.3cm}
+
+On obtient $(x | f(x)) = \sum_{k=1}^n x_k^2 \lambda_k \ge 0$
+
+\vspace{0.5cm}
+
+Donc \fbox{$f \in S^+(E)$}

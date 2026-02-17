@@ -1,0 +1,46 @@
+\subsection{Soit $a : \mathbb{R}_+ \to \mathbb{R}$ continue et intégrable. \\ 
+Établir que les solutions de l'équation différentielle $y' - a(t)y = 0$ sont bornées sur $\mathbb{R}_+$.}
+
+\color{black}
+\vspace{0.5cm}
+
+\noindent $\varphi_0 : t \longmapsto \exp\left( \int_0^t a(x) dx \right)$
+
+\vspace{0.3cm}
+
+\noindent $(E)$ est une équation différentielle linéaire du 1er ordre homogène
+
+\vspace{0.3cm}
+
+\noindent Donc $(\varphi_0)$ est une base de $Sol_{\mathbb{R}_+}(E)$
+
+\vspace{0.3cm}
+
+\noindent Soit $f \in Sol_{\mathbb{R}_+}(E)$
+
+\vspace{0.3cm}
+
+\noindent $\exists \lambda \in \mathbb{R}, \enspace f = \lambda \varphi_0$ \\
+\noindent $\forall t \in \mathbb{R}_+, \quad |f(t)| = \left| \lambda \exp\left( \int_0^t a(x) dx \right) \right|$ \\
+\noindent \phantom{$\forall t \in \mathbb{R}_+, \quad |f(t)|$} $= |\lambda| \exp\left( \int_0^t a(x) dx \right)$
+
+\vspace{0.3cm}
+
+\noindent $\forall t \in \mathbb{R}_+, \quad \int_0^t a(x) dx \le \int_0^t |a(x)| dx \le \int_0^{+\infty} |a(x)| dx$
+
+\vspace{0.3cm}
+
+\noindent car $a$ est intégrable sur $\mathbb{R}_+$ \\
+\noindent Donc $\int_0^{+\infty} |a(x)| dx$ CV
+
+\vspace{0.3cm}
+
+\noindent Or l'exponentielle est croissante sur $\mathbb{R}$
+
+\vspace{0.3cm}
+
+\noindent Donc $\exp\left( \int_0^t a(x) dx \right) \le \underbrace{\exp\left( \int_0^{+\infty} |a(x)| dx \right)}_{= cst}$
+
+\vspace{0.5cm}
+
+\noindent \fbox{Donc $f$ est bornée sur $\mathbb{R}$}

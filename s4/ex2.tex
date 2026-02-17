@@ -1,0 +1,28 @@
+\subsection{ Montrer que si $p$ projecteur alors $tr(p) = rg(p)$}
+
+\color{black}
+\vspace{0.5cm}
+
+\noindent $p$ projecteur Donc $Im p \oplus \ker(p) = E$
+
+\vspace{0.5cm}
+
+\noindent Posons $r = rg(p) = \dim(Im(p))$
+\noindent Soit $\mathcal{B} = (e_1, \dots, e_r, e_{r+1}, \dots, e_n)$ une base adaptée à cette décomposition.
+
+\vspace{0.5cm}
+
+\noindent Alors $mat_{\mathcal{B}}(p) = \left( \begin{array}{ccc|c} 1 & & 0 & \\ & \ddots & & 0 \\ 0 & & 1 & \\ \hline & 0 & & 0 \end{array} \right)$
+
+\vspace{0.3cm}
+
+\noindent $\forall j \in \llbracket 1, r \rrbracket, \quad e_j \in Im(p) \implies p(e_j) = e_j$
+\noindent $\forall j \in \llbracket r+1, n \rrbracket, \quad e_j \in \ker(p) \implies p(e_j) = 0$
+
+\vspace{0.5cm}
+
+\noindent $mat_{\mathcal{B}}(p) = \left( \begin{array}{c|c} I_r & 0 \\ \hline 0 & 0 \end{array} \right)$
+
+\vspace{0.5cm}
+
+\noindent Donc \quad \fbox{$tr(p) = r = rg(p)$}

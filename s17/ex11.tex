@@ -1,0 +1,42 @@
+\subsection{Montrer que si $A \in S_n(\mathbb{R})$ alors $(\text{Tr}A)^2 \le (rg A)\text{Tr}(A^2)$.}
+
+\color{black}
+\vspace{0.5cm}
+
+$A \in S_n(\mathbb{R})$ D'après le theo spectral $A$ est diagonalisable. \\
+$\exists P \in GL_n(\mathbb{R}), \quad P^{-1} AP = \begin{pmatrix} \lambda_1 & & \\ & \ddots & \\ & & \lambda_n \end{pmatrix} = D$
+
+\vspace{0.3cm}
+
+Posons $r = rg(A)$ \\
+On a $r = rg D$.
+
+\vspace{0.3cm}
+
+Quitte à renommer les vap, on suppose que $\lambda_1, \dots, \lambda_r$ non nuls.
+
+\vspace{0.3cm}
+
+On a donc : \\
+$(\text{tr} A)^2 = \left( \sum_{i=1}^r \lambda_i \right)^2$
+
+\vspace{0.3cm}
+
+$A^2 \sim D^2$ Donc $\text{tr} A^2 = \text{tr} D^2 = \sum_{i=1}^r \lambda_i^2$
+
+\vspace{0.3cm}
+
+Posons $X = \begin{pmatrix} \lambda_1 \\ \vdots \\ \lambda_r \end{pmatrix}$ et $Y = \begin{pmatrix} 1 \\ \vdots \\ 1 \end{pmatrix}$
+
+\vspace{0.3cm}
+
+D'après Cauchy Schwarz : \\
+$(X|Y)^2 \le \|X\|^2 \|Y\|^2$
+
+\vspace{0.3cm}
+
+$\left( \sum_{i=1}^r \lambda_i \right)^2 \le \sum_{i=1}^r \lambda_i^2 \times r$
+
+\vspace{0.5cm}
+
+Donc \fbox{$(\text{tr} A)^2 \le \text{tr} A^2 \text{ rang } A$}

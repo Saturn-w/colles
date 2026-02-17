@@ -1,0 +1,44 @@
+
+\subsection{Démonstration de la continuité croissante \\ 
+ Soit $(A_n)_{n \in \mathbb{N}}$ une suite d'événements, \\
+ montrer que $P(\bigcup_{n \in \mathbb{N}} A_n) = \lim_{N \to +\infty} P(\bigcup_{n=0}^N A_n)$ }
+
+\color{black}
+\vspace{0.5cm}
+
+\noindent Soit $(\Omega, \mathcal{A}, P)$ un espace probabilisé.
+\noindent Soit $(A_n)_{n \in \mathbb{N}}$ une famille dénombrable d'événements.
+
+\vspace{0.5cm}
+
+\noindent Posons $\forall N \in \mathbb{N}$, \quad $B_N = \bigcup_{k=0}^N A_k$
+
+\vspace{0.3cm}
+
+\noindent $\bullet$ On a $(B_N)$ une suite croissante d'événements.
+\noindent En effet, $\forall N \in \mathbb{N}$ :
+\[ B_{N+1} = \bigcup_{k=0}^{N+1} A_k = B_N \cup A_{N+1} \quad \text{donc} \quad B_N \subset B_{N+1} \]
+
+\vspace{0.3cm}
+
+\noindent $\bullet$ Montrons que $\bigcup_{N \in \mathbb{N}} B_N = \bigcup_{k \in \mathbb{N}} A_k$ par double inclusion :
+
+\vspace{0.2cm}
+
+\noindent $\rightarrow$ Soit $x \in \bigcup_{N \in \mathbb{N}} B_N$. 
+\noindent Il existe $n_0 \in \mathbb{N}$ tel que $x \in B_{n_0} = \bigcup_{k=0}^{n_0} A_k \subset \bigcup_{k \in \mathbb{N}} A_k$.
+
+\vspace{0.2cm}
+
+\noindent $\rightarrow$ Soit $x \in \bigcup_{k \in \mathbb{N}} A_k$. 
+\noindent Il existe $k_0 \in \mathbb{N}$ tel que $x \in A_{k_0} \subset B_{k_0}$, donc $x \in \bigcup_{N \in \mathbb{N}} B_N$.
+
+\vspace{0.5cm}
+
+\noindent Par propriété de continuité croissante (pour une suite croissante d'événements) :
+\[ P\left(\bigcup_{k \in \mathbb{N}} A_k\right) = P\left(\bigcup_{N \in \mathbb{N}} B_N\right) = \lim_{N \to +\infty} P(B_N) \]
+
+\vspace{0.5cm}
+
+\noindent D'où :
+\[ \fbox{$P\left(\bigcup_{n \in \mathbb{N}} A_n\right) = \lim_{N \to +\infty} P\left(\bigcup_{n=0}^N A_n\right)$} \]

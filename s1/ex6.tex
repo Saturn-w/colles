@@ -1,0 +1,62 @@
+
+% Partie Titre / Question en bleu
+\noindent \color{questionblue}
+\subsection{ Soit $n \in \mathbb{N}^*$. Montrer que \\
+$D_n(\mathbb{R}) = \text{Vect}(D^k, k \in \llbracket 0, n-1 \rrbracket)$ \\
+où $D = \begin{pmatrix} 1 & \dots & 0 \\ \vdots & \ddots & \vdots \\ 0 & \dots & n \end{pmatrix}$.}
+
+% Partie Réponse en noir
+\color{black}
+\vspace{0.4cm}
+
+\noindent \textbf{(M1)} \textbf{Montrons que $\{ D^k, k \in \llbracket 0, n-1 \rrbracket \}$ est une famille libre.}
+\\\noindent Soit $(\lambda_0, \dots, \lambda_{n-1}) \in \mathbb{R}^n$ tel que $\sum_{k=0}^{n-1} \lambda_k D^k = 0$.
+
+\noindent Posons $P = \sum_{k=0}^{n-1} \lambda_k X^k$.
+\[ P(D) = 0 \implies \begin{pmatrix} P(1) & & (0) \\ & \ddots & \\ (0) & & P(n) \end{pmatrix} = \begin{pmatrix} 0 & & \\ & \ddots & \\ & & 0 \end{pmatrix} \]
+
+\noindent \\Donc le polynôme a $n$ racines différentes $1, \dots, n$ et est de degré $n-1$.
+\noindent Donc c'est le polynôme nul. Et $\forall k \in \llbracket 0, n-1 \rrbracket, \lambda_k = 0$.
+\noindent Donc la famille est libre.
+
+\noindent $\rightarrow$ On a alors une famille libre de $n$ éléments de $D_n(\mathbb{R})$.
+Or $\dim(D_n(\mathbb{R})) = n$.
+\noindent Donc c'est une base.
+\[ \text{Donc } \quad \text{Vect}(D^k, k \in \llbracket 0, n-1 \rrbracket) = D_n(\mathbb{R}) \]
+
+\vspace{0.8cm}
+
+\noindent \textbf{(M2)} \textbf{On pose $F = \text{Vect}\{ D^k, k \in \llbracket 0, n-1 \rrbracket \}$.}
+\begin{itemize}
+    \item $\forall k \in \llbracket 0, n-1 \rrbracket, D^k \in D_n(\mathbb{R})$. Donc $F \subset D_n(\mathbb{R})$.
+    \item \textbf{Montrons que $\forall M \in D_n(\mathbb{R}), M \in F$.}
+\end{itemize}
+Soit $M = \begin{pmatrix} \alpha_1 & & 0 \\ & \ddots & \\ 0 & & \alpha_n \end{pmatrix} \in D_n(\mathbb{R})$.
+
+\noindent Montrons qu'il existe $(\lambda_0, \dots, \lambda_{n-1})$ tel que $M = \sum_{k=0}^{n-1} \lambda_k D^k$.
+\[ \text{càd } \begin{pmatrix} \alpha_1 & & \\ & \ddots & \\ & & \alpha_n \end{pmatrix} = \begin{pmatrix} \sum \lambda_k 1^k & & \\ & \ddots & \\ & & \sum \lambda_k n^k \end{pmatrix} \]
+
+\noindent Posons $\psi : \mathbb{R}_{n-1}[X] \longrightarrow \mathbb{R}^n, \quad P \longmapsto (P(1), \dots, P(n))$.
+\noindent C'est un isomorphisme (cours).
+
+\noindent Donc $\exists! P \in \mathbb{R}_{n-1}[X]$ tel que $(\alpha_1, \dots, \alpha_n) = (P(1), \dots, P(n)) = \psi(P)$.
+\\ \noindent Donc $M = \begin{pmatrix} P(1) & & \\ & \ddots & \\ & & P(n) \end{pmatrix} = P(D)$.
+
+\noindent Si on note $P = \sum_{k=0}^{n-1} \lambda_k X^k$, alors $M \in F$.
+\noindent Par double inclusion \fbox{$D_n(\mathbb{R}) = F$}.
+
+\vspace{0.8cm}
+
+\noindent \textbf{(M3)} \textbf{Soit $(L_1, \dots, L_n)$ la famille des polynômes d'interpolation de Lagrange associée à $(1, \dots, n)$.}
+
+\noindent Soit $k \in \llbracket 1, n \rrbracket$.
+\[ L_k(D) = \begin{pmatrix} L_k(1) & & (0) \\ & \ddots & \\ (0) & & L_k(n) \end{pmatrix} = \begin{pmatrix} 0 & & & \\ & 1 & & \\ & & \ddots & \\ & & & 0 \end{pmatrix} = E_{kk} \]
+
+\noindent $L_k(D)$ est un polynôme sur $D$, donc combinaison linéaire de $(D^0, \dots, D^{n-1})$.
+ \\ \noindent Donc $\forall k, E_{kk} \in F$.
+
+  \noindent Or $(E_{kk})_{k \in \llbracket 1, n \rrbracket}$ est une base de $D_n(\mathbb{R})$.
+ \\ \noindent Donc $D_n(\mathbb{R}) \subset F$.
+\\ \noindent Autre inclusion évidente.
+\\ \noindent Donc par double inclusion \fbox{$D_n(\mathbb{R}) = F$}.
+

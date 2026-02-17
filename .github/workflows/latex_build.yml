@@ -1,0 +1,38 @@
+name: Build and Deploy LaTeX Site
+on:
+  push:
+    branches:
+      - main
+      - master
+
+permissions:
+  contents: write
+
+jobs:
+  build_latex:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Compile LaTeX Files
+        uses: xu-cheng/latex-action@v3
+        with:
+          root_file: main_s*.tex
+          glob_root_file: true
+          # Optional: extra arguments to latexmk
+          args: -pdf -file-line-error -halt-on-error -interaction=nonstopmode
+
+      - name: Move PDFs to Root (if needed) & Prepare Site Directory
+        run: |
+          mkdir public
+          mv *.pdf public/
+          cp index.html public/
+          # Copy source files if you want them available, otherwise just PDFs
+          
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./public
+          force_orphan: true
