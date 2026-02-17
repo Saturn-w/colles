@@ -15,20 +15,25 @@ jobs:
       - name: Checkout Code
         uses: actions/checkout@v4
 
-      - name: Compile LaTeX Files
-        uses: xu-cheng/latex-action@v3
-        with:
-          root_file: main_s*.tex
-          glob_root_file: true
-          # Optional: extra arguments to latexmk
-          args: -pdf -file-line-error -halt-on-error -interaction=nonstopmode
+      - name: Compile All LaTeX Files
+        run: |
+          # Install basic LaTeX (texlive-full is huge, we use a smaller base)
+          sudo apt-get update
+          sudo apt-get install -y texlive-latex-extra texlive-fonts-recommended texlive-fonts-extra texlive-science
+          
+          # Compile all main_sX.tex files
+          for file in main_s*.tex; do
+            echo "Compiling $file..."
+            pdflatex -interaction=nonstopmode "$file"
+            # Run twice for TOC
+            pdflatex -interaction=nonstopmode "$file"
+          done
 
-      - name: Move PDFs to Root (if needed) & Prepare Site Directory
+      - name: Prepare Site Directory
         run: |
           mkdir public
-          mv *.pdf public/
+          mv *.pdf public/ || true
           cp index.html public/
-          # Copy source files if you want them available, otherwise just PDFs
           
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
