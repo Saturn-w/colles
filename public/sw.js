@@ -1,4 +1,4 @@
-const CACHE_NAME = 'colles-psi-v1';
+const CACHE_NAME = 'colles-psi-v2';
 const urlsToCache = [
   './',
   './index.html',

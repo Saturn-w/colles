@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>ntoine</title>
+    
+    <!-- PWA Setup -->
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#0f0f0f">
+    <link rel="apple-touch-icon" href="icon.png">
+    <link rel="icon" type="image/png" href="icon.png">
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Geist+Mono:wght@100..900&display=swap');
+
+        :root {
+            --bg-color: #0f0f0f;
+            --card-bg: #1a1a1a;
+            --border-color: #2a2a2a;
+            --text-main: #e0e0e0;
+            --text-dim: #888;
+            --accent: #3498db;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            font-family: 'Geist Mono', monospace;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        header {
+            padding: 10px 40px 0px 40px;
+            flex-shrink: 0;
+        }
+
+        .site-title {
+            font-family: 'Geist Mono', monospace;
+            font-size: 18px;
+            font-weight: 400;
+            color: #fff;
+            letter-spacing: -0.5px;
+            padding-bottom: 8px;
+            border-bottom: 1px solid var(--border-color);
+            text-align: center;
+            line-height: 1;
+        }
+        
+        .main-layout {
+            display: flex;
+            width: 100%;
+            flex-grow: 1;
+            overflow: hidden;
+        }
+
+        /* Panneau de gauche - 40% */
+        .left-panel {
+            flex: 4;
+            min-width: 0;
+            padding: 40px;
+            overflow-y: auto;
+            box-sizing: border-box;
+            border-right: 1px solid var(--border-color);
+        }
+
+        /* Panneau de droite - 60% */
+        .right-panel {
+            flex: 6;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+            background-color: #000;
+        }
+
+        /* PDF Viewer */
+        #pdf-viewer {
+            flex: 1;
+            width: 100%;
+            height: 100%;
+            border: none;
+            display: none;
+        }
+
+        #empty-state {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-dim);
+            text-align: center;
+        }
+
+        #empty-state .icon {
+            font-size: 48px;
+            margin-bottom: 20px;
+            opacity: 0.3;
+        }
+
+        #empty-state .text {
+            font-size: 14px;
+        }
+
+        /* Toolbar gauche */
+        .toolbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+        }
+
+        .category-title {
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--text-main);
+            font-weight: bold;
+        }
+
+        #search-input {
+            background: transparent;
+            border: none;
+            border-bottom: 1px solid #333;
+            color: var(--text-dim);
+            padding: 5px 0;
+            width: 150px;
+            font-family: inherit;
+            outline: none;
+            font-size: 13px;
+            text-align: right;
+        }
+
+        /* --- Tree View --- */
+        ul { list-style: none; padding-left: 0; margin: 0; }
+        ul ul { padding-left: 20px; display: none; border-left: 1px solid var(--border-color); margin-left: 7px; }
+        ul ul.open { display: block; }
+        li { margin: 10px 0; }
+
+        .row { 
+            display: flex; 
+            align-items: center; 
+            padding: 10px 15px; 
+            border-radius: 6px; 
+            cursor: pointer; 
+            user-select: none; 
+            color: var(--text-dim); 
+            transition: all 0.2s ease;
+            white-space: nowrap;
+            overflow: hidden;
+        }
+        .row.is-folder:hover { background-color: rgba(255, 255, 255, 0.05); color: var(--text-main); }
+        
+        .row.is-file { 
+            background-color: var(--card-bg); 
+            border: 1px solid var(--border-color); 
+            padding: 18px 20px; 
+            color: var(--text-main); 
+        }
+        .row.is-file:hover { background-color: #222; border-color: #444; transform: translateY(-2px); }
+        .row.is-file.selected { border-color: var(--accent); background-color: rgba(52, 152, 219, 0.1); }
+        .row a { text-decoration: none; color: inherit; display: flex; align-items: center; width: 100%; overflow: hidden; }
+        
+        .toggle { 
+            margin-right: 12px; 
+            color: var(--accent); 
+            font-weight: bold; 
+            width: 25px; 
+            text-align: center; 
+            flex-shrink: 0;
+        }
+        .name { 
+            font-size: 15px; 
+            text-overflow: ellipsis; 
+            overflow: hidden; 
+            flex-grow: 1; 
+        }
+        .is-folder .name { color: var(--text-main); font-weight: bold; }
+        .meta { margin-left: auto; font-size: 11px; opacity: 0.5; }
+
+        /* --- Mobile Responsive --- */
+        @media (max-width: 900px) {
+            body { overflow: auto; height: auto; }
+            .main-layout { flex-direction: column; height: auto; }
+            .left-panel { flex: none; width: 100%; border-right: none; border-bottom: 1px solid var(--border-color); padding: 20px; }
+            .right-panel { flex: none; width: 100%; height: 400px; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="site-title">ntoine</div>
+    </header>
+
+    <div class="main-layout">
+        
+        <div class="left-panel">
+            <div class="toolbar">
+                <div class="category-title">Documents</div>
+                <input type="text" id="search-input" placeholder="Rechercher">
+            </div>
+            <div id="file-tree"></div>
+            <div id="empty" style="display:none; color: var(--text-dim);">Aucun fichier trouvé.</div>
+        </div>
+
+        <div class="right-panel">
+            <div id="empty-state">
+                <div class="icon">📄</div>
+                <div class="text">Sélectionnez un PDF pour l'afficher</div>
+            </div>
+            <embed id="pdf-viewer" type="application/pdf">
+        </div>
+
+    </div>
+
+    <script>
+        let allFiles = [];
+
+        async function loadFiles() {
+            try {
+                const response = await fetch('files.json');
+                allFiles = await response.json();
+                renderTree(allFiles);
+            } catch (error) { console.error('Erreur:', error); }
+        }
+
+        function buildTreeStructure(files) {
+            const root = {};
+            files.forEach(file => {
+                const parts = file.path.split('/');
+                let currentLevel = root;
+                parts.forEach((part, index) => {
+                    const isFile = index === parts.length - 1;
+                    if (!currentLevel[part]) {
+                        currentLevel[part] = isFile ? { type: 'file', data: file } : { type: 'folder', children: {} };
+                    }
+                    if (!isFile) currentLevel = currentLevel[part].children;
+                });
+            });
+            return root;
+        }
+
+        function createTreeHTML(treeNode) {
+            const ul = document.createElement('ul');
+            const keys = Object.keys(treeNode).sort((a, b) => {
+                const typeA = treeNode[a].type;
+                const typeB = treeNode[b].type;
+                if (typeA === typeB) return a.localeCompare(b);
+                return typeA === 'folder' ? -1 : 1;
+            });
+            keys.forEach(key => {
+                const item = treeNode[key];
+                const li = document.createElement('li');
+                const row = document.createElement('div');
+                if (item.type === 'folder') {
+                    row.className = 'row is-folder';
+                    row.innerHTML = `<span class="toggle">[+]</span><span class="name">${key}</span>`;
+                    li.appendChild(row);
+                    const childrenContainer = createTreeHTML(item.children);
+                    li.appendChild(childrenContainer);
+                    row.onclick = (e) => {
+                        e.stopPropagation();
+                        childrenContainer.classList.toggle('open');
+                        row.querySelector('.toggle').textContent = childrenContainer.classList.contains('open') ? '[-]' : '[+]';
+                    };
+                } else {
+                    row.className = 'row is-file';
+                    const fileData = item.data;
+                    const fileUrl = `pdfs/${fileData.path.split('/').map(encodeURIComponent).join('/')}`;
+                    row.innerHTML = `<span class="toggle" style="opacity:0"></span><span class="name">${key}</span><span class="meta">${fileData.size}</span>`;
+                    row.onclick = () => openPDF(fileUrl, key);
+                    li.appendChild(row);
+                }
+                ul.appendChild(li);
+            });
+            return ul;
+        }
+
+        function renderTree(files) {
+            const treeContainer = document.getElementById('file-tree');
+            treeContainer.innerHTML = '';
+            if (files.length === 0) { document.getElementById('empty').style.display = 'block'; return; }
+            const domTree = createTreeHTML(buildTreeStructure(files));
+            domTree.classList.add('open');
+            treeContainer.appendChild(domTree);
+        }
+
+        let selectedRow = null;
+
+        function openPDF(url, name) {
+            const viewer = document.getElementById('pdf-viewer');
+            const emptyState = document.getElementById('empty-state');
+            
+            viewer.src = url;
+            viewer.style.display = 'block';
+            emptyState.style.display = 'none';
+
+            if (selectedRow) {
+                selectedRow.classList.remove('selected');
+            }
+            event.currentTarget.classList.add('selected');
+            selectedRow = event.currentTarget;
+        }
+
+        document.getElementById('search-input').addEventListener('input', (e) => {
+            const term = e.target.value.toLowerCase();
+            renderTree(allFiles.filter(f => f.name.toLowerCase().includes(term)));
+        });
+
+        loadFiles();
+
+        // --- PWA Service Worker Registration ---
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('sw.js')
+                    .then(reg => console.log('SW registered'))
+                    .catch(err => console.log('SW error', err));
+            });
+        }
+    </script>
+</body>
+</html>
