@@ -4,8 +4,20 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Questions de Cours - PSI</title>
+    <meta name="description" content="Recueil de questions de cours (colles) pour la classe préparatoire PSI">
     
+    <!-- PWA Metadata -->
     <meta name="theme-color" content="#0f0f0f">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="Colles PSI">
+    
+    <!-- Manifest -->
+    <link rel="manifest" href="manifest.json">
+    
+    <!-- Icons -->
+    <link rel="icon" type="image/svg+xml" href="icon.svg">
+    <link rel="apple-touch-icon" href="icon.svg">
 
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Geist+Mono:wght@100..900&display=swap');
@@ -399,6 +411,52 @@
                     }
                 }
             });
+        });
+
+        // PWA Service Worker Registration
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('sw.js')
+                    .then(registration => {
+                        console.log('✓ Service Worker enregistré:', registration.scope);
+                    })
+                    .catch(error => {
+                        console.log('✗ Erreur Service Worker:', error);
+                    });
+            });
+        }
+
+        // PWA Install Prompt
+        let deferredPrompt;
+        window.addEventListener('beforeinstallprompt', (e) => {
+            e.preventDefault();
+            deferredPrompt = e;
+            
+            // Créer un bouton d'installation
+            const installBtn = document.createElement('div');
+            installBtn.innerHTML = `
+                <div style="position: fixed; bottom: 20px; right: 20px; background: var(--accent); color: white; padding: 15px 25px; border-radius: 8px; cursor: pointer; font-size: 14px; box-shadow: 0 4px 12px rgba(52, 152, 219, 0.4); z-index: 1000; display: flex; align-items: center; gap: 10px;">
+                    <span>📱</span>
+                    <span>Installer l'app</span>
+                </div>
+            `;
+            
+            installBtn.addEventListener('click', async () => {
+                if (deferredPrompt) {
+                    deferredPrompt.prompt();
+                    const { outcome } = await deferredPrompt.userChoice;
+                    console.log(`Installation ${outcome}`);
+                    deferredPrompt = null;
+                    document.body.removeChild(installBtn);
+                }
+            });
+            
+            document.body.appendChild(installBtn);
+        });
+
+        // Confirmation d'installation
+        window.addEventListener('appinstalled', () => {
+            console.log('✓ PWA installée avec succès!');
         });
     </script>
 </body>

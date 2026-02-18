@@ -1,0 +1,20 @@
+<svg width="512" height="512" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background -->
+  <rect width="512" height="512" fill="#0f0f0f" rx="100"/>
+  
+  <!-- Document icon -->
+  <rect x="140" y="100" width="232" height="312" fill="#3498db" rx="15"/>
+  <rect x="140" y="100" width="232" height="80" fill="#2980b9" rx="15"/>
+  <path d="M 372 100 L 372 180 Q 372 180 350 180 L 350 100 Z" fill="#1a1a1a" opacity="0.3"/>
+  
+  <!-- Text lines -->
+  <line x1="180" y1="220" x2="332" y2="220" stroke="#e0e0e0" stroke-width="8" stroke-linecap="round"/>
+  <line x1="180" y1="250" x2="332" y2="250" stroke="#e0e0e0" stroke-width="8" stroke-linecap="round"/>
+  <line x1="180" y1="280" x2="280" y2="280" stroke="#e0e0e0" stroke-width="8" stroke-linecap="round"/>
+  
+  <!-- Math symbols -->
+  <text x="256" y="360" font-family="serif" font-size="80" fill="#e0e0e0" text-anchor="middle" font-style="italic">∫</text>
+  
+  <!-- Label PSI -->
+  <text x="256" y="150" font-family="monospace" font-size="40" font-weight="bold" fill="#fff" text-anchor="middle">PSI</text>
+</svg>
