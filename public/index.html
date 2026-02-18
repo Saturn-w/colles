@@ -134,12 +134,7 @@
         
         /* Toolbar */
         .toolbar {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
             margin-bottom: 30px;
-            flex-wrap: wrap;
-            gap: 15px;
         }
 
         .category-title {
@@ -148,30 +143,6 @@
             letter-spacing: 2px;
             color: var(--text-main);
             font-weight: bold;
-        }
-
-        .toolbar-right {
-            display: flex;
-            gap: 10px;
-            align-items: center;
-        }
-
-        #search-input {
-            background: transparent;
-            border: none;
-            border-bottom: 1px solid #333;
-            color: var(--text-dim);
-            padding: 5px 0;
-            width: 150px;
-            font-family: inherit;
-            outline: none;
-            font-size: 13px;
-            text-align: right;
-        }
-
-        #search-input:focus {
-            border-bottom-color: var(--accent);
-            color: var(--text-main);
         }
 
         /* Random Exercise Display */
@@ -461,20 +432,7 @@
                 padding: 15px 20px;
             }
 
-            .toolbar {
-                flex-direction: column;
-                align-items: flex-start;
-            }
 
-            .toolbar-right {
-                width: 100%;
-                justify-content: space-between;
-            }
-
-            #search-input {
-                width: 100%;
-                text-align: left;
-            }
 
             .row {
                 padding: 15px;
@@ -519,9 +477,6 @@
         <div class="left-panel">
             <div class="toolbar">
                 <div class="category-title">Documents</div>
-                <div class="toolbar-right">
-                    <input type="text" id="search-input" placeholder="Rechercher">
-                </div>
             </div>
             
             <!-- Document complet -->
@@ -858,7 +813,6 @@
             });
             
             if (uncompletedExercises.length === 0) {
-                showNotification('🎉 Félicitations ! Tu as terminé tous les exercices !');
                 document.getElementById('random-display').innerHTML = `
                     <div class="random-week">Félicitations ! 🎉</div>
                     <div class="random-exercise">Tous les exercices sont faits !</div>
@@ -876,65 +830,7 @@
                 <div class="random-week">Semaine ${random.week.number}</div>
                 <div class="random-exercise">${random.exercise.toUpperCase()}</div>
             `;
-            
-            showNotification(`🎲 Exercice tiré: Semaine ${random.week.number} - ${random.exercise.toUpperCase()}`);
         }
-
-        function showNotification(message) {
-            const notification = document.createElement('div');
-            notification.style.cssText = `
-                position: fixed;
-                top: 20px;
-                right: 20px;
-                background: var(--accent);
-                color: white;
-                padding: 15px 20px;
-                border-radius: 8px;
-                font-size: 14px;
-                box-shadow: 0 4px 12px rgba(0,0,0,0.3);
-                z-index: 10000;
-                animation: slideIn 0.3s ease;
-            `;
-            notification.textContent = message;
-            document.body.appendChild(notification);
-            
-            setTimeout(() => {
-                notification.style.animation = 'slideOut 0.3s ease';
-                setTimeout(() => document.body.removeChild(notification), 300);
-            }, 3000);
-        }
-
-        // Animations
-        const style = document.createElement('style');
-        style.textContent = `
-            @keyframes slideIn {
-                from { transform: translateX(400px); opacity: 0; }
-                to { transform: translateX(0); opacity: 1; }
-            }
-            @keyframes slideOut {
-                from { transform: translateX(0); opacity: 1; }
-                to { transform: translateX(400px); opacity: 0; }
-            }
-        `;
-        document.head.appendChild(style);
-
-        // --- Recherche ---
-        document.getElementById('search-input').addEventListener('input', (e) => {
-            const term = e.target.value.toLowerCase();
-            const items = document.querySelectorAll('#weeks-list > li');
-            
-            items.forEach(item => {
-                const nameEl = item.querySelector('.name');
-                if (nameEl) {
-                    const name = nameEl.textContent.toLowerCase();
-                    if (name.includes(term)) {
-                        item.style.display = 'block';
-                    } else {
-                        item.style.display = 'none';
-                    }
-                }
-            });
-        });
 
         // --- Bouton aléatoire ---
         document.getElementById('random-btn').addEventListener('click', openRandomExercise);

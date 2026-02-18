@@ -50,6 +50,24 @@
 % Hyperref chargé en dernier
 \usepackage{hyperref}
 \hypersetup{hidelinks}
+
+% Définir les symboles Unicode pour les bookmarks PDF
+\pdfstringdefDisableCommands{%
+  \def\int{∫}%
+  \def\sum{∑}%
+  \def\prod{∏}%
+  \def\infty{∞}%
+  \def\partial{∂}%
+  \def\leq{≤}%
+  \def\geq{≥}%
+  \def\neq{≠}%
+  \def\approx{≈}%
+  \def\times{×}%
+  \def\cdot{·}%
+  \def\mathbb#1{#1}%
+  \def\mathcal#1{#1}%
+  \def\vec#1{#1}%
+}
 \begin{document}
 
 \title{Semaine 13 - Espaces probabilisés\\

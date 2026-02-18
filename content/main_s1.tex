@@ -5,6 +5,7 @@
 \usepackage{xcolor}
 \usepackage[margin=2.5cm]{geometry}
 \usepackage{fancybox}
+\usepackage{hyperref} % Pour rendre la table des matières cliquable
 \usepackage{needspace}
 
 \usepackage{tocloft}
@@ -19,6 +20,25 @@
 \definecolor{questionblue}{RGB}{0, 0, 205}
 
 %cache les rectangles rouge sde sliens
+\hypersetup{hidelinks}
+
+% Définir les symboles Unicode pour les bookmarks PDF
+\pdfstringdefDisableCommands{%
+  \def\int{∫}%
+  \def\sum{∑}%
+  \def\prod{∏}%
+  \def\infty{∞}%
+  \def\partial{∂}%
+  \def\leq{≤}%
+  \def\geq{≥}%
+  \def\neq{≠}%
+  \def\approx{≈}%
+  \def\times{×}%
+  \def\cdot{·}%
+  \def\mathbb#1{#1}%
+  \def\mathcal#1{#1}%
+  \def\vec#1{#1}%
+}
 
 % Sécurité : Définit l'espace nécessaire AVANT chaque titre
 \newcommand{\sectionbreak}{\needspace{6\baselineskip}}
