@@ -39,6 +39,7 @@ jobs:
           
           # Move PDFs to public/pdfs directory
           cd ..
+          mkdir -p public/pdfs
           mv content/*.pdf public/pdfs/
 
       - name: Verify Deployment Files
