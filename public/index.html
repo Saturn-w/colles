@@ -90,26 +90,71 @@
             height: fit-content;
         }
 
-        /* Progress Bar */
-        .progress-container {
-            padding: 15px;
+        /* Collapsible Sections */
+        .collapsible-section {
             background: var(--card-bg);
             border-radius: 8px;
             border: 1px solid var(--border-color);
+            overflow: hidden;
         }
 
+        .collapsible-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px;
+            cursor: pointer;
+            user-select: none;
+            transition: background 0.2s ease;
+        }
+
+        .collapsible-header:hover {
+            background: rgba(255, 255, 255, 0.02);
+        }
+
+        .collapsible-title {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .collapse-arrow {
+            font-size: 12px;
+            color: var(--text-dim);
+            transition: transform 0.2s ease;
+        }
+
+        .collapse-arrow.open {
+            transform: rotate(90deg);
+        }
+
+        .collapsible-label {
+            font-size: 12px;
+            color: var(--text-dim);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .collapsible-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+        }
+
+        .collapsible-content.open {
+            max-height: 500px;
+        }
+
+        .collapsible-inner {
+            padding: 0 15px 15px 15px;
+        }
+
+        /* Progress Bar */
         .progress-header {
             display: flex;
             justify-content: space-between;
             align-items: center;
             margin-bottom: 10px;
-        }
-
-        .progress-label {
-            font-size: 12px;
-            color: var(--text-dim);
-            text-transform: uppercase;
-            letter-spacing: 1px;
         }
 
         .progress-stats {
@@ -210,24 +255,9 @@
         }
 
         /* Checklist Panel */
-        .checklist-container {
-            padding: 20px;
-            background: var(--card-bg);
-            border-radius: 8px;
-            border: 1px solid var(--border-color);
-            max-height: 500px;
+        .checklist-content {
+            max-height: 400px;
             overflow-y: auto;
-        }
-
-        .checklist-header {
-            font-size: 12px;
-            color: var(--text-dim);
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            margin-bottom: 15px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
         }
 
         .checklist-week {
@@ -445,23 +475,23 @@
 
         /* Scrollbar */
         body::-webkit-scrollbar,
-        .checklist-container::-webkit-scrollbar {
+        .checklist-content::-webkit-scrollbar {
             width: 8px;
         }
 
         body::-webkit-scrollbar-track,
-        .checklist-container::-webkit-scrollbar-track {
+        .checklist-content::-webkit-scrollbar-track {
             background: var(--bg-color);
         }
 
         body::-webkit-scrollbar-thumb,
-        .checklist-container::-webkit-scrollbar-thumb {
+        .checklist-content::-webkit-scrollbar-thumb {
             background: var(--border-color);
             border-radius: 4px;
         }
 
         body::-webkit-scrollbar-thumb:hover,
-        .checklist-container::-webkit-scrollbar-thumb:hover {
+        .checklist-content::-webkit-scrollbar-thumb:hover {
             background: #444;
         }
     </style>
@@ -502,14 +532,21 @@
 
         <!-- Right Panel - Progress, Random Exercise, Checklist -->
         <div class="right-panel">
-            <!-- Progress Bar -->
-            <div class="progress-container">
-                <div class="progress-header">
-                    <span class="progress-label">Progression</span>
+            <!-- Progress Bar - Collapsible -->
+            <div class="collapsible-section">
+                <div class="collapsible-header" onclick="toggleCollapse('progress')">
+                    <div class="collapsible-title">
+                        <span class="collapse-arrow" id="progress-arrow">▶</span>
+                        <span class="collapsible-label">Progression</span>
+                    </div>
                     <span class="progress-stats" id="progress-stats">0 / 0 (0%)</span>
                 </div>
-                <div class="progress-bar">
-                    <div class="progress-fill" id="progress-fill"></div>
+                <div class="collapsible-content" id="progress-content">
+                    <div class="collapsible-inner">
+                        <div class="progress-bar">
+                            <div class="progress-fill" id="progress-fill"></div>
+                        </div>
+                    </div>
                 </div>
             </div>
 
@@ -526,14 +563,21 @@
                 </button>
             </div>
 
-            <!-- Checklist -->
-            <div class="checklist-container">
-                <div class="checklist-header">
-                    <span>📝 Révisions</span>
+            <!-- Checklist - Collapsible -->
+            <div class="collapsible-section">
+                <div class="collapsible-header" onclick="toggleCollapse('checklist')">
+                    <div class="collapsible-title">
+                        <span class="collapse-arrow" id="checklist-arrow">▶</span>
+                        <span class="collapsible-label">Révisions</span>
+                    </div>
                     <span id="review-count">0 à réviser</span>
                 </div>
-                <div id="checklist-content">
-                    <!-- Généré dynamiquement par JavaScript -->
+                <div class="collapsible-content" id="checklist-content-wrapper">
+                    <div class="collapsible-inner">
+                        <div class="checklist-content" id="checklist-content">
+                            <!-- Généré dynamiquement par JavaScript -->
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -547,6 +591,20 @@
         // --- État de l'application ---
         let exercisesData = null;
         let progressData = {};
+
+        // --- Collapse functionality ---
+        function toggleCollapse(section) {
+            const content = document.getElementById(`${section}-content-wrapper`) || document.getElementById(`${section}-content`);
+            const arrow = document.getElementById(`${section}-arrow`);
+            
+            if (content.classList.contains('open')) {
+                content.classList.remove('open');
+                arrow.classList.remove('open');
+            } else {
+                content.classList.add('open');
+                arrow.classList.add('open');
+            }
+        }
 
         // --- Chargement des données ---
         async function loadExercisesData() {
