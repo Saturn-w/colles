@@ -530,26 +530,8 @@
             </ul>
         </div>
 
-        <!-- Right Panel - Progress, Random Exercise, Checklist -->
+        <!-- Right Panel - Random Exercise, Checklist, Progress -->
         <div class="right-panel">
-            <!-- Progress Bar - Collapsible -->
-            <div class="collapsible-section">
-                <div class="collapsible-header" onclick="toggleCollapse('progress')">
-                    <div class="collapsible-title">
-                        <span class="collapse-arrow" id="progress-arrow">▶</span>
-                        <span class="collapsible-label">Progression</span>
-                    </div>
-                    <span class="progress-stats" id="progress-stats">0 / 0 (0%)</span>
-                </div>
-                <div class="collapsible-content" id="progress-content">
-                    <div class="collapsible-inner">
-                        <div class="progress-bar">
-                            <div class="progress-fill" id="progress-fill"></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
             <!-- Random Exercise -->
             <div class="random-container">
                 <div class="random-header">🎲 Exercice aléatoire</div>
@@ -576,6 +558,24 @@
                     <div class="collapsible-inner">
                         <div class="checklist-content" id="checklist-content">
                             <!-- Généré dynamiquement par JavaScript -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Progress Bar - Collapsible -->
+            <div class="collapsible-section">
+                <div class="collapsible-header" onclick="toggleCollapse('progress')">
+                    <div class="collapsible-title">
+                        <span class="collapse-arrow" id="progress-arrow">▶</span>
+                        <span class="collapsible-label">Progression</span>
+                    </div>
+                    <span class="progress-stats" id="progress-stats">0 / 0 (0%)</span>
+                </div>
+                <div class="collapsible-content" id="progress-content">
+                    <div class="collapsible-inner">
+                        <div class="progress-bar">
+                            <div class="progress-fill" id="progress-fill"></div>
                         </div>
                     </div>
                 </div>
