@@ -42,6 +42,7 @@ jobs:
           cp manifest.json public/
           cp sw.js public/
           cp icon.svg public/
+          cp exercises.json public/
           
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3

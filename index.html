@@ -29,7 +29,10 @@
             --text-main: #e0e0e0;
             --text-dim: #888;
             --accent: #3498db;
+            --success: #27ae60;
         }
+
+        * { box-sizing: border-box; }
 
         body {
             background-color: var(--bg-color);
@@ -57,6 +60,49 @@
             text-align: center;
             line-height: 1;
         }
+
+        /* Progress Bar */
+        .progress-container {
+            margin: 20px 40px;
+            padding: 15px;
+            background: var(--card-bg);
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+        }
+
+        .progress-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
+        .progress-label {
+            font-size: 12px;
+            color: var(--text-dim);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .progress-stats {
+            font-size: 14px;
+            color: var(--accent);
+            font-weight: bold;
+        }
+
+        .progress-bar {
+            height: 8px;
+            background: var(--border-color);
+            border-radius: 4px;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--accent), var(--success));
+            transition: width 0.3s ease;
+            width: 0%;
+        }
         
         .container {
             max-width: 900px;
@@ -72,6 +118,8 @@
             justify-content: space-between;
             align-items: center;
             margin-bottom: 30px;
+            flex-wrap: wrap;
+            gap: 15px;
         }
 
         .category-title {
@@ -82,13 +130,19 @@
             font-weight: bold;
         }
 
+        .toolbar-right {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+
         #search-input {
             background: transparent;
             border: none;
             border-bottom: 1px solid #333;
             color: var(--text-dim);
             padding: 5px 0;
-            width: 200px;
+            width: 150px;
             font-family: inherit;
             outline: none;
             font-size: 13px;
@@ -98,6 +152,32 @@
         #search-input:focus {
             border-bottom-color: var(--accent);
             color: var(--text-main);
+        }
+
+        /* Random Button */
+        .random-btn {
+            background: var(--accent);
+            color: white;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-family: inherit;
+            font-size: 13px;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.2s ease;
+        }
+
+        .random-btn:hover {
+            background: #2980b9;
+            transform: translateY(-2px);
+        }
+
+        .random-btn:active {
+            transform: translateY(0);
         }
 
         /* Liste des documents */
@@ -119,7 +199,6 @@
             cursor: pointer; 
             user-select: none; 
             transition: all 0.2s ease;
-            white-space: nowrap;
             overflow: hidden;
             background-color: var(--card-bg); 
             border: 1px solid var(--border-color); 
@@ -134,6 +213,11 @@
         
         .row:active { 
             transform: translateY(0); 
+        }
+
+        .row.completed {
+            border-color: var(--success);
+            background: rgba(39, 174, 96, 0.1);
         }
 
         .row.main-doc {
@@ -151,7 +235,7 @@
             color: inherit; 
             display: flex; 
             align-items: center; 
-            width: 100%; 
+            flex-grow: 1;
             overflow: hidden; 
         }
         
@@ -179,6 +263,37 @@
             text-transform: uppercase;
         }
 
+        /* Checkbox */
+        .checkbox {
+            margin-left: 10px;
+            flex-shrink: 0;
+            width: 20px;
+            height: 20px;
+            border: 2px solid var(--border-color);
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .checkbox:hover {
+            border-color: var(--accent);
+        }
+
+        .checkbox.checked {
+            background: var(--success);
+            border-color: var(--success);
+        }
+
+        .checkbox.checked::after {
+            content: '✓';
+            color: white;
+            font-size: 14px;
+            font-weight: bold;
+        }
+
         .section-title {
             font-size: 12px;
             text-transform: uppercase;
@@ -190,6 +305,48 @@
 
         .section-title:first-child {
             margin-top: 0;
+        }
+
+        /* Week Details */
+        .week-details {
+            display: none;
+            padding: 10px 20px 10px 50px;
+        }
+
+        .week-details.open {
+            display: block;
+        }
+
+        .exercise-item {
+            display: flex;
+            align-items: center;
+            padding: 10px 15px;
+            background: rgba(255, 255, 255, 0.02);
+            border-radius: 4px;
+            margin: 5px 0;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .exercise-item:hover {
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        .exercise-item a {
+            flex-grow: 1;
+            text-decoration: none;
+            color: inherit;
+            font-size: 14px;
+        }
+
+        .toggle-arrow {
+            margin-right: 10px;
+            transition: transform 0.2s ease;
+            color: var(--accent);
+        }
+
+        .toggle-arrow.open {
+            transform: rotate(90deg);
         }
 
         footer {
@@ -209,10 +366,18 @@
                 padding: 15px 20px;
             }
 
+            .progress-container {
+                margin: 15px 20px;
+            }
+
             .toolbar {
                 flex-direction: column;
-                gap: 15px;
                 align-items: flex-start;
+            }
+
+            .toolbar-right {
+                width: 100%;
+                justify-content: space-between;
             }
 
             #search-input {
@@ -229,7 +394,7 @@
             }
         }
 
-        /* Scrollbar styling */
+        /* Scrollbar */
         body::-webkit-scrollbar {
             width: 8px;
         }
@@ -254,10 +419,27 @@
         <div class="site-title">Questions de Cours - PSI</div>
     </header>
 
+    <!-- Progress Bar -->
+    <div class="progress-container">
+        <div class="progress-header">
+            <span class="progress-label">Progression</span>
+            <span class="progress-stats" id="progress-stats">0 / 0 (0%)</span>
+        </div>
+        <div class="progress-bar">
+            <div class="progress-fill" id="progress-fill"></div>
+        </div>
+    </div>
+
     <div class="container">
         <div class="toolbar">
             <div class="category-title">Documents</div>
-            <input type="text" id="search-input" placeholder="Rechercher">
+            <div class="toolbar-right">
+                <button class="random-btn" id="random-btn">
+                    <span>🎲</span>
+                    <span>Exercice aléatoire</span>
+                </button>
+                <input type="text" id="search-input" placeholder="Rechercher">
+            </div>
         </div>
         
         <!-- Document complet -->
@@ -274,119 +456,10 @@
             </li>
         </ul>
 
-        <!-- Semaines par ordre décroissant -->
+        <!-- Semaines avec exercices -->
         <div class="section-title">📖 Semaines individuelles</div>
         <ul id="weeks-list">
-            <li>
-                <a href="main_s19.pdf" target="_blank">
-                    <div class="row">
-                        <span class="icon">📄</span>
-                        <span class="name">Semaine 19 - Équations Différentielles</span>
-                    </div>
-                </a>
-            </li>
-            <li>
-                <a href="main_s18.pdf" target="_blank">
-                    <div class="row">
-                        <span class="icon">📄</span>
-                        <span class="name">Semaine 18 - Intégration sur un intervalle quelconque</span>
-                    </div>
-                </a>
-            </li>
-            <li>
-                <a href="main_s17.pdf" target="_blank">
-                    <div class="row">
-                        <span class="icon">📄</span>
-                        <span class="name">Semaine 17 - Espaces préhilbertiens (2)</span>
-                    </div>
-                </a>
-            </li>
-            <li>
-                <a href="main_s16.pdf" target="_blank">
-                    <div class="row">
-                        <span class="icon">📄</span>
-                        <span class="name">Semaine 16 - Espaces préhilbertiens (1)</span>
-                    </div>
-                </a>
-            </li>
-            <li>
-                <a href="main_s15.pdf" target="_blank">
-                    <div class="row">
-                        <span class="icon">📄</span>
-                        <span class="name">Semaine 15 - Variables aléatoires discrètes (2)</span>
-                    </div>
-                </a>
-            </li>
-            <li>
-                <a href="main_s14.pdf" target="_blank">
-                    <div class="row">
-                        <span class="icon">📄</span>
-                        <span class="name">Semaine 14 - Variables aléatoires discrètes (1)</span>
-                    </div>
-                </a>
-            </li>
-            <li>
-                <a href="main_s13.pdf" target="_blank">
-                    <div class="row">
-                        <span class="icon">📄</span>
-                        <span class="name">Semaine 13 - Espaces probabilisés</span>
-                    </div>
-                </a>
-            </li>
-            <li>
-                <a href="main_s12.pdf" target="_blank">
-                    <div class="row">
-                        <span class="icon">📄</span>
-                        <span class="name">Semaine 12 - Séries entières</span>
-                    </div>
-                </a>
-            </li>
-            <li>
-                <div class="row" style="opacity: 0.3; cursor: default; pointer-events: none;">
-                    <span class="icon">⋯</span>
-                    <span class="name">Semaines 6-11 (non disponibles)</span>
-                </div>
-            </li>
-            <li>
-                <a href="main_s5.pdf" target="_blank">
-                    <div class="row">
-                        <span class="icon">📄</span>
-                        <span class="name">Semaine 5 - Fonctions vectorielles</span>
-                    </div>
-                </a>
-            </li>
-            <li>
-                <a href="main_s4.pdf" target="_blank">
-                    <div class="row">
-                        <span class="icon">📄</span>
-                        <span class="name">Semaine 4 - Algèbre linéaire (Partie 2 suite)</span>
-                    </div>
-                </a>
-            </li>
-            <li>
-                <a href="main_s3.pdf" target="_blank">
-                    <div class="row">
-                        <span class="icon">📄</span>
-                        <span class="name">Semaine 3 - Algèbre linéaire (Partie 2)</span>
-                    </div>
-                </a>
-            </li>
-            <li>
-                <a href="main_s2.pdf" target="_blank">
-                    <div class="row">
-                        <span class="icon">📄</span>
-                        <span class="name">Semaine 2 - Suites et séries numériques</span>
-                    </div>
-                </a>
-            </li>
-            <li>
-                <a href="main_s1.pdf" target="_blank">
-                    <div class="row">
-                        <span class="icon">📄</span>
-                        <span class="name">Semaine 1 - Algèbre linéaire (Partie 1)</span>
-                    </div>
-                </a>
-            </li>
+            <!-- Généré dynamiquement par JavaScript -->
         </ul>
     </div>
 
@@ -395,10 +468,239 @@
     </footer>
 
     <script>
-        // Recherche simple
+        // --- État de l'application ---
+        let exercisesData = null;
+        let progressData = {};
+
+        // --- Chargement des données ---
+        async function loadExercisesData() {
+            try {
+                const response = await fetch('exercises.json');
+                exercisesData = await response.json();
+                loadProgress();
+                renderWeeks();
+                updateProgressBar();
+            } catch (error) {
+                console.error('Erreur chargement exercices:', error);
+            }
+        }
+
+        // --- Gestion de la progression (localStorage) ---
+        function loadProgress() {
+            const saved = localStorage.getItem('colles-progress');
+            if (saved) {
+                progressData = JSON.parse(saved);
+            }
+        }
+
+        function saveProgress() {
+            localStorage.setItem('colles-progress', JSON.stringify(progressData));
+            updateProgressBar();
+        }
+
+        function toggleExercise(weekId, exerciseId) {
+            const key = `${weekId}_${exerciseId}`;
+            progressData[key] = !progressData[key];
+            saveProgress();
+            renderWeeks();
+        }
+
+        function isExerciseCompleted(weekId, exerciseId) {
+            return !!progressData[`${weekId}_${exerciseId}`];
+        }
+
+        function updateProgressBar() {
+            if (!exercisesData) return;
+            
+            let total = 0;
+            let completed = 0;
+            
+            exercisesData.weeks.forEach(week => {
+                week.exercises.forEach(ex => {
+                    total++;
+                    if (isExerciseCompleted(week.id, ex)) {
+                        completed++;
+                    }
+                });
+            });
+            
+            const percentage = total > 0 ? Math.round((completed / total) * 100) : 0;
+            
+            document.getElementById('progress-stats').textContent = 
+                `${completed} / ${total} (${percentage}%)`;
+            document.getElementById('progress-fill').style.width = `${percentage}%`;
+        }
+
+        // --- Affichage des semaines ---
+        function renderWeeks() {
+            if (!exercisesData) return;
+            
+            const weeksList = document.getElementById('weeks-list');
+            weeksList.innerHTML = '';
+            
+            // Ordre décroissant
+            const sortedWeeks = [...exercisesData.weeks].reverse();
+            
+            sortedWeeks.forEach(week => {
+                const li = document.createElement('li');
+                
+                // Compter les exercices terminés
+                const completedCount = week.exercises.filter(ex => 
+                    isExerciseCompleted(week.id, ex)
+                ).length;
+                const totalCount = week.exercises.length;
+                const allCompleted = completedCount === totalCount;
+                
+                // Ligne principale de la semaine
+                const weekRow = document.createElement('div');
+                weekRow.className = `row ${allCompleted ? 'completed' : ''}`;
+                weekRow.innerHTML = `
+                    <span class="toggle-arrow" data-week="${week.id}">▶</span>
+                    <a href="main_s${week.number}.pdf" target="_blank" onclick="event.stopPropagation()">
+                        <span class="icon">📄</span>
+                        <span class="name">Semaine ${week.number} - ${week.title}</span>
+                    </a>
+                    <span style="font-size: 12px; color: var(--text-dim); margin: 0 10px;">
+                        ${completedCount}/${totalCount}
+                    </span>
+                `;
+                
+                // Toggle des détails
+                weekRow.addEventListener('click', (e) => {
+                    if (e.target.tagName !== 'A') {
+                        toggleWeekDetails(week.id);
+                    }
+                });
+                
+                li.appendChild(weekRow);
+                
+                // Détails des exercices
+                const details = document.createElement('div');
+                details.className = 'week-details';
+                details.id = `details-${week.id}`;
+                
+                week.exercises.forEach(ex => {
+                    const exItem = document.createElement('div');
+                    exItem.className = 'exercise-item';
+                    const completed = isExerciseCompleted(week.id, ex);
+                    
+                    exItem.innerHTML = `
+                        <a href="main_s${week.number}.pdf" target="_blank">
+                            <span style="opacity: 0.7;">└</span> ${ex.charAt(0).toUpperCase() + ex.slice(1)}
+                        </a>
+                        <div class="checkbox ${completed ? 'checked' : ''}" 
+                             data-week="${week.id}" 
+                             data-exercise="${ex}"></div>
+                    `;
+                    
+                    // Event pour la checkbox
+                    const checkbox = exItem.querySelector('.checkbox');
+                    checkbox.addEventListener('click', (e) => {
+                        e.stopPropagation();
+                        toggleExercise(week.id, ex);
+                    });
+                    
+                    details.appendChild(exItem);
+                });
+                
+                li.appendChild(details);
+                weeksList.appendChild(li);
+            });
+        }
+
+        function toggleWeekDetails(weekId) {
+            const details = document.getElementById(`details-${weekId}`);
+            const arrow = document.querySelector(`[data-week="${weekId}"]`);
+            
+            if (details.classList.contains('open')) {
+                details.classList.remove('open');
+                arrow.classList.remove('open');
+            } else {
+                details.classList.add('open');
+                arrow.classList.add('open');
+            }
+        }
+
+        // --- Mode révision aléatoire ---
+        function openRandomExercise() {
+            if (!exercisesData) return;
+            
+            // Récupérer tous les exercices NON terminés
+            const uncompletedExercises = [];
+            
+            exercisesData.weeks.forEach(week => {
+                week.exercises.forEach(ex => {
+                    if (!isExerciseCompleted(week.id, ex)) {
+                        uncompletedExercises.push({
+                            week: week,
+                            exercise: ex
+                        });
+                    }
+                });
+            });
+            
+            if (uncompletedExercises.length === 0) {
+                alert('🎉 Félicitations ! Tu as terminé tous les exercices !');
+                return;
+            }
+            
+            // Choisir un exercice aléatoire
+            const random = uncompletedExercises[
+                Math.floor(Math.random() * uncompletedExercises.length)
+            ];
+            
+            // Ouvrir le PDF
+            const url = `main_s${random.week.number}.pdf`;
+            window.open(url, '_blank');
+            
+            // Afficher une notification
+            showNotification(
+                `🎲 Exercice aléatoire: Semaine ${random.week.number} - ${random.exercise.toUpperCase()}`
+            );
+        }
+
+        function showNotification(message) {
+            const notification = document.createElement('div');
+            notification.style.cssText = `
+                position: fixed;
+                top: 20px;
+                right: 20px;
+                background: var(--accent);
+                color: white;
+                padding: 15px 20px;
+                border-radius: 8px;
+                font-size: 14px;
+                box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+                z-index: 10000;
+                animation: slideIn 0.3s ease;
+            `;
+            notification.textContent = message;
+            document.body.appendChild(notification);
+            
+            setTimeout(() => {
+                notification.style.animation = 'slideOut 0.3s ease';
+                setTimeout(() => document.body.removeChild(notification), 300);
+            }, 3000);
+        }
+
+        // Animations
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes slideIn {
+                from { transform: translateX(400px); opacity: 0; }
+                to { transform: translateX(0); opacity: 1; }
+            }
+            @keyframes slideOut {
+                from { transform: translateX(0); opacity: 1; }
+                to { transform: translateX(400px); opacity: 0; }
+            }
+        `;
+        document.head.appendChild(style);
+
+        // --- Recherche ---
         document.getElementById('search-input').addEventListener('input', (e) => {
             const term = e.target.value.toLowerCase();
-            const items = document.querySelectorAll('#weeks-list li');
+            const items = document.querySelectorAll('#weeks-list > li');
             
             items.forEach(item => {
                 const nameEl = item.querySelector('.name');
@@ -413,7 +715,10 @@
             });
         });
 
-        // PWA Service Worker Registration
+        // --- Bouton aléatoire ---
+        document.getElementById('random-btn').addEventListener('click', openRandomExercise);
+
+        // --- PWA Service Worker Registration ---
         if ('serviceWorker' in navigator) {
             window.addEventListener('load', () => {
                 navigator.serviceWorker.register('sw.js')
@@ -426,13 +731,12 @@
             });
         }
 
-        // PWA Install Prompt
+        // --- PWA Install Prompt ---
         let deferredPrompt;
         window.addEventListener('beforeinstallprompt', (e) => {
             e.preventDefault();
             deferredPrompt = e;
             
-            // Créer un bouton d'installation
             const installBtn = document.createElement('div');
             installBtn.innerHTML = `
                 <div style="position: fixed; bottom: 20px; right: 20px; background: var(--accent); color: white; padding: 15px 25px; border-radius: 8px; cursor: pointer; font-size: 14px; box-shadow: 0 4px 12px rgba(52, 152, 219, 0.4); z-index: 1000; display: flex; align-items: center; gap: 10px;">
@@ -454,10 +758,12 @@
             document.body.appendChild(installBtn);
         });
 
-        // Confirmation d'installation
         window.addEventListener('appinstalled', () => {
             console.log('✓ PWA installée avec succès!');
         });
+
+        // --- Initialisation ---
+        loadExercisesData();
     </script>
 </body>
 </html>
