@@ -67,6 +67,14 @@
 \renewcommand{\thesubsection}{\arabic{subsection}}
 \setcounter{tocdepth}{2}
 
+% En-têtes avec fancyhdr
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{} % Efface tous les en-têtes et pieds de page
+\fancyhead[L]{Semaine 1 - Algèbre linéaire - première partie}
+\fancyfoot[C]{\thepage} % Numéro de page au centre en bas
+\renewcommand{\headrulewidth}{0pt} % Pas de ligne de séparation
+
 % Hyperref chargé en dernier
 \usepackage{hyperref}
 \hypersetup{hidelinks}
