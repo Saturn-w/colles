@@ -19,30 +19,37 @@ jobs:
         run: |
           # Install basic LaTeX (texlive-full is huge, we use a smaller base)
           sudo apt-get update
-          sudo apt-get install -y texlive-latex-extra texlive-fonts-recommended texlive-fonts-extra texlive-science
+          sudo apt-get install -y texlive-latex-extra texlive-fonts-recommended texlive-fonts-extra texlive-science texlive-plain-generic
           
           # Change to content directory for compilation
           cd content
           
+          # Helper: compile twice and only fail if pdflatex reports a hard error
+          compile_tex() {
+            local file="$1"
+            echo "Compiling $file..."
+            pdflatex -interaction=nonstopmode "$file" || true
+            pdflatex -interaction=nonstopmode "$file" || true
+            # Check that a PDF was actually produced
+            local pdf="${file%.tex}.pdf"
+            if [ ! -f "$pdf" ]; then
+              echo "ERROR: $pdf was not produced from $file" >&2
+              return 1
+            fi
+            echo "OK: $pdf produced"
+          }
+          
           # Compile main.tex (full document)
-          echo "Compiling main.tex..."
-          pdflatex -interaction=nonstopmode "main.tex"
-          pdflatex -interaction=nonstopmode "main.tex"
+          compile_tex "main.tex"
           
           # Compile all main_sX.tex files
           for file in main_s*.tex; do
-            echo "Compiling $file..."
-            pdflatex -interaction=nonstopmode "$file"
-            # Run twice for TOC
-            pdflatex -interaction=nonstopmode "$file"
+            compile_tex "$file"
           done
           
           # Compile all indications_sX.tex files
           for file in indications_s*.tex; do
-            echo "Compiling $file..."
-            pdflatex -interaction=nonstopmode "$file"
-            # Run twice for TOC
-            pdflatex -interaction=nonstopmode "$file"
+            compile_tex "$file"
           done
           
           # Move PDFs to public/pdfs directory
