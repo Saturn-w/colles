@@ -1,0 +1,166 @@
+\documentclass[a4paper,11pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath, amssymb, stmaryrd}
+\usepackage{xcolor}
+\usepackage[margin=2.5cm]{geometry}
+\usepackage{fancybox}
+\usepackage{needspace}
+
+\usepackage{tocloft}
+\setlength{\cftbeforesecskip}{0.9cm}
+\setlength{\cftbeforesubsecskip}{0.05cm}
+
+\usepackage[nobottomtitles*]{titlesec}
+\renewcommand{\bottomtitlespace}{2cm}
+
+\definecolor{questionblue}{RGB}{0, 0, 205}
+
+\pdfstringdefDisableCommands{%
+  \def\int{∫}%
+  \def\sum{∑}%
+  \def\prod{∏}%
+  \def\infty{∞}%
+  \def\partial{∂}%
+  \def\leq{≤}%
+  \def\geq{≥}%
+  \def\neq{≠}%
+  \def\approx{≈}%
+  \def\times{×}%
+  \def\cdot{·}%
+  \def\mathbb#1{#1}%
+  \def\mathcal#1{#1}%
+  \def\vec#1{#1}%
+}
+
+\newcommand{\sectionbreak}{\needspace{6\baselineskip}}
+\newcommand{\subsectionbreak}{\needspace{10\baselineskip}}
+\newcommand{\subsubsectionbreak}{\needspace{5\baselineskip}}
+
+\titleformat{\section}
+  {\normalfont\Large\bfseries\color{black}}{\thesection}{1em}{}
+\titleformat{\subsection}
+  {\normalfont\large\bfseries\color{questionblue}}{\thesubsection}{1em}{}
+\renewcommand{\thesubsubsection}{\alph{subsubsection})}
+\titleformat{\subsubsection}
+  {\normalfont\large\bfseries\color{questionblue}}{\thesubsubsection}{0.5em}{}
+
+\renewcommand{\thesubsection}{\arabic{subsection}}
+\setcounter{tocdepth}{2}
+
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{Indications - Semaine 12 - Séries entières}
+\fancyfoot[C]{\thepage}
+\renewcommand{\headrulewidth}{0pt}
+
+\usepackage{hyperref}
+\hypersetup{hidelinks}
+
+\begin{document}
+
+\title{Indications -- Semaine 12 -- Séries entières\\
+\large PSI}
+\date{}
+\maketitle
+\tableofcontents
+
+\clearpage
+
+% -----------------------------------------------------------------------
+\subsection{$|a_n| \leq |b_n| \Rightarrow R_a \geq R_b$}
+
+\medskip
+\textbf{Indications.}
+\begin{itemize}
+  \item Soit $r < R_b$. Par définition du rayon, la suite $(b_n r^n)$ est bornée : $|b_n r^n| \leq M$.
+  \item Alors $|a_n r^n| \leq |b_n r^n| \leq M$ : la suite $(a_n r^n)$ est aussi bornée.
+  \item Donc $r \leq R_a$. Cela étant vrai pour tout $r < R_b$, on a $R_a \geq R_b$.
+\end{itemize}
+
+\clearpage
+
+% -----------------------------------------------------------------------
+\subsection{Développement en série entière de $e^x$}
+
+Montrer que $e^x = \sum_{n=0}^{+\infty} \frac{x^n}{n!}$ pour tout $x \in \mathbb{R}$.
+
+\medskip
+\textbf{Indications.}
+\begin{itemize}
+  \item Écrire la formule de Taylor-Lagrange à l'ordre $N$ : $e^x = \sum_{n=0}^N \frac{x^n}{n!} + R_N(x)$ avec $|R_N(x)| \leq e^{|x|} \frac{|x|^{N+1}}{(N+1)!}$.
+  \item La suite $\frac{|x|^{N+1}}{(N+1)!} \to 0$ (terme général d'une série convergente).
+  \item Donc $R_N(x) \to 0$, ce qui donne le développement souhaité.
+\end{itemize}
+
+\clearpage
+
+% -----------------------------------------------------------------------
+\subsection{Développement en série entière de $\arctan$}
+
+\medskip
+\textbf{Indications.}
+\begin{itemize}
+  \item Partir de $\arctan'(x) = \frac{1}{1+x^2}$. Pour $|x| < 1$, développer en série géométrique : $\frac{1}{1+x^2} = \sum_{n=0}^{+\infty} (-1)^n x^{2n}$.
+  \item Intégrer terme à terme (convergence normale sur tout $[-r, r]$ avec $r < 1$) : $\arctan(x) = \sum_{n=0}^{+\infty} \frac{(-1)^n x^{2n+1}}{2n+1}$.
+  \item Le rayon de convergence est $R = 1$. La convergence en $x = \pm 1$ peut se déduire du CSSA.
+\end{itemize}
+
+\clearpage
+
+% -----------------------------------------------------------------------
+\subsection{Rayons de convergence de trois séries entières}
+
+\medskip
+\textbf{Indications.}
+\begin{itemize}
+  \item[(a)] $\sum \frac{\ln(n)}{n^2} x^n$ : encadrer $a_n = \ln(n)/n^2$ entre $1/n^2$ et $n/n^2 = 1/n$. Les deux séries majorante et minorante ont $R = 1$, donc $R_1 = 1$. De même pour la série associée $R_2 = 1$.
+  \item[(b)] $\sum a_n z^{2n}$ avec $R_0 = 1$ : séparer parties paires et impaires. $\sum a_n z^{2n}$ converge pour $|z^2| < 1$, soit $|z| < 1$, donc $R = 1$.
+  \item[(c)] $\sum \lfloor n\sqrt{5} \rfloor z^n$ : comme $\sqrt{5}$ est irrationnel, $n\sqrt{5}$ n'est jamais entier, donc $\lfloor n\sqrt{5} \rfloor \sim n\sqrt{5}$. Le terme général $a_n z^n \sim n\sqrt{5} z^n$ ne tend pas vers 0 pour $|z| = 1$, donc $R \leq 1$. D'Alembert ou comparaison donne $R = 1$.
+\end{itemize}
+
+\clearpage
+
+% -----------------------------------------------------------------------
+\subsection{Calcul de $\sum_{n=0}^{+\infty} \frac{n^2 - 1}{n!}$}
+
+\medskip
+\textbf{Indications.}
+\begin{itemize}
+  \item Calculer le rayon : d'Alembert, $\frac{(n+1)^2 - 1}{(n+1)!} / \frac{n^2-1}{n!} = \frac{n^2+2n}{(n+1)(n^2-1)} \to 0$, donc $R = +\infty$.
+  \item Décomposer : $n^2 - 1 = n(n-1) + n - 1$.
+  \item $\sum \frac{n(n-1)}{n!} = \sum \frac{1}{(n-2)!} = e$, $\sum \frac{n}{n!} = e$, $\sum \frac{1}{n!} = e$.
+  \item Calculer la somme : $\sum \frac{n^2-1}{n!} = e + e - e = e$.
+\end{itemize}
+
+\clearpage
+
+% -----------------------------------------------------------------------
+\subsection{Rayon de $\sum (a_n)^2 z^n$}
+
+Si $\sum a_n z^n$ a un rayon $R$, quel est le rayon $R'$ de $\sum (a_n)^2 z^n$ ?
+
+\medskip
+\textbf{Indications.}
+\begin{itemize}
+  \item \textbf{Minoration $R' \geq R^2$ :} si $|z| < R^2$, choisir $r$ tel que $|z| < r^2 < R^2$, i.e. $r < R$. Alors $(a_n r^n)$ est bornée par $M$, donc $|a_n^2 z^n| = (a_n r^n)^2 (z/r^2)^n \leq M^2 (|z|/r^2)^n \to 0$.
+  \item \textbf{Majoration $R' \leq R^2$ :} si $|z| > R^2$, montrer que $(a_n^2 z^n)$ n'est pas bornée en trouvant des $n$ pour lesquels $|a_n|$ est grand, via la définition du rayon $R$.
+  \item Conclusion : $R' = R^2$.
+\end{itemize}
+
+\clearpage
+
+% -----------------------------------------------------------------------
+\subsection{DSE de $\mathrm{ch}(x)\cos(x)$}
+
+\medskip
+\textbf{Indications.}
+\begin{itemize}
+  \item Écrire $\mathrm{ch}(x) \cos(x) = \frac{e^x + e^{-x}}{2} \cos(x) = \mathrm{Re}\!\left(\frac{e^{x(1+i)} + e^{x(-1+i)}}{2}\right)$.
+  \item $e^{x(1+i)} = \sum \frac{(1+i)^n x^n}{n!}$. Or $(1+i) = \sqrt{2} e^{i\pi/4}$, donc $(1+i)^n = 2^{n/2} e^{in\pi/4}$.
+  \item $\mathrm{Re}(e^{x(1+i)}) + \mathrm{Re}(e^{x(-1+i)})$ : les termes impairs disparaissent, et on ne garde que les puissances $x^{4k}$ (les termes $x^{4k+2}$ s'annulent aussi).
+  \item Résultat : $\mathrm{ch}(x)\cos(x) = \sum_{k=0}^{+\infty} \frac{(-1)^k 2^{2k}}{(4k)!} x^{4k}$.
+\end{itemize}
+
+\end{document}

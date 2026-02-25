@@ -1,0 +1,140 @@
+\documentclass[a4paper,11pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath, amssymb, stmaryrd}
+\usepackage{xcolor}
+\usepackage[margin=2.5cm]{geometry}
+\usepackage{fancybox}
+\usepackage{needspace}
+
+\usepackage{tocloft}
+\setlength{\cftbeforesecskip}{0.9cm}
+\setlength{\cftbeforesubsecskip}{0.05cm}
+
+\usepackage[nobottomtitles*]{titlesec}
+\renewcommand{\bottomtitlespace}{2cm}
+
+\definecolor{questionblue}{RGB}{0, 0, 205}
+
+\pdfstringdefDisableCommands{%
+  \def\int{∫}%
+  \def\sum{∑}%
+  \def\prod{∏}%
+  \def\infty{∞}%
+  \def\partial{∂}%
+  \def\leq{≤}%
+  \def\geq{≥}%
+  \def\neq{≠}%
+  \def\approx{≈}%
+  \def\times{×}%
+  \def\cdot{·}%
+  \def\mathbb#1{#1}%
+  \def\mathcal#1{#1}%
+  \def\vec#1{#1}%
+}
+
+\newcommand{\sectionbreak}{\needspace{6\baselineskip}}
+\newcommand{\subsectionbreak}{\needspace{10\baselineskip}}
+\newcommand{\subsubsectionbreak}{\needspace{5\baselineskip}}
+
+\titleformat{\section}
+  {\normalfont\Large\bfseries\color{black}}{\thesection}{1em}{}
+\titleformat{\subsection}
+  {\normalfont\large\bfseries\color{questionblue}}{\thesubsection}{1em}{}
+\renewcommand{\thesubsubsection}{\alph{subsubsection})}
+\titleformat{\subsubsection}
+  {\normalfont\large\bfseries\color{questionblue}}{\thesubsubsection}{0.5em}{}
+
+\renewcommand{\thesubsection}{\arabic{subsection}}
+\setcounter{tocdepth}{2}
+
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{Indications - Semaine 4 - Algèbre linéaire}
+\fancyfoot[C]{\thepage}
+\renewcommand{\headrulewidth}{0pt}
+
+\usepackage{hyperref}
+\hypersetup{hidelinks}
+
+\begin{document}
+
+\title{Indications -- Semaine 4 -- Algèbre linéaire\\
+\large PSI}
+\date{}
+\maketitle
+\tableofcontents
+
+\clearpage
+
+% -----------------------------------------------------------------------
+\subsection{$\mathrm{tr}(AB) = \mathrm{tr}(BA)$}
+
+\medskip
+\textbf{Indications.}
+\begin{itemize}
+  \item Développer les coefficients diagonaux : $[AB]_{ii} = \sum_k a_{ik} b_{ki}$.
+  \item Donc $\mathrm{tr}(AB) = \sum_i \sum_k a_{ik} b_{ki}$.
+  \item Permuter les indices $i$ et $k$ pour reconnaître $\mathrm{tr}(BA) = \sum_k \sum_i b_{ki} a_{ik}$.
+\end{itemize}
+
+\clearpage
+
+% -----------------------------------------------------------------------
+\subsection{$\mathrm{tr}(p) = \mathrm{rg}(p)$ pour un projecteur}
+
+\medskip
+\textbf{Indications.}
+\begin{itemize}
+  \item Un projecteur vérifie $p^2 = p$, donc $E = \mathrm{Im}\, p \oplus \ker p$.
+  \item Choisir une base adaptée à cette décomposition : dans cette base, la matrice de $p$ est $\begin{pmatrix} I_r & 0 \\ 0 & 0 \end{pmatrix}$ où $r = \mathrm{rg}(p)$.
+  \item La trace vaut $r$ dans cette base, et la trace est invariante par changement de base.
+\end{itemize}
+
+\clearpage
+
+% -----------------------------------------------------------------------
+\subsection{Déterminant de Vandermonde}
+
+Calculer $V_n = \det\begin{pmatrix} 1 & a_1 & \cdots & a_1^{n-1} \\ \vdots & & & \vdots \\ 1 & a_n & \cdots & a_n^{n-1} \end{pmatrix} = \prod_{1 \leq i < j \leq n} (a_j - a_i)$.
+
+\medskip
+\textbf{Indications.}
+\begin{itemize}
+  \item Raisonnement par récurrence sur $n$.
+  \item Fixer $a_1, \dots, a_{n-1}$ et considérer $P(x) = V(a_1, \dots, a_{n-1}, x)$ comme un polynôme de degré $n-1$ en $x$ (développer selon la dernière ligne).
+  \item $P(a_i) = 0$ pour $i = 1, \dots, n-1$ (deux lignes égales), donc $P(x) = C \prod_{i=1}^{n-1}(x - a_i)$.
+  \item Identifier le coefficient dominant $C = V_{n-1}$, puis conclure par récurrence.
+\end{itemize}
+
+\clearpage
+
+% -----------------------------------------------------------------------
+\subsection{$\mathrm{rg}(h) = 1 \Rightarrow h^2 = \mathrm{tr}(h) \cdot h$}
+
+\medskip
+\textbf{Indications.}
+\begin{itemize}
+  \item $\mathrm{rg}(h) = 1$ : $\ker h$ est de dimension $n-1$. Choisir une base $(e_1, \dots, e_{n-1}, e_n)$ où $(e_1, \dots, e_{n-1})$ est une base de $\ker h$.
+  \item Dans cette base, la matrice $H$ a toutes ses colonnes nulles sauf la dernière : $H = (0 | \cdots | 0 | v)$ où $v = h(e_n)$.
+  \item Calculer $H^2$ : $H^2 e_i = 0$ pour $i < n$, et $H^2 e_n = H(v) = v_n \cdot v$ où $v_n$ est la $n$-ième coordonnée de $v$.
+  \item Identifier $v_n = \mathrm{tr}(H) = \mathrm{tr}(h)$.
+\end{itemize}
+
+\clearpage
+
+% -----------------------------------------------------------------------
+\subsection{La famille $((k^n)_{n \geq 0})_{k \geq 0}$ est libre dans $\mathbb{R}^\mathbb{N}$}
+
+Montrer que toute sous-famille finie est libre.
+
+\medskip
+\textbf{Indications.}
+\begin{itemize}
+  \item Considérer une relation $\sum_{k=0}^{N} \lambda_k (k^n)_{n \geq 0} = 0$, i.e. $\sum_{k=0}^N \lambda_k k^n = 0$ pour tout $n \geq 0$.
+  \item Évaluer en $n = 0, 1, \dots, N$ : on obtient le système $V \cdot \lambda = 0$ où $V$ est la matrice de Vandermonde associée aux points $0, 1, \dots, N$.
+  \item Le déterminant de Vandermonde est $\prod_{0 \leq i < j \leq N}(j - i) \neq 0$, donc $\lambda = 0$.
+\end{itemize}
+
+\end{document}

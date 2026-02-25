@@ -1,0 +1,152 @@
+\documentclass[a4paper,11pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath, amssymb, stmaryrd}
+\usepackage{xcolor}
+\usepackage[margin=2.5cm]{geometry}
+\usepackage{fancybox}
+\usepackage{needspace}
+
+\usepackage{tocloft}
+\setlength{\cftbeforesecskip}{0.9cm}
+\setlength{\cftbeforesubsecskip}{0.05cm}
+
+\usepackage[nobottomtitles*]{titlesec}
+\renewcommand{\bottomtitlespace}{2cm}
+
+\definecolor{questionblue}{RGB}{0, 0, 205}
+
+\pdfstringdefDisableCommands{%
+  \def\int{∫}%
+  \def\sum{∑}%
+  \def\prod{∏}%
+  \def\infty{∞}%
+  \def\partial{∂}%
+  \def\leq{≤}%
+  \def\geq{≥}%
+  \def\neq{≠}%
+  \def\approx{≈}%
+  \def\times{×}%
+  \def\cdot{·}%
+  \def\mathbb#1{#1}%
+  \def\mathcal#1{#1}%
+  \def\vec#1{#1}%
+}
+
+\newcommand{\sectionbreak}{\needspace{6\baselineskip}}
+\newcommand{\subsectionbreak}{\needspace{10\baselineskip}}
+\newcommand{\subsubsectionbreak}{\needspace{5\baselineskip}}
+
+\titleformat{\section}
+  {\normalfont\Large\bfseries\color{black}}{\thesection}{1em}{}
+\titleformat{\subsection}
+  {\normalfont\large\bfseries\color{questionblue}}{\thesubsection}{1em}{}
+\renewcommand{\thesubsubsection}{\alph{subsubsection})}
+\titleformat{\subsubsection}
+  {\normalfont\large\bfseries\color{questionblue}}{\thesubsubsection}{0.5em}{}
+
+\renewcommand{\thesubsection}{\arabic{subsection}}
+\setcounter{tocdepth}{2}
+
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{Indications - Semaine 18 - Intégrales à paramètre}
+\fancyfoot[C]{\thepage}
+\renewcommand{\headrulewidth}{0pt}
+
+\usepackage{hyperref}
+\hypersetup{hidelinks}
+
+\begin{document}
+
+\title{Indications -- Semaine 18 -- Intégrales à paramètre\\
+\large PSI}
+\date{}
+\maketitle
+\tableofcontents
+
+\clearpage
+
+% -----------------------------------------------------------------------
+\subsection{$\lim_{n \to +\infty} \int_0^{+\infty} \frac{(\sin t)^{2n}}{t^2}\, dt = 0$}
+
+\medskip
+\textbf{Indications.}
+\begin{itemize}
+  \item Vérifier que l'intégrale converge : dominer par $1/t^2$ sur $[1, +\infty[$ et par $1$ sur $]0,1]$.
+  \item La fonction dominante $\varphi(t) = \min(1, 1/t^2)$ est intégrable sur $]0, +\infty[$.
+  \item Appliquer le théorème de convergence dominée : $f_n(t) = (\sin t)^{2n}/t^2 \to 0$ p.p. (car $|\sin t| < 1$ pour $t \notin \pi\mathbb{Z}$) et $|f_n| \leq \varphi$.
+  \item Conclure : $\int f_n \to \int 0 = 0$.
+\end{itemize}
+
+\clearpage
+
+% -----------------------------------------------------------------------
+\subsection{$I_n = \int_0^n \sqrt{1 + \left(1 - \frac{t}{n}\right)^n}\, dt \sim n$}
+
+\medskip
+\textbf{Indications.}
+\begin{itemize}
+  \item Changement de variable $x = t/n$ : $I_n = n \int_0^1 \sqrt{1 + (1-x)^n}\, dx = n \cdot J_n$.
+  \item Montrer $J_n \to 1$ par CVD : $f_n(x) = \sqrt{1 + (1-x)^n} \to 1$ pour $x \in {]0,1]}$ (car $(1-x)^n \to 0$), et $|f_n| \leq \sqrt{2}$ (dominante intégrable sur $[0,1]$).
+  \item Donc $J_n \to \int_0^1 1\, dx = 1$, et $I_n \sim n$.
+\end{itemize}
+
+\clearpage
+
+% -----------------------------------------------------------------------
+\subsection{$\int_0^{+\infty} \frac{x}{e^x - 1}\, dx = \zeta(2)$}
+
+\medskip
+\textbf{Indications.}
+\begin{itemize}
+  \item Écrire $\frac{1}{e^x - 1} = \frac{e^{-x}}{1 - e^{-x}} = e^{-x} \sum_{n=0}^{+\infty} e^{-nx} = \sum_{n=1}^{+\infty} e^{-nx}$.
+  \item Donc $\frac{x}{e^x-1} = \sum_{n=1}^{+\infty} x e^{-nx}$.
+  \item Justifier l'interversion $\int \sum = \sum \int$ : vérifier $\sum_{n \geq 1} \int_0^{+\infty} x e^{-nx}\, dx = \sum_{n \geq 1} \frac{1}{n^2} < +\infty$ (critère de Fubini-Tonelli/interversion série-intégrale).
+  \item Calculer $\int_0^{+\infty} x e^{-nx}\, dx = \frac{1}{n^2}$ (intégration par parties ou substitution). Conclure $= \sum 1/n^2 = \zeta(2)$.
+\end{itemize}
+
+\clearpage
+
+% -----------------------------------------------------------------------
+\subsection{$g(x) = \int_0^{+\infty} \frac{\arctan(tx)}{1+t^2}\, dt$}
+
+\medskip
+\textbf{Indications.}
+\begin{itemize}
+  \item[(a)] Continuité : dominer $\left|\frac{\arctan(tx)}{1+t^2}\right| \leq \frac{\pi/2}{1+t^2}$, qui est intégrable sur $\mathbb{R}_+$. CVD donne la continuité.
+  \item[(b)] Limite en $+\infty$ : pour $x \to +\infty$ et $t > 0$ fixé, $\arctan(tx) \to \pi/2$. Dominer et appliquer CVD : $g(x) \to \int_0^{+\infty} \frac{\pi/2}{1+t^2}\, dt = \frac{\pi}{2} \cdot \frac{\pi}{2} = \frac{\pi^2}{4}$.
+\end{itemize}
+
+\clearpage
+
+% -----------------------------------------------------------------------
+\subsection{Fonction $\Gamma$ : continuité et classe $C^2$}
+
+$\Gamma(s) = \int_0^{+\infty} t^{s-1} e^{-t}\, dt$ pour $s > 0$.
+
+\medskip
+\textbf{Indications.}
+\begin{itemize}
+  \item Pour $s \in [a, b] \subset {]0, +\infty[}$ : dominer $|t^{s-1} e^{-t}|$ par une fonction intégrable indépendante de $s$.
+  \item Près de $0$ : $t^{s-1} \leq t^{a-1}$, intégrable sur $]0,1]$ car $a > 0$.
+  \item En $+\infty$ : $t^{b-1} e^{-t} = o(t^{-2})$, intégrable sur $[1, +\infty[$.
+  \item Pour $\Gamma \in C^2$ : dériver sous le signe intégral deux fois avec $\partial_s^k (t^{s-1} e^{-t}) = (\ln t)^k t^{s-1} e^{-t}$, et dominer de même.
+\end{itemize}
+
+\clearpage
+
+% -----------------------------------------------------------------------
+\subsection{$\int_0^{+\infty} \frac{\sin(xt)}{t} e^{-t}\, dt = \arctan(x)$}
+
+\medskip
+\textbf{Indications.}
+\begin{itemize}
+  \item Poser $g(x) = \int_0^{+\infty} \frac{\sin(xt)}{t} e^{-t}\, dt$.
+  \item Dériver sous le signe intégral : $g'(x) = \int_0^{+\infty} \cos(xt) e^{-t}\, dt = \mathrm{Re}\!\int_0^{+\infty} e^{t(-1+ix)}\, dt = \mathrm{Re}\!\left(\frac{1}{1-ix}\right) = \frac{1}{1+x^2}$.
+  \item Vérifier que la dérivation est licite (dominer $|\cos(xt) e^{-t}| \leq e^{-t}$, intégrable).
+  \item $g(0) = 0$ et $g'(x) = 1/(1+x^2)$, donc $g(x) = \arctan(x)$.
+\end{itemize}
+
+\end{document}

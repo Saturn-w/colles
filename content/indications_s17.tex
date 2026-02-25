@@ -1,0 +1,207 @@
+\documentclass[a4paper,11pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath, amssymb, stmaryrd}
+\usepackage{xcolor}
+\usepackage[margin=2.5cm]{geometry}
+\usepackage{fancybox}
+\usepackage{needspace}
+
+\usepackage{tocloft}
+\setlength{\cftbeforesecskip}{0.9cm}
+\setlength{\cftbeforesubsecskip}{0.05cm}
+
+\usepackage[nobottomtitles*]{titlesec}
+\renewcommand{\bottomtitlespace}{2cm}
+
+\definecolor{questionblue}{RGB}{0, 0, 205}
+
+\pdfstringdefDisableCommands{%
+  \def\int{∫}%
+  \def\sum{∑}%
+  \def\prod{∏}%
+  \def\infty{∞}%
+  \def\partial{∂}%
+  \def\leq{≤}%
+  \def\geq{≥}%
+  \def\neq{≠}%
+  \def\approx{≈}%
+  \def\times{×}%
+  \def\cdot{·}%
+  \def\mathbb#1{#1}%
+  \def\mathcal#1{#1}%
+  \def\vec#1{#1}%
+}
+
+\newcommand{\sectionbreak}{\needspace{6\baselineskip}}
+\newcommand{\subsectionbreak}{\needspace{10\baselineskip}}
+\newcommand{\subsubsectionbreak}{\needspace{5\baselineskip}}
+
+\titleformat{\section}
+  {\normalfont\Large\bfseries\color{black}}{\thesection}{1em}{}
+\titleformat{\subsection}
+  {\normalfont\large\bfseries\color{questionblue}}{\thesubsection}{1em}{}
+\renewcommand{\thesubsubsection}{\alph{subsubsection})}
+\titleformat{\subsubsection}
+  {\normalfont\large\bfseries\color{questionblue}}{\thesubsubsection}{0.5em}{}
+
+\renewcommand{\thesubsection}{\arabic{subsection}}
+\setcounter{tocdepth}{2}
+
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{Indications - Semaine 17 - Isométries}
+\fancyfoot[C]{\thepage}
+\renewcommand{\headrulewidth}{0pt}
+
+\usepackage{hyperref}
+\hypersetup{hidelinks}
+
+\begin{document}
+
+\title{Indications -- Semaine 17 -- Isométries\\
+\large PSI}
+\date{}
+\maketitle
+\tableofcontents
+
+\clearpage
+
+% -----------------------------------------------------------------------
+\subsection{Isométrie $\iff$ transforme une BON en BON}
+
+\medskip
+\textbf{Indications.}
+\begin{itemize}
+  \item $(\Rightarrow)$ : si $f$ est une isométrie, $(f(e_i) \mid f(e_j)) = (e_i \mid e_j) = \delta_{ij}$.
+  \item $(\Leftarrow)$ : si $(f(e_i))$ est une BON, écrire $\|f(x)\|^2 = \left\|\sum x_i f(e_i)\right\|^2 = \sum x_i^2 \|f(e_i)\|^2 = \sum x_i^2 = \|x\|^2$ (les croisements s'annulent par orthogonalité).
+\end{itemize}
+
+\clearpage
+
+% -----------------------------------------------------------------------
+\subsection{$SO(2)$ : matrice $R_\theta$ indépendante de la BON choisie}
+
+\medskip
+\textbf{Indications.}
+\begin{itemize}
+  \item Deux BON directes $(e_1, e_2)$ et $(e_1', e_2')$ sont liées par une rotation $P = R_\alpha$.
+  \item Formule de changement de base : $[f]_{(e')} = P^{-1} [f]_{(e)} P = R_\alpha^{-1} R_\theta R_\alpha$.
+  \item Les rotations planaires commutent : $R_\alpha^{-1} R_\theta R_\alpha = R_\theta$. Donc la matrice est bien la même dans toute BON directe.
+\end{itemize}
+
+\clearpage
+
+% -----------------------------------------------------------------------
+\subsection{$f \in S^+(E) \iff$ toutes les valeurs propres de $f$ sont $\geq 0$}
+
+\medskip
+\textbf{Indications.}
+\begin{itemize}
+  \item $(\Rightarrow)$ : si $f(x) = \lambda x$, alors $(x \mid f(x)) = \lambda \|x\|^2 \geq 0$, donc $\lambda \geq 0$.
+  \item $(\Leftarrow)$ : par le théorème spectral, $f$ est diagonalisable en BON $(e_1, \dots, e_n)$ avec valeurs propres $\lambda_k \geq 0$. Pour $x = \sum x_k e_k$ : $(x \mid f(x)) = \sum x_k^2 \lambda_k \geq 0$.
+\end{itemize}
+
+\clearpage
+
+% -----------------------------------------------------------------------
+\subsection{$A \in O_n(\mathbb{R})$ : inégalités sur les sommes de coefficients}
+
+\medskip
+\textbf{Indications.}
+\begin{itemize}
+  \item[(a)] $\sum_{i,j} |a_{ij}| \leq n\sqrt{n}$ : utiliser C-S avec le produit scalaire $\varphi(A,B) = \mathrm{tr}(A^TB)$. Poser $B$ la matrice des signes de $A$, $\|A\|_F = \sqrt{\mathrm{tr}(A^TA)} = \sqrt{n}$ car $A \in O_n$, et $\|B\|_F = n$. Alors $\sum |a_{ij}| = \varphi(A,B) \leq \|A\|_F \|B\|_F = n\sqrt{n}$.
+  \item[(b)] $\left|\sum_{i,j} a_{ij}\right| \leq n$ : poser $X = (1,\dots,1)^T$. Alors $\sum_{i,j} a_{ij} = X^T A X = (X \mid AX)$. Par C-S : $|(X \mid AX)| \leq \|X\| \|AX\| = \|X\|^2 = n$ car $A$ est isométrie.
+\end{itemize}
+
+\clearpage
+
+% -----------------------------------------------------------------------
+\subsection{Éléments géométriques de deux matrices orthogonales}
+
+\medskip
+\textbf{Indications.}
+\begin{itemize}
+  \item Pour $A$ : vérifier que les colonnes forment une BON. $A$ symétrique $\Rightarrow$ $A^2 = I$ (car $A^T = A$ et $A^T A = I$) $\Rightarrow$ réflexion (ou identité). Résoudre $AX = X$ pour trouver l'axe (plan) de réflexion.
+  \item Pour $C$ : vérifier $\det(C) = +1$ ($C \in SO(3)$, rotation). Calculer $\mathrm{tr}(C) = 1 + 2\cos\theta$ pour trouver $\theta$. Résoudre $CX = X$ pour l'axe. Déterminer le signe de $\theta$ via le déterminant d'une base adaptée.
+\end{itemize}
+
+\clearpage
+
+% -----------------------------------------------------------------------
+\subsection{Isométrie diagonalisable $\iff$ symétrie orthogonale}
+
+\medskip
+\textbf{Indications.}
+\begin{itemize}
+  \item $(\Leftarrow)$ : $f^2 = \mathrm{id}$, donc $f$ annule $X^2 - 1 = (X-1)(X+1)$. Ce polynôme est scindé à racines simples, donc $f$ est diagonalisable.
+  \item $(\Rightarrow)$ : $f$ isométrie $\Rightarrow |\lambda| = 1$ pour toute valeur propre réelle, donc $\lambda = \pm 1$. Si $f$ est diagonalisable sur $\mathbb{R}$, toutes ses vap sont $\pm 1$, donc $f^2 = \mathrm{id}$ (vérifier en base propre).
+\end{itemize}
+
+\clearpage
+
+% -----------------------------------------------------------------------
+\subsection{Matrice de rotation d'axe $(1,-1,1)/\sqrt{3}$ et angle $\pi/2$}
+
+\medskip
+\textbf{Indications.}
+\begin{itemize}
+  \item Normaliser : $u_1 = (1,-1,1)^T/\sqrt{3}$.
+  \item Compléter en une BON directe $(u_1, u_2, u_3)$ (par ex. $u_2 = (1,0,-1)^T/\sqrt{2}$, $u_3 = u_1 \wedge u_2$).
+  \item Dans la base $(u_1, u_2, u_3)$, la matrice de la rotation est $\begin{pmatrix}1&0&0\\0&0&-1\\0&1&0\end{pmatrix}$ (axe $u_1$, rotation de $\pi/2$).
+  \item La matrice dans la base canonique est $A = P A' P^T$ où $P = (u_1 | u_2 | u_3)$.
+\end{itemize}
+
+\clearpage
+
+% -----------------------------------------------------------------------
+\subsection{Compléter une matrice orthogonale directe}
+
+\medskip
+\textbf{Indications.}
+\begin{itemize}
+  \item Colonnes orthonormées : $(C_1 \mid C_2) = 0$ donne une équation en $a$. Résoudre.
+  \item $C_3 = \pm C_1 \wedge C_2$ (produit vectoriel), normaliser si nécessaire. Choisir le signe pour $\det = +1$.
+  \item Identifier l'axe de la rotation : $E_1(A) = \ker(A - I)$. Calculer $\theta$ via $\mathrm{tr}(A) = 1 + 2\cos\theta$. Déterminer le signe de $\sin\theta$ par le sens de la rotation sur un vecteur perpendiculaire à l'axe.
+\end{itemize}
+
+\clearpage
+
+% -----------------------------------------------------------------------
+\subsection{$A \in S_n^+(\mathbb{R}) \iff A = B^T B$}
+
+\medskip
+\textbf{Indications.}
+\begin{itemize}
+  \item $(\Leftarrow)$ : $X^T A X = X^T B^T B X = \|BX\|^2 \geq 0$.
+  \item $(\Rightarrow)$ : par le théorème spectral, $A = P D P^T$ avec $D = \mathrm{diag}(\lambda_1, \dots, \lambda_n)$, $\lambda_k \geq 0$. Poser $\Delta = \mathrm{diag}(\sqrt{\lambda_k})$ et $B = \Delta P^T$. Alors $B^T B = P \Delta^T \Delta P^T = P D P^T = A$.
+\end{itemize}
+
+\clearpage
+
+% -----------------------------------------------------------------------
+\subsection{$A$ nilpotente et normale $\Rightarrow A = 0$}
+
+\medskip
+\textbf{Indications.}
+\begin{itemize}
+  \item Poser $B = A A^T = A^T A$ (normale). $B$ est symétrique positive.
+  \item $B$ est aussi nilpotente : $B^k = (AA^T)^k$. En développant avec $A^T A = A A^T$ (normale), montrer $B^n = 0$ à partir de $A^n = 0$.
+  \item $B$ symétrique positive et nilpotente $\Rightarrow$ $\mathrm{Sp}(B) = \{0\}$ $\Rightarrow$ $B = 0$ (th. spectral). Donc $\|AX\|^2 = X^T A^T A X = X^T B X = 0$ pour tout $X$, donc $A = 0$.
+\end{itemize}
+
+\clearpage
+
+% -----------------------------------------------------------------------
+\subsection{$(\mathrm{tr}\, A)^2 \leq \mathrm{rg}(A) \cdot \mathrm{tr}(A^2)$ pour $A \in S_n^+(\mathbb{R})$}
+
+\medskip
+\textbf{Indications.}
+\begin{itemize}
+  \item Par le théorème spectral : $A = P D P^T$ avec $D = \mathrm{diag}(\lambda_1, \dots, \lambda_r, 0, \dots, 0)$, $\lambda_k > 0$.
+  \item $\mathrm{tr}(A) = \sum_{k=1}^r \lambda_k$, $\mathrm{tr}(A^2) = \sum_{k=1}^r \lambda_k^2$, $\mathrm{rg}(A) = r$.
+  \item Appliquer C-S dans $\mathbb{R}^r$ : $\left(\sum_{k=1}^r \lambda_k \cdot 1\right)^2 \leq \left(\sum \lambda_k^2\right)\left(\sum 1^2\right) = r \sum \lambda_k^2$.
+\end{itemize}
+
+\end{document}

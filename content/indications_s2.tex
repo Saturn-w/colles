@@ -1,0 +1,177 @@
+\documentclass[a4paper,11pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath, amssymb, stmaryrd}
+\usepackage{xcolor}
+\usepackage[margin=2.5cm]{geometry}
+\usepackage{fancybox}
+\usepackage{needspace}
+
+\usepackage{tocloft}
+\setlength{\cftbeforesecskip}{0.9cm}
+\setlength{\cftbeforesubsecskip}{0.05cm}
+
+\usepackage[nobottomtitles*]{titlesec}
+\renewcommand{\bottomtitlespace}{2cm}
+
+\definecolor{questionblue}{RGB}{0, 0, 205}
+
+\pdfstringdefDisableCommands{%
+  \def\int{∫}%
+  \def\sum{∑}%
+  \def\prod{∏}%
+  \def\infty{∞}%
+  \def\partial{∂}%
+  \def\leq{≤}%
+  \def\geq{≥}%
+  \def\neq{≠}%
+  \def\approx{≈}%
+  \def\times{×}%
+  \def\cdot{·}%
+  \def\mathbb#1{#1}%
+  \def\mathcal#1{#1}%
+  \def\vec#1{#1}%
+}
+
+\newcommand{\sectionbreak}{\needspace{6\baselineskip}}
+\newcommand{\subsectionbreak}{\needspace{10\baselineskip}}
+\newcommand{\subsubsectionbreak}{\needspace{5\baselineskip}}
+
+\titleformat{\section}
+  {\normalfont\Large\bfseries\color{black}}{\thesection}{1em}{}
+\titleformat{\subsection}
+  {\normalfont\large\bfseries\color{questionblue}}{\thesubsection}{1em}{}
+\renewcommand{\thesubsubsection}{\alph{subsubsection})}
+\titleformat{\subsubsection}
+  {\normalfont\large\bfseries\color{questionblue}}{\thesubsubsection}{0.5em}{}
+
+\renewcommand{\thesubsection}{\arabic{subsection}}
+\setcounter{tocdepth}{2}
+
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{Indications - Semaine 2 - Suites et séries}
+\fancyfoot[C]{\thepage}
+\renewcommand{\headrulewidth}{0pt}
+
+\usepackage{hyperref}
+\hypersetup{hidelinks}
+
+\begin{document}
+
+\title{Indications -- Semaine 2 -- Suites et séries\\
+\large PSI}
+\date{}
+\maketitle
+\tableofcontents
+
+\clearpage
+
+% -----------------------------------------------------------------------
+\subsection{Convergence d'une suite via ses sous-suites paires et impaires}
+
+Si $(u_{2n})$ converge vers $\ell$ et $(u_{2n+1})$ converge vers $\ell$, montrer que $(u_n)$ converge vers $\ell$.
+
+\medskip
+\textbf{Indications.}
+\begin{itemize}
+  \item Soit $\varepsilon > 0$. Obtenir $N_1$ et $N_2$ tels que les deux sous-suites soient $\varepsilon$-proches de $\ell$.
+  \item Poser $N = \max(2N_1, 2N_2 + 1)$. Pour $n \geq N$ : si $n$ est pair, $n = 2k$ avec $k \geq N_1$ ; si $n$ est impair, $n = 2k+1$ avec $k \geq N_2$.
+  \item Dans les deux cas, conclure $|u_n - \ell| < \varepsilon$.
+\end{itemize}
+
+\clearpage
+
+% -----------------------------------------------------------------------
+\subsection{Règle de d'Alembert : $u_{n+1}/u_n \to \ell < 1 \Rightarrow (u_n) \to 0$}
+
+\medskip
+\textbf{Indications.}
+\begin{itemize}
+  \item Choisir $\alpha$ tel que $\ell < \alpha < 1$. Par définition de la limite, il existe $n_0$ tel que pour $n \geq n_0$, $\frac{u_{n+1}}{u_n} \leq \alpha$.
+  \item Montrer par récurrence que $u_n \leq u_{n_0} \cdot \alpha^{n - n_0}$ pour tout $n \geq n_0$.
+  \item Comme $\alpha^n \to 0$, conclure par le théorème des gendarmes que $u_n \to 0$.
+  \item Cas $\ell > 1$ : $u_n \to +\infty$ par un raisonnement symétrique.
+\end{itemize}
+
+\clearpage
+
+% -----------------------------------------------------------------------
+\subsection{Critère des séries alternées (CSSA)}
+
+Soit $(a_n)$ décroissante, positive, de limite nulle. Montrer que $\sum (-1)^n a_n$ converge.
+
+\medskip
+\textbf{Indications.}
+\begin{itemize}
+  \item Poser $S_n = \sum_{k=0}^n (-1)^k a_k$. Étudier séparément $A_n = S_{2n}$ et $B_n = S_{2n+1}$.
+  \item Montrer que $(A_n)$ est croissante et $(B_n)$ est décroissante (utiliser que $a_{2n+2} \leq a_{2n+1}$ et $a_{2n+1} \geq a_{2n+2}$).
+  \item $B_n - A_n = -a_{2n+1} \to 0$. Donc $(A_n)$ et $(B_n)$ sont adjacentes : elles ont même limite $S$.
+  \item En déduire que $S_n \to S$ et que $|S - S_n| \leq a_{n+1}$.
+\end{itemize}
+
+\clearpage
+
+% -----------------------------------------------------------------------
+\subsection{Une suite d'entiers qui converge est stationnaire}
+
+\medskip
+\textbf{Indications.}
+\begin{itemize}
+  \item Supposer $(u_n) \to \ell$ avec $u_n \in \mathbb{Z}$ pour tout $n$.
+  \item Appliquer la définition de la limite avec $\varepsilon = 1/4$ : il existe $n_0$ tel que pour $n \geq n_0$, $|u_n - \ell| < 1/4$.
+  \item Pour $n, m \geq n_0$ : $|u_n - u_m| \leq |u_n - \ell| + |\ell - u_m| < 1/2$.
+  \item Comme $u_n - u_m \in \mathbb{Z}$ et $|u_n - u_m| < 1/2$, on a $u_n = u_m$. La suite est donc constante à partir de $n_0$.
+\end{itemize}
+
+\clearpage
+
+% -----------------------------------------------------------------------
+\subsection{Suite $u_{n+1} = \frac{1}{2 + u_n}$}
+
+\medskip
+\textbf{Indications.}
+\begin{itemize}
+  \item Montrer que $f : x \mapsto \frac{1}{2+x}$ est décroissante et stabilise $[0, 1]$ (vérifier $f([0,1]) \subset [0,1]$).
+  \item La suite $(u_n)$ n'est pas monotone en général, mais étudier $w_n = u_{2n}$ qui vérifie $w_{n+1} = (f \circ f)(w_n)$.
+  \item $g = f \circ f$ est croissante sur $[0,1]$ : montrer que $(w_n)$ est monotone et bornée, donc converge.
+  \item Identifier le point fixe : $f(x) = x \Rightarrow x^2 + 2x - 1 = 0 \Rightarrow x = \sqrt{2} - 1 \in [0,1]$.
+  \item Conclure que $(u_{2n})$ et $(u_{2n+1})$ convergent vers $\sqrt{2}-1$, puis appliquer le résultat de l'exercice 1.
+\end{itemize}
+
+\clearpage
+
+% -----------------------------------------------------------------------
+\subsection{Constante d'Euler}
+
+On pose $u_n = \sum_{k=1}^n \frac{1}{k} - \ln n$. Montrer que $(u_n)$ converge.
+
+\medskip
+\textbf{Indications.}
+\begin{itemize}
+  \item Étudier $a_n = u_{n+1} - u_n = \frac{1}{n+1} - \ln\!\left(1 + \frac{1}{n}\right)$.
+  \item Faire un développement limité : $\ln(1 + \frac{1}{n}) = \frac{1}{n} - \frac{1}{2n^2} + O(1/n^3)$, donc $a_n = -\frac{1}{2n^2} + O(1/n^3)$.
+  \item La série $\sum a_n$ converge absolument (terme général $\sim -1/(2n^2)$, règle de Riemann avec $\alpha = 2 > 1$).
+  \item $(u_n)$ est donc convergente car somme partielle d'une série convergente (à partir de $u_1$).
+\end{itemize}
+
+\clearpage
+
+% -----------------------------------------------------------------------
+\subsection{Nature de huit séries}
+
+\medskip
+\textbf{Indications.}
+\begin{itemize}
+  \item[(a)] $\sum \left(e^{1/n} - 1 - \frac{1}{n}\right)^n$ : DL de $e^{1/n}$ donne terme général $\sim -e/(2n)$, donc \textbf{diverge grossièrement}.
+  \item[(b)] $\sum \frac{n^n}{n! \cdot 2^n}$ : d'Alembert, $u_{n+1}/u_n \to e/2 \approx 1{,}36 > 1$... Attention, ici le ratio tend vers $e/2 < 1$ n'est pas satisfait. Recalculer : $\frac{(n+1)^{n+1}}{(n+1)!\, 2^{n+1}} \cdot \frac{n!\, 2^n}{n^n} = \frac{(1+1/n)^n}{2} \to e/2 > 1$. \textbf{Diverge grossièrement}.
+  \item[(c)] $\sum \frac{(-1)^n}{\sqrt{n}}$ : CSSA, $(1/\sqrt{n})$ décroissante $\to 0$, \textbf{converge}.
+  \item[(d)] $\sum \frac{1}{n^{3/2}} \sin(n)$ : $|u_n| \leq 1/n^{3/2}$, Riemann $\alpha = 3/2 > 1$, \textbf{converge absolument}.
+  \item[(e)] $\sum 0{,}4^n \sin(n/0{,}4^n)$ : $|\sin(x)| \leq |x|$, donc $|u_n| \leq n$... Reconsidérer : $|u_n| \leq 0{,}4^n$, série géométrique de raison $0{,}4 < 1$, \textbf{converge absolument}.
+  \item[(f)] $\sum \frac{n!}{n^n}$ : d'Alembert, $u_{n+1}/u_n = (1 + 1/n)^{-n} \to e^{-1} < 1$, \textbf{converge}.
+  \item[(g)] $\sum (-1)^n \left(\frac{1}{\sqrt{n}} + \frac{1}{n}\right)$ : DL donne terme $\sim (-1)^n/\sqrt{n}$, partie alternée converge (CSSA) + partie $\sum (-1)^n/n$ converge, \textbf{converge}.
+  \item[(h)] $\sum \ln\!\left(1 + \frac{1}{n}\right)$ : terme général $\sim 1/n$, \textbf{diverge} (Riemann $\alpha = 1$).
+\end{itemize}
+
+\end{document}

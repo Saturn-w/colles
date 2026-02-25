@@ -1,0 +1,143 @@
+\documentclass[a4paper,11pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath, amssymb, stmaryrd}
+\usepackage{xcolor}
+\usepackage[margin=2.5cm]{geometry}
+\usepackage{fancybox}
+\usepackage{needspace}
+
+\usepackage{tocloft}
+\setlength{\cftbeforesecskip}{0.9cm}
+\setlength{\cftbeforesubsecskip}{0.05cm}
+
+\usepackage[nobottomtitles*]{titlesec}
+\renewcommand{\bottomtitlespace}{2cm}
+
+\definecolor{questionblue}{RGB}{0, 0, 205}
+
+\pdfstringdefDisableCommands{%
+  \def\int{∫}%
+  \def\sum{∑}%
+  \def\prod{∏}%
+  \def\infty{∞}%
+  \def\partial{∂}%
+  \def\leq{≤}%
+  \def\geq{≥}%
+  \def\neq{≠}%
+  \def\approx{≈}%
+  \def\times{×}%
+  \def\cdot{·}%
+  \def\mathbb#1{#1}%
+  \def\mathcal#1{#1}%
+  \def\vec#1{#1}%
+}
+
+\newcommand{\sectionbreak}{\needspace{6\baselineskip}}
+\newcommand{\subsectionbreak}{\needspace{10\baselineskip}}
+\newcommand{\subsubsectionbreak}{\needspace{5\baselineskip}}
+
+\titleformat{\section}
+  {\normalfont\Large\bfseries\color{black}}{\thesection}{1em}{}
+\titleformat{\subsection}
+  {\normalfont\large\bfseries\color{questionblue}}{\thesubsection}{1em}{}
+\renewcommand{\thesubsubsection}{\alph{subsubsection})}
+\titleformat{\subsubsection}
+  {\normalfont\large\bfseries\color{questionblue}}{\thesubsubsection}{0.5em}{}
+
+\renewcommand{\thesubsection}{\arabic{subsection}}
+\setcounter{tocdepth}{2}
+
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{Indications - Semaine 14 - Variables aléatoires discrètes}
+\fancyfoot[C]{\thepage}
+\renewcommand{\headrulewidth}{0pt}
+
+\usepackage{hyperref}
+\hypersetup{hidelinks}
+
+\begin{document}
+
+\title{Indications -- Semaine 14 -- Variables aléatoires discrètes\\
+\large PSI}
+\date{}
+\maketitle
+\tableofcontents
+
+\clearpage
+
+% -----------------------------------------------------------------------
+\subsection{Stabilité de la loi de Poisson : $X_1 + X_2 \sim \mathcal{P}(\lambda_1 + \lambda_2)$}
+
+\medskip
+\textbf{Indications.}
+\begin{itemize}
+  \item Calculer $P(X_1 + X_2 = n)$ par la formule des probabilités totales conditionnant sur $X_1 = k$ :
+  \[ P(X_1 + X_2 = n) = \sum_{k=0}^n P(X_1 = k) P(X_2 = n-k) \quad \text{(indépendance)}. \]
+  \item Développer et reconnaître $\sum_{k=0}^n \binom{n}{k} \lambda_1^k \lambda_2^{n-k} = (\lambda_1 + \lambda_2)^n$ (binôme de Newton).
+  \item Conclure que $P(X_1 + X_2 = n) = e^{-(\lambda_1+\lambda_2)} \frac{(\lambda_1+\lambda_2)^n}{n!}$.
+\end{itemize}
+
+\clearpage
+
+% -----------------------------------------------------------------------
+\subsection{Espérance de la loi géométrique : $E(\mathcal{G}(p)) = 1/p$}
+
+\medskip
+\textbf{Indications.}
+\begin{itemize}
+  \item $E(X) = \sum_{n=1}^{+\infty} n \cdot p(1-p)^{n-1}$.
+  \item Partir de $\sum_{n=0}^{+\infty} x^n = \frac{1}{1-x}$ pour $|x| < 1$, dériver terme à terme :
+  \[ \sum_{n=1}^{+\infty} n x^{n-1} = \frac{1}{(1-x)^2}. \]
+  \item Substituer $x = 1-p$ : $\sum_{n=1}^{+\infty} n(1-p)^{n-1} = \frac{1}{p^2}$, donc $E(X) = p \cdot \frac{1}{p^2} = \frac{1}{p}$.
+\end{itemize}
+
+\clearpage
+
+% -----------------------------------------------------------------------
+\subsection{Loi custom $Z = X + Y$}
+
+$X$ et $Y$ sont indépendantes avec $P(X = k) = P(Y = k) = \frac{a^k}{(1+a)^{k+1}}$ pour $k \geq 0$.
+
+\medskip
+\textbf{Indications.}
+\begin{itemize}
+  \item[(a)] Vérifier que c'est une loi : somme $= \frac{1}{1+a} \sum (a/(1+a))^k = 1$ (géométrique, raison $q = a/(1+a) < 1$).
+  \item[(b)] $P(Z = n) = \sum_{k=0}^n P(X=k)P(Y=n-k)$, développer et simplifier : $(n+1)\frac{a^n}{(1+a)^{n+2}}$.
+  \item[(c)] $E(S) = \sum s \cdot P(S = s)$ par formule de transfert. Reconnaître $\sum k q^k$ via dérivation.
+  \item[(d)] Symétrie $X \overset{d}{=} Y$ : $E\!\left(\frac{X}{1+Z}\right) = E\!\left(\frac{Y}{1+Z}\right)$, donc $2E\!\left(\frac{X}{1+Z}\right) = E\!\left(\frac{Z}{1+Z}\right) = 1 - E\!\left(\frac{1}{1+Z}\right)$. Calculer $E(1/(1+Z))$ avec la loi de $Z$.
+\end{itemize}
+
+\clearpage
+
+% -----------------------------------------------------------------------
+\subsection{Matrice $\begin{pmatrix}X & 1 \\ 0 & Y\end{pmatrix}$ diagonalisable}
+
+$X \sim \mathcal{G}(p)$ et $Y \sim \mathcal{G}(q)$ indépendantes sur $\mathbb{N}^*$.
+
+\medskip
+\textbf{Indications.}
+\begin{itemize}
+  \item La matrice est diagonalisable si et seulement si ses valeurs propres sont distinctes, i.e. $X \neq Y$.
+  \item $P(X = Y) = \sum_{k=1}^{+\infty} P(X=k)P(Y=k) = \sum_{k=1}^{+\infty} p(1-p)^{k-1} q(1-q)^{k-1}$.
+  \item Reconnaître une série géométrique de raison $(1-p)(1-q)$, sommer et simplifier.
+  \item $P(\text{diagonalisable}) = 1 - P(X = Y)$.
+\end{itemize}
+
+\clearpage
+
+% -----------------------------------------------------------------------
+\subsection{Loi uniforme sur $\llbracket 1, n \rrbracket$}
+
+$X$ et $Y$ sont indépendantes, uniformes sur $\llbracket 1, n \rrbracket$.
+
+\medskip
+\textbf{Indications.}
+\begin{itemize}
+  \item[(a)] $P(X = Y) = \sum_{k=1}^n P(X=k)P(Y=k) = n \cdot \frac{1}{n^2} = \frac{1}{n}$. Pour $P(X \geq Y)$ : par symétrie $P(X > Y) = P(Y > X)$, et $P(X = Y) = 1/n$, donc $P(X \geq Y) = \frac{1}{2}(1 + 1/n) = \frac{n+1}{2n}$.
+  \item[(b)] Loi de $V = \min(X, Y)$ : $P(V = k) = P(X = k, Y \geq k) + P(X > k, Y = k)$ (découper selon qui réalise le minimum). Simplifier en $\frac{2(n-k)+1}{n^2}$.
+\end{itemize}
+
+\end{document}

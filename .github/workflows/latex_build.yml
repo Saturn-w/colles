@@ -37,6 +37,14 @@ jobs:
             pdflatex -interaction=nonstopmode "$file"
           done
           
+          # Compile all indications_sX.tex files
+          for file in indications_s*.tex; do
+            echo "Compiling $file..."
+            pdflatex -interaction=nonstopmode "$file"
+            # Run twice for TOC
+            pdflatex -interaction=nonstopmode "$file"
+          done
+          
           # Move PDFs to public/pdfs directory
           cd ..
           mkdir -p public/pdfs

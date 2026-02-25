@@ -1,0 +1,126 @@
+\documentclass[a4paper,11pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath, amssymb, stmaryrd}
+\usepackage{xcolor}
+\usepackage[margin=2.5cm]{geometry}
+\usepackage{fancybox}
+\usepackage{needspace}
+
+\usepackage{tocloft}
+\setlength{\cftbeforesecskip}{0.9cm}
+\setlength{\cftbeforesubsecskip}{0.05cm}
+
+\usepackage[nobottomtitles*]{titlesec}
+\renewcommand{\bottomtitlespace}{2cm}
+
+\definecolor{questionblue}{RGB}{0, 0, 205}
+
+\pdfstringdefDisableCommands{%
+  \def\int{∫}%
+  \def\sum{∑}%
+  \def\prod{∏}%
+  \def\infty{∞}%
+  \def\partial{∂}%
+  \def\leq{≤}%
+  \def\geq{≥}%
+  \def\neq{≠}%
+  \def\approx{≈}%
+  \def\times{×}%
+  \def\cdot{·}%
+  \def\mathbb#1{#1}%
+  \def\mathcal#1{#1}%
+  \def\vec#1{#1}%
+}
+
+\newcommand{\sectionbreak}{\needspace{6\baselineskip}}
+\newcommand{\subsectionbreak}{\needspace{10\baselineskip}}
+\newcommand{\subsubsectionbreak}{\needspace{5\baselineskip}}
+
+\titleformat{\section}
+  {\normalfont\Large\bfseries\color{black}}{\thesection}{1em}{}
+\titleformat{\subsection}
+  {\normalfont\large\bfseries\color{questionblue}}{\thesubsection}{1em}{}
+\renewcommand{\thesubsubsection}{\alph{subsubsection})}
+\titleformat{\subsubsection}
+  {\normalfont\large\bfseries\color{questionblue}}{\thesubsubsection}{0.5em}{}
+
+\renewcommand{\thesubsection}{\arabic{subsection}}
+\setcounter{tocdepth}{2}
+
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{Indications - Semaine 3 - Algèbre linéaire (suite)}
+\fancyfoot[C]{\thepage}
+\renewcommand{\headrulewidth}{0pt}
+
+\usepackage{hyperref}
+\hypersetup{hidelinks}
+
+\begin{document}
+
+\title{Indications -- Semaine 3 -- Algèbre linéaire (suite)\\
+\large PSI}
+\date{}
+\maketitle
+\tableofcontents
+
+\clearpage
+
+% -----------------------------------------------------------------------
+\subsection{$\dim\!\left(\sum_{k=1}^p F_k\right) \leq \sum_{k=1}^p \dim F_k$}
+
+\medskip
+\textbf{Indications.}
+\begin{itemize}
+  \item Considérer l'application $\psi : F_1 \times \cdots \times F_p \to \sum F_k$ définie par $\psi(x_1, \dots, x_p) = \sum x_k$.
+  \item $\psi$ est linéaire et surjective (par définition de la somme).
+  \item Par le théorème du rang : $\dim\!\left(\sum F_k\right) = \dim(\mathrm{Im}\,\psi) \leq \dim(F_1 \times \cdots \times F_p) = \sum \dim F_k$.
+\end{itemize}
+
+\clearpage
+
+% -----------------------------------------------------------------------
+\subsection{$F \oplus G \oplus H = \mathbb{R}_3[X]$}
+
+On pose $F = \mathrm{Vect}(1, X)$, $G = \mathrm{Vect}(X^2, X^3)$, et on cherche un supplémentaire $H$ de $F + G$.
+
+\medskip
+\textbf{Indications.}
+\begin{itemize}
+  \item[(a)] Pour montrer $F + G = \mathbb{R}_3[X]$ (ou la somme directe selon l'énoncé) : évaluer en 0 et en 1 les polynômes d'une combinaison nulle pour en déduire les coefficients un par un. Vérifier que $\dim(F) + \dim(G) = \dim(F + G)$.
+  \item[(b)] Pour identifier $H$ : chercher des polynômes nuls en certains points. Par exemple, $X^2(X-1)$ et $X(X-1)$ s'annulent en 0 et 1. Montrer que $H = \mathrm{Vect}(X^2(X-1),\, X(X-1))$ est bien un supplémentaire en comptant les dimensions et vérifiant l'intersection nulle.
+\end{itemize}
+
+\clearpage
+
+% -----------------------------------------------------------------------
+\subsection{$\ker(f^3 - f) = \ker f \oplus \ker(f - \mathrm{id}) \oplus \ker(f + \mathrm{id})$}
+
+\medskip
+\textbf{Indications.}
+\begin{itemize}
+  \item $f^3 - f = f(f-\mathrm{id})(f+\mathrm{id})$. Les facteurs commutent (polynômes en $f$).
+  \item \textbf{Analyse-synthèse :} pour $x \in \ker(f^3 - f)$, chercher la décomposition $x = x_0 + x_1 + x_{-1}$.
+  \item Résoudre le système en appliquant $f$ et $f^2$ à la relation $x_0 + x_1 + x_{-1} = x$ :
+    \[ x_1 = \frac{f(x) + f^2(x)}{2}, \quad x_{-1} = \frac{f^2(x) - f(x)}{2}, \quad x_0 = x - f^2(x). \]
+  \item Vérifier que $f(x_0) = 0$, $f(x_1) = x_1$, $f(x_{-1}) = -x_{-1}$, et que la décomposition est unique.
+\end{itemize}
+
+\clearpage
+
+% -----------------------------------------------------------------------
+\subsection{Projecteurs de somme $\mathrm{id}$ impliquent une somme directe}
+
+Soient $p_1, \dots, p_r$ des projecteurs vérifiant $p_i \circ p_j = 0$ pour $i \neq j$ et $\sum p_k = \mathrm{id}$.
+
+\medskip
+\textbf{Indications.}
+\begin{itemize}
+  \item \textbf{Générateurs :} $\sum p_k(x) = x$, donc $E = \sum \mathrm{Im}\, p_k$.
+  \item \textbf{Somme directe :} montrer que $\sum \dim(\mathrm{Im}\, p_k) = n$. Pour cela, utiliser $\mathrm{tr}(p_k) = \mathrm{rg}(p_k)$ (projecteur), et $\sum \mathrm{tr}(p_k) = \mathrm{tr}(\mathrm{id}) = n$.
+  \item Une famille de sous-espaces dont la somme est $E$ et dont la somme des dimensions vaut $n = \dim E$ est en somme directe.
+\end{itemize}
+
+\end{document}

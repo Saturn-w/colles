@@ -1,0 +1,138 @@
+\documentclass[a4paper,11pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath, amssymb, stmaryrd}
+\usepackage{xcolor}
+\usepackage[margin=2.5cm]{geometry}
+\usepackage{fancybox}
+\usepackage{needspace}
+
+\usepackage{tocloft}
+\setlength{\cftbeforesecskip}{0.9cm}
+\setlength{\cftbeforesubsecskip}{0.05cm}
+
+\usepackage[nobottomtitles*]{titlesec}
+\renewcommand{\bottomtitlespace}{2cm}
+
+\definecolor{questionblue}{RGB}{0, 0, 205}
+
+\pdfstringdefDisableCommands{%
+  \def\int{∫}%
+  \def\sum{∑}%
+  \def\prod{∏}%
+  \def\infty{∞}%
+  \def\partial{∂}%
+  \def\leq{≤}%
+  \def\geq{≥}%
+  \def\neq{≠}%
+  \def\approx{≈}%
+  \def\times{×}%
+  \def\cdot{·}%
+  \def\mathbb#1{#1}%
+  \def\mathcal#1{#1}%
+  \def\vec#1{#1}%
+}
+
+\newcommand{\sectionbreak}{\needspace{6\baselineskip}}
+\newcommand{\subsectionbreak}{\needspace{10\baselineskip}}
+\newcommand{\subsubsectionbreak}{\needspace{5\baselineskip}}
+
+\titleformat{\section}
+  {\normalfont\Large\bfseries\color{black}}{\thesection}{1em}{}
+\titleformat{\subsection}
+  {\normalfont\large\bfseries\color{questionblue}}{\thesubsection}{1em}{}
+\renewcommand{\thesubsubsection}{\alph{subsubsection})}
+\titleformat{\subsubsection}
+  {\normalfont\large\bfseries\color{questionblue}}{\thesubsubsection}{0.5em}{}
+
+\renewcommand{\thesubsection}{\arabic{subsection}}
+\setcounter{tocdepth}{2}
+
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{Indications - Semaine 16 - Espaces euclidiens}
+\fancyfoot[C]{\thepage}
+\renewcommand{\headrulewidth}{0pt}
+
+\usepackage{hyperref}
+\hypersetup{hidelinks}
+
+\begin{document}
+
+\title{Indications -- Semaine 16 -- Espaces euclidiens\\
+\large PSI}
+\date{}
+\maketitle
+\tableofcontents
+
+\clearpage
+
+% -----------------------------------------------------------------------
+\subsection{Inégalité de Cauchy-Schwarz euclidienne}
+
+Dans un espace euclidien, montrer $|(x \mid y)|^2 \leq \|x\|^2 \|y\|^2$.
+
+\medskip
+\textbf{Indications.}
+\begin{itemize}
+  \item Considérer $P(\lambda) = \|x + \lambda y\|^2 = \|x\|^2 + 2\lambda(x \mid y) + \lambda^2 \|y\|^2 \geq 0$ pour tout $\lambda \in \mathbb{R}$.
+  \item Discriminant du trinôme en $\lambda$ : $\Delta = 4(x \mid y)^2 - 4\|x\|^2\|y\|^2 \leq 0$.
+  \item Cas d'égalité : $\Delta = 0 \iff P$ a une racine $\iff x + \lambda y = 0$ pour un certain $\lambda$, i.e. $x$ et $y$ sont colinéaires.
+\end{itemize}
+
+\clearpage
+
+% -----------------------------------------------------------------------
+\subsection{Projecteur orthogonal $\iff \|p(x)\| \leq \|x\|$ pour tout $x$}
+
+\medskip
+\textbf{Indications.}
+\begin{itemize}
+  \item $(\Rightarrow)$ : Si $p$ est un projecteur orthogonal, écrire $x = p(x) + (x - p(x))$ avec $p(x) \perp (x - p(x))$ par définition. Pythagore donne $\|x\|^2 = \|p(x)\|^2 + \|x - p(x)\|^2 \geq \|p(x)\|^2$.
+  \item $(\Leftarrow)$ : Supposer $\|p(x)\| \leq \|x\|$ pour tout $x$. Il faut montrer $\ker p \perp \mathrm{Im}\, p$. Soit $y \in \ker p$ et $z \in E$. Développer $\|p(z + \lambda y)\|^2 \leq \|z + \lambda y\|^2$ pour tout $\lambda$ pour obtenir $(y \mid p(z)) = 0$.
+\end{itemize}
+
+\clearpage
+
+% -----------------------------------------------------------------------
+\subsection{Formule de la réflexion}
+
+Soit $H$ un hyperplan de vecteur normal $a$. Exprimer la réflexion $\sigma_H$ de plan de réflexion $H$.
+
+\medskip
+\textbf{Indications.}
+\begin{itemize}
+  \item Décomposer $x = x_H + x_{H^\perp}$ avec $x_H \in H$ et $x_{H^\perp} \in H^\perp = \mathrm{Vect}(a)$.
+  \item La réflexion fixe $H$ et change $x_{H^\perp}$ en $-x_{H^\perp}$ : $\sigma(x) = x_H - x_{H^\perp} = x - 2x_{H^\perp}$.
+  \item $x_{H^\perp} = \frac{(x \mid a)}{(a \mid a)} a$, donc $\sigma(x) = x - \frac{2(x \mid a)}{\|a\|^2} a$.
+\end{itemize}
+
+\clearpage
+
+% -----------------------------------------------------------------------
+\subsection{Produit scalaire $\varphi(A, B) = \mathrm{tr}(A^T B)$ sur $\mathcal{M}_n(\mathbb{R})$}
+
+\medskip
+\textbf{Indications.}
+\begin{itemize}
+  \item[(a)] Symétrie : $\mathrm{tr}(A^T B) = \mathrm{tr}(B^T A)$ (exercice 1 de S4). Bilinéarité : linéarité de la trace. Définie positive : $\varphi(A,A) = \mathrm{tr}(A^T A) = \sum_{i,j} a_{ij}^2 \geq 0$, et $= 0 \iff A = 0$.
+  \item[(b)] Supplémentaires orthogonaux $\mathcal{S}_n \perp \mathcal{A}_n$ : si $S$ symétrique et $A$ antisymétrique, $\varphi(S, A) = \mathrm{tr}(S^T A) = \mathrm{tr}(SA) = \mathrm{tr}((-A)^T S) = -\varphi(A, S) = -\varphi(S,A)$, donc $= 0$.
+  \item[(c)] La projection orthogonale de $A$ sur $\mathcal{A}_n$ est $\frac{A - A^T}{2}$, donc $d(A, \mathcal{S}_n) = \left\|\frac{A - A^T}{2}\right\|$.
+\end{itemize}
+
+\clearpage
+
+% -----------------------------------------------------------------------
+\subsection{Matrice de réflexion par rapport au plan $x - y + 2z = 0$}
+
+\medskip
+\textbf{Indications.}
+\begin{itemize}
+  \item Le plan a pour vecteur normal $a = (1, -1, 2)^T$, avec $\|a\|^2 = 6$.
+  \item Formule de la réflexion : $\sigma(X) = X - \frac{2(X \cdot a)}{6} a$.
+  \item La matrice est $\sigma = I - \frac{2}{6} a a^T = I - \frac{1}{3} \begin{pmatrix} 1 \\ -1 \\ 2 \end{pmatrix} \begin{pmatrix} 1 & -1 & 2 \end{pmatrix}$.
+  \item Calculer explicitement les 9 coefficients.
+\end{itemize}
+
+\end{document}

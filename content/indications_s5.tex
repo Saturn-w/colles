@@ -1,0 +1,84 @@
+\documentclass[a4paper,11pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath, amssymb, stmaryrd}
+\usepackage{xcolor}
+\usepackage[margin=2.5cm]{geometry}
+\usepackage{fancybox}
+\usepackage{needspace}
+
+\usepackage{tocloft}
+\setlength{\cftbeforesecskip}{0.9cm}
+\setlength{\cftbeforesubsecskip}{0.05cm}
+
+\usepackage[nobottomtitles*]{titlesec}
+\renewcommand{\bottomtitlespace}{2cm}
+
+\definecolor{questionblue}{RGB}{0, 0, 205}
+
+\pdfstringdefDisableCommands{%
+  \def\int{∫}%
+  \def\sum{∑}%
+  \def\prod{∏}%
+  \def\infty{∞}%
+  \def\partial{∂}%
+  \def\leq{≤}%
+  \def\geq{≥}%
+  \def\neq{≠}%
+  \def\approx{≈}%
+  \def\times{×}%
+  \def\cdot{·}%
+  \def\mathbb#1{#1}%
+  \def\mathcal#1{#1}%
+  \def\vec#1{#1}%
+}
+
+\newcommand{\sectionbreak}{\needspace{6\baselineskip}}
+\newcommand{\subsectionbreak}{\needspace{10\baselineskip}}
+\newcommand{\subsubsectionbreak}{\needspace{5\baselineskip}}
+
+\titleformat{\section}
+  {\normalfont\Large\bfseries\color{black}}{\thesection}{1em}{}
+\titleformat{\subsection}
+  {\normalfont\large\bfseries\color{questionblue}}{\thesubsection}{1em}{}
+\renewcommand{\thesubsubsection}{\alph{subsubsection})}
+\titleformat{\subsubsection}
+  {\normalfont\large\bfseries\color{questionblue}}{\thesubsubsection}{0.5em}{}
+
+\renewcommand{\thesubsection}{\arabic{subsection}}
+\setcounter{tocdepth}{2}
+
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{Indications - Semaine 5 - Théorème des accroissements finis}
+\fancyfoot[C]{\thepage}
+\renewcommand{\headrulewidth}{0pt}
+
+\usepackage{hyperref}
+\hypersetup{hidelinks}
+
+\begin{document}
+
+\title{Indications -- Semaine 5 -- Théorème des accroissements finis\\
+\large PSI}
+\date{}
+\maketitle
+
+\clearpage
+
+% -----------------------------------------------------------------------
+\subsection{Preuve du théorème des accroissements finis}
+
+Soit $f : [a, b] \to \mathbb{R}$ continue sur $[a,b]$, dérivable sur $]a, b[$. Montrer qu'il existe $c \in {]a,b[}$ tel que $f(b) - f(a) = f'(c)(b-a)$.
+
+\medskip
+\textbf{Indications.}
+\begin{itemize}
+  \item Introduire la fonction auxiliaire $\varphi(x) = f(x) - f(a) - k(x - a)$ où $k = \dfrac{f(b) - f(a)}{b - a}$.
+  \item Vérifier que $\varphi(a) = \varphi(b) = 0$ : $\varphi$ est continue sur $[a,b]$, dérivable sur $]a,b[$, et s'annule aux deux extrémités.
+  \item Appliquer le \textbf{théorème de Rolle} : il existe $c \in {]a,b[}$ tel que $\varphi'(c) = 0$.
+  \item $\varphi'(c) = f'(c) - k = 0$ donne $f'(c) = k = \dfrac{f(b)-f(a)}{b-a}$.
+\end{itemize}
+
+\end{document}

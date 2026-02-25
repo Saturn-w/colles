@@ -1,0 +1,144 @@
+\documentclass[a4paper,11pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath, amssymb, stmaryrd}
+\usepackage{xcolor}
+\usepackage[margin=2.5cm]{geometry}
+\usepackage{fancybox}
+\usepackage{needspace}
+
+\usepackage{tocloft}
+\setlength{\cftbeforesecskip}{0.9cm}
+\setlength{\cftbeforesubsecskip}{0.05cm}
+
+\usepackage[nobottomtitles*]{titlesec}
+\renewcommand{\bottomtitlespace}{2cm}
+
+\definecolor{questionblue}{RGB}{0, 0, 205}
+
+\pdfstringdefDisableCommands{%
+  \def\int{∫}%
+  \def\sum{∑}%
+  \def\prod{∏}%
+  \def\infty{∞}%
+  \def\partial{∂}%
+  \def\leq{≤}%
+  \def\geq{≥}%
+  \def\neq{≠}%
+  \def\approx{≈}%
+  \def\times{×}%
+  \def\cdot{·}%
+  \def\mathbb#1{#1}%
+  \def\mathcal#1{#1}%
+  \def\vec#1{#1}%
+}
+
+\newcommand{\sectionbreak}{\needspace{6\baselineskip}}
+\newcommand{\subsectionbreak}{\needspace{10\baselineskip}}
+\newcommand{\subsubsectionbreak}{\needspace{5\baselineskip}}
+
+\titleformat{\section}
+  {\normalfont\Large\bfseries\color{black}}{\thesection}{1em}{}
+\titleformat{\subsection}
+  {\normalfont\large\bfseries\color{questionblue}}{\thesubsection}{1em}{}
+\renewcommand{\thesubsubsection}{\alph{subsubsection})}
+\titleformat{\subsubsection}
+  {\normalfont\large\bfseries\color{questionblue}}{\thesubsubsection}{0.5em}{}
+
+\renewcommand{\thesubsection}{\arabic{subsection}}
+\setcounter{tocdepth}{2}
+
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{Indications - Semaine 13 - Probabilités}
+\fancyfoot[C]{\thepage}
+\renewcommand{\headrulewidth}{0pt}
+
+\usepackage{hyperref}
+\hypersetup{hidelinks}
+
+\begin{document}
+
+\title{Indications -- Semaine 13 -- Probabilités\\
+\large PSI}
+\date{}
+\maketitle
+\tableofcontents
+
+\clearpage
+
+% -----------------------------------------------------------------------
+\subsection{Continuité croissante de la probabilité}
+
+Soit $(A_n)$ une suite croissante d'événements. Montrer que $P\!\left(\bigcup_{n} A_n\right) = \lim P(A_n)$.
+
+\medskip
+\textbf{Indications.}
+\begin{itemize}
+  \item Poser $B_0 = A_0$ et $B_n = A_n \setminus A_{n-1}$ pour $n \geq 1$ : les $B_n$ sont disjoints et $\bigcup_{k=0}^N B_k = A_N$.
+  \item $\bigcup_n A_n = \bigsqcup_n B_n$, donc par $\sigma$-additivité : $P\!\left(\bigcup A_n\right) = \sum_{n \geq 0} P(B_n)$.
+  \item Cette somme est la limite de $\sum_{k=0}^N P(B_k) = P(A_N)$.
+\end{itemize}
+
+\clearpage
+
+% -----------------------------------------------------------------------
+\subsection{Urne et pile ou face : probabilité d'une boule blanche $= \ln 2$}
+
+À l'étape $n$, on tire une urne contenant 1 boule blanche et $n-1$ noires avec probabilité $1/2^n$.
+
+\medskip
+\textbf{Indications.}
+\begin{itemize}
+  \item[(a)] Vérifier que $(P_n)_{n \geq 1}$ forme un système complet d'événements : les $P_n$ sont disjoints et $\sum P(P_n) = \sum 1/2^n = 1$ (série géométrique).
+  \item[(b)] Probabilité d'une boule blanche : $P(A) = \sum_{n \geq 1} P(P_n) P_{P_n}(A) = \sum_{n \geq 1} \frac{1}{2^n} \cdot \frac{1}{n}$.
+  \item Reconnaître le développement en série : $\sum_{n=1}^{+\infty} \frac{x^n}{n} = -\ln(1-x)$ pour $|x| < 1$, évalué en $x = 1/2$ donne $\ln 2$.
+\end{itemize}
+
+\clearpage
+
+% -----------------------------------------------------------------------
+\subsection{Loi de Riemann-Zeta}
+
+$P(\{n\}) = \frac{1}{\zeta(\alpha) n^\alpha}$ pour $n \geq 1$, avec $\alpha > 1$.
+
+\medskip
+\textbf{Indications.}
+\begin{itemize}
+  \item[(a)] Positivité : évidente. Somme $= 1$ : par définition de $\zeta(\alpha) = \sum_{n=1}^{+\infty} 1/n^\alpha$.
+  \item[(b)] $P(k\mathbb{N}^*) = \sum_{n=1}^{+\infty} P(\{kn\}) = \frac{1}{\zeta(\alpha)} \sum_{n=1}^{+\infty} \frac{1}{(kn)^\alpha} = \frac{1}{k^\alpha}$.
+  \item Indépendance : $P(2\mathbb{N}^*) \cdot P(3\mathbb{N}^*) = \frac{1}{2^\alpha} \cdot \frac{1}{3^\alpha} = \frac{1}{6^\alpha} = P(6\mathbb{N}^*)$. Vérifier de même pour tout couple de premiers distincts.
+\end{itemize}
+
+\clearpage
+
+% -----------------------------------------------------------------------
+\subsection{Jeu de pénalties}
+
+Deux joueurs tirent alternativement. Le joueur 1 marque avec probabilité $p_1$, le joueur 2 avec probabilité $p_2$.
+
+\medskip
+\textbf{Indications.}
+\begin{itemize}
+  \item[(a)] $J_1$ = joueur 1 gagne au tour $k$ : les $k-1$ premiers tours sont ratés, le $k$-ième réussi pour J1. $P(J_1) = \sum_{k=1}^{+\infty} (1-p_1)^{k-1}(1-p_2)^{k-1} p_1$, série géométrique de raison $(1-p_1)(1-p_2)$.
+  \item[(b)] La partie se termine forcément : $P(J_1) + P(J_2) = 1$ (l'un ou l'autre gagne).
+  \item[(c)] Équité : $P(J_1) = P(J_2) = 1/2$. Exprimer $P(J_1) = 1/2$ et résoudre pour $p_1$ en fonction de $p_2$. Trouver la condition $p_1 \in {]0,1[}$.
+\end{itemize}
+
+\clearpage
+
+% -----------------------------------------------------------------------
+\subsection{Deux piles consécutifs quasi-certain}
+
+On lance une pièce indéfiniment. Soit $C$ = "obtenir deux piles consécutifs". Montrer $P(C) = 1$.
+
+\medskip
+\textbf{Indications.}
+\begin{itemize}
+  \item[(a)] Calculer $a_1 = 0$, $a_2 = p^2$, $a_3 = p^2(1-p)$ en décomposant selon les premiers lancers.
+  \item[(b)] Utiliser le SCE $\{F_1, P_1 \cap F_2, P_1 \cap P_2\}$ (selon si le premier lancer est Face, ou si le premier est Pile puis le deuxième est Face, ou les deux premiers sont Pile) pour établir une relation de récurrence sur $a_n = P(\text{deux piles consécutifs parmi les } n \text{ premiers})$.
+  \item[(c)] $P(C) = \lim a_n$. Montrer que $1 - a_n \to 0$ : utiliser la récurrence et montrer que $1 - a_n \leq (1-p^2)^{\lfloor n/2 \rfloor} \to 0$.
+\end{itemize}
+
+\end{document}
