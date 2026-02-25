@@ -434,6 +434,31 @@
             margin-top: 0;
         }
 
+        .indications-btn {
+            flex-shrink: 0;
+            margin-left: 10px;
+            padding: 4px 10px;
+            border-radius: 4px;
+            font-size: 10px;
+            font-family: inherit;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            color: var(--text-dim);
+            background: transparent;
+            border: 1px solid var(--border-color);
+            cursor: pointer;
+            text-decoration: none;
+            transition: all 0.2s ease;
+            white-space: nowrap;
+        }
+
+        .indications-btn:hover {
+            color: var(--accent);
+            border-color: var(--accent);
+            background: rgba(52, 152, 219, 0.08);
+        }
+
         footer {
             text-align: center;
             padding: 40px 20px;
@@ -744,6 +769,10 @@
                         <span class="icon">📄</span>
                         <span class="name">Semaine ${week.number} - ${week.title}</span>
                     </a>
+                    <a href="pdfs/indications_s${week.number}.pdf"
+                       target="_blank"
+                       class="indications-btn"
+                       onclick="event.stopPropagation()">Indications</a>
                 `;
                 
                 li.appendChild(weekRow);
