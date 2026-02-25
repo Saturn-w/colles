@@ -435,6 +435,7 @@
         }
 
         .indications-btn {
+            display: none;
             flex-shrink: 0;
             margin-left: 10px;
             padding: 4px 10px;
@@ -457,6 +458,10 @@
             color: var(--accent);
             border-color: var(--accent);
             background: rgba(52, 152, 219, 0.08);
+        }
+
+        body.show-indications .indications-btn {
+            display: inline-block;
         }
 
         footer {
@@ -967,6 +972,9 @@
         });
 
         // --- Initialisation ---
+        if (window.location.search.includes('indi')) {
+            document.body.classList.add('show-indications');
+        }
         loadExercisesData();
     </script>
 </body>
