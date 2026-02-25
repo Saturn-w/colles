@@ -1,0 +1,82 @@
+{
+  "weeks": [
+    {
+      "id": "s1",
+      "number": 1,
+      "title": "Algèbre linéaire (Partie 1)",
+      "exercises": ["ex1", "ex2", "ex3", "ex4", "ex5", "ex6", "ex7", "ex8", "ex9"]
+    },
+    {
+      "id": "s2",
+      "number": 2,
+      "title": "Suites et séries numériques",
+      "exercises": ["ex1", "ex2", "ex3", "ex4", "ex5", "ex6", "ex7"]
+    },
+    {
+      "id": "s3",
+      "number": 3,
+      "title": "Algèbre linéaire (Partie 2)",
+      "exercises": ["ex1", "ex2", "ex3", "ex4"]
+    },
+    {
+      "id": "s4",
+      "number": 4,
+      "title": "Algèbre linéaire (Partie 2 suite)",
+      "exercises": ["ex1", "ex2", "ex3", "ex4", "ex5"]
+    },
+    {
+      "id": "s5",
+      "number": 5,
+      "title": "Fonctions vectorielles",
+      "exercises": ["ex1"]
+    },
+    {
+      "id": "s12",
+      "number": 12,
+      "title": "Séries entières",
+      "exercises": ["ex1", "ex2", "ex3", "ex4", "ex5", "ex6", "ex7"]
+    },
+    {
+      "id": "s13",
+      "number": 13,
+      "title": "Espaces probabilisés",
+      "exercises": ["ex1", "ex2", "ex3", "ex4", "ex5"]
+    },
+    {
+      "id": "s14",
+      "number": 14,
+      "title": "Variables aléatoires discrètes (1)",
+      "exercises": ["ex1", "ex2", "ex3", "ex4", "ex5"]
+    },
+    {
+      "id": "s15",
+      "number": 15,
+      "title": "Variables aléatoires discrètes (2)",
+      "exercises": ["ex1", "ex2", "ex3", "ex4", "ex5", "ex6"]
+    },
+    {
+      "id": "s16",
+      "number": 16,
+      "title": "Espaces préhilbertiens (1)",
+      "exercises": ["ex1", "ex2", "ex3", "ex4", "ex5"]
+    },
+    {
+      "id": "s17",
+      "number": 17,
+      "title": "Espaces préhilbertiens (2)",
+      "exercises": ["ex1", "ex2", "ex3", "ex4", "ex5", "ex6", "ex7", "ex8", "ex9", "ex10", "ex11"]
+    },
+    {
+      "id": "s18",
+      "number": 18,
+      "title": "Intégration sur un intervalle quelconque",
+      "exercises": ["ex1", "ex2", "ex3", "ex4", "ex5", "ex6"]
+    },
+    {
+      "id": "s19",
+      "number": 19,
+      "title": "Équations Différentielles",
+      "exercises": ["ex1", "ex2", "ex3", "ex4", "ex5", "ex6"]
+    }
+  ]
+}

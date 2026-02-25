@@ -1,0 +1,981 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Questions de Cours - PSI</title>
+    <meta name="description" content="Recueil de questions de cours (colles) pour la classe préparatoire PSI">
+    
+    <!-- PWA Metadata -->
+    <meta name="theme-color" content="#0f0f0f">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="Colles PSI">
+    
+    <!-- Manifest -->
+    <link rel="manifest" href="manifest.json">
+    
+    <!-- Icons -->
+    <link rel="icon" type="image/svg+xml" href="icon.svg">
+    <link rel="apple-touch-icon" href="icon.svg">
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Geist+Mono:wght@100..900&display=swap');
+
+        :root {
+            --bg-color: #0f0f0f;
+            --card-bg: #1a1a1a;
+            --border-color: #2a2a2a;
+            --text-main: #e0e0e0;
+            --text-dim: #888;
+            --accent: #3498db;
+            --success: #27ae60;
+            --warning: #f39c12;
+            --danger: #e74c3c;
+        }
+
+        * { box-sizing: border-box; }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            font-family: 'Geist Mono', monospace;
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        header {
+            padding: 20px 40px;
+            flex-shrink: 0;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .site-title {
+            font-family: 'Geist Mono', monospace;
+            font-size: 18px;
+            font-weight: 400;
+            color: #fff;
+            letter-spacing: -0.5px;
+            text-align: center;
+            line-height: 1;
+        }
+
+        /* Main Layout - Two Columns */
+        .main-container {
+            display: flex;
+            flex: 1;
+            max-width: 1400px;
+            margin: 0 auto;
+            width: 100%;
+            gap: 30px;
+            padding: 40px 40px;
+        }
+
+        .left-panel {
+            flex: 1;
+            min-width: 0;
+        }
+
+        .right-panel {
+            width: 350px;
+            flex-shrink: 0;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            position: sticky;
+            top: 20px;
+            height: fit-content;
+        }
+
+        /* Collapsible Sections */
+        .collapsible-section {
+            background: var(--card-bg);
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+            overflow: hidden;
+        }
+
+        .collapsible-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px;
+            cursor: pointer;
+            user-select: none;
+            transition: background 0.2s ease;
+        }
+
+        .collapsible-header:hover {
+            background: rgba(255, 255, 255, 0.02);
+        }
+
+        .collapsible-title {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .collapse-arrow {
+            font-size: 12px;
+            color: var(--text-dim);
+            transition: transform 0.2s ease;
+        }
+
+        .collapse-arrow.open {
+            transform: rotate(90deg);
+        }
+
+        .collapsible-label {
+            font-size: 12px;
+            color: var(--text-dim);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .collapsible-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+        }
+
+        .collapsible-content.open {
+            max-height: 500px;
+        }
+
+        .collapsible-inner {
+            padding: 0 15px 15px 15px;
+        }
+
+        /* Progress Bar */
+        .progress-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
+        .progress-stats {
+            font-size: 14px;
+            color: var(--accent);
+            font-weight: bold;
+        }
+
+        .progress-bar {
+            height: 8px;
+            background: var(--border-color);
+            border-radius: 4px;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--accent), var(--success));
+            transition: width 0.3s ease;
+            width: 0%;
+        }
+        
+        /* Toolbar */
+        .toolbar {
+            margin-bottom: 30px;
+        }
+
+        .category-title {
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--text-main);
+            font-weight: bold;
+        }
+
+        /* Random Exercise Display */
+        .random-container {
+            padding: 20px;
+            background: var(--card-bg);
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+        }
+
+        .random-header {
+            font-size: 12px;
+            color: var(--text-dim);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 15px;
+        }
+
+        .random-display {
+            background: rgba(52, 152, 219, 0.1);
+            border: 1px solid var(--accent);
+            border-radius: 6px;
+            padding: 20px;
+            text-align: center;
+            margin-bottom: 15px;
+        }
+
+        .random-week {
+            font-size: 12px;
+            color: var(--text-dim);
+            margin-bottom: 5px;
+        }
+
+        .random-exercise {
+            font-size: 18px;
+            color: var(--accent);
+            font-weight: bold;
+        }
+
+        .random-btn {
+            width: 100%;
+            background: var(--accent);
+            color: white;
+            border: none;
+            padding: 12px 15px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-family: inherit;
+            font-size: 13px;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            transition: all 0.2s ease;
+        }
+
+        .random-btn:hover {
+            background: #2980b9;
+            transform: translateY(-2px);
+        }
+
+        .random-btn:active {
+            transform: translateY(0);
+        }
+
+        /* Checklist Panel */
+        .checklist-content {
+            max-height: 400px;
+            overflow-y: auto;
+        }
+
+        .checklist-week {
+            margin-bottom: 20px;
+        }
+
+        .checklist-week-title {
+            font-size: 11px;
+            color: var(--text-dim);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 8px;
+        }
+
+        .checklist-item {
+            display: flex;
+            align-items: center;
+            padding: 8px 10px;
+            background: rgba(255, 255, 255, 0.02);
+            border-radius: 4px;
+            margin: 4px 0;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            position: relative;
+        }
+
+        .checklist-item:hover {
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        .checklist-item.due-soon {
+            border-left: 3px solid var(--warning);
+        }
+
+        .checklist-item.overdue {
+            border-left: 3px solid var(--danger);
+        }
+
+        .checkbox {
+            width: 18px;
+            height: 18px;
+            border: 2px solid var(--border-color);
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            flex-shrink: 0;
+            margin-right: 10px;
+        }
+
+        .checkbox:hover {
+            border-color: var(--accent);
+        }
+
+        .checkbox.checked {
+            background: var(--success);
+            border-color: var(--success);
+        }
+
+        .checkbox.checked::after {
+            content: '✓';
+            color: white;
+            font-size: 12px;
+            font-weight: bold;
+        }
+
+        .checklist-item-text {
+            flex: 1;
+            font-size: 13px;
+            color: var(--text-main);
+        }
+
+        .checklist-item.completed .checklist-item-text {
+            opacity: 0.5;
+            text-decoration: line-through;
+        }
+
+        .review-date {
+            font-size: 10px;
+            color: var(--text-dim);
+            margin-left: 10px;
+        }
+
+        /* Document List */
+        ul { 
+            list-style: none; 
+            padding-left: 0; 
+            margin: 0; 
+        }
+        
+        li { 
+            margin: 10px 0; 
+        }
+
+        .row { 
+            display: flex; 
+            align-items: center; 
+            padding: 18px 20px; 
+            border-radius: 6px; 
+            cursor: pointer; 
+            user-select: none; 
+            transition: all 0.2s ease;
+            overflow: hidden;
+            background-color: var(--card-bg); 
+            border: 1px solid var(--border-color); 
+            color: var(--text-main); 
+        }
+        
+        .row:hover { 
+            background-color: #222; 
+            border-color: #444; 
+            transform: translateY(-2px); 
+        }
+        
+        .row:active { 
+            transform: translateY(0); 
+        }
+
+        .row.main-doc {
+            border-color: var(--accent);
+            background: linear-gradient(135deg, rgba(52, 152, 219, 0.15), rgba(52, 152, 219, 0.05));
+        }
+
+        .row.main-doc:hover {
+            background: linear-gradient(135deg, rgba(52, 152, 219, 0.25), rgba(52, 152, 219, 0.1));
+            border-color: #5dade2;
+        }
+        
+        .row a { 
+            text-decoration: none; 
+            color: inherit; 
+            display: flex; 
+            align-items: center; 
+            flex-grow: 1;
+            overflow: hidden; 
+        }
+        
+        .icon { 
+            margin-right: 15px; 
+            font-size: 20px;
+            flex-shrink: 0;
+        }
+        
+        .name { 
+            font-size: 15px; 
+            text-overflow: ellipsis; 
+            overflow: hidden; 
+            flex-grow: 1; 
+        }
+
+        .badge {
+            background-color: var(--accent);
+            color: #fff;
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-size: 10px;
+            font-weight: bold;
+            margin-right: 10px;
+            text-transform: uppercase;
+        }
+
+        .section-title {
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--text-dim);
+            margin: 30px 0 15px 5px;
+            font-weight: bold;
+        }
+
+        .section-title:first-child {
+            margin-top: 0;
+        }
+
+        .indications-btn {
+            display: none;
+            flex-shrink: 0;
+            margin-left: 10px;
+            padding: 4px 10px;
+            border-radius: 4px;
+            font-size: 10px;
+            font-family: inherit;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            color: var(--text-dim);
+            background: transparent;
+            border: 1px solid var(--border-color);
+            cursor: pointer;
+            text-decoration: none;
+            transition: all 0.2s ease;
+            white-space: nowrap;
+        }
+
+        .indications-btn:hover {
+            color: var(--accent);
+            border-color: var(--accent);
+            background: rgba(52, 152, 219, 0.08);
+        }
+
+        body.show-indications .indications-btn {
+            display: inline-block;
+        }
+
+        footer {
+            text-align: center;
+            padding: 40px 20px;
+            color: var(--text-dim);
+            font-size: 12px;
+        }
+
+        /* --- Mobile Responsive --- */
+        @media (max-width: 968px) {
+            .main-container {
+                flex-direction: column;
+                padding: 20px;
+            }
+
+            .right-panel {
+                width: 100%;
+                position: static;
+                order: 2;
+            }
+
+            .left-panel {
+                order: 1;
+            }
+
+            header {
+                padding: 15px 20px;
+            }
+
+
+
+            .row {
+                padding: 15px;
+            }
+
+            .name {
+                font-size: 14px;
+            }
+        }
+
+        /* Scrollbar */
+        body::-webkit-scrollbar,
+        .checklist-content::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        body::-webkit-scrollbar-track,
+        .checklist-content::-webkit-scrollbar-track {
+            background: var(--bg-color);
+        }
+
+        body::-webkit-scrollbar-thumb,
+        .checklist-content::-webkit-scrollbar-thumb {
+            background: var(--border-color);
+            border-radius: 4px;
+        }
+
+        body::-webkit-scrollbar-thumb:hover,
+        .checklist-content::-webkit-scrollbar-thumb:hover {
+            background: #444;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="site-title">Questions de Cours - PSI</div>
+    </header>
+
+    <div class="main-container">
+        <!-- Left Panel - Documents -->
+        <div class="left-panel">
+            <div class="toolbar">
+                <div class="category-title">Documents</div>
+            </div>
+            
+            <!-- Document complet -->
+            <div class="section-title">📚 Document complet</div>
+            <ul>
+                <li>
+                    <a href="pdfs/main.pdf" target="_blank">
+                        <div class="row main-doc">
+                            <span class="icon">📄</span>
+                            <span class="badge">Full</span>
+                            <span class="name">Programme complet - Toutes les semaines</span>
+                        </div>
+                    </a>
+                </li>
+            </ul>
+
+            <!-- Semaines -->
+            <div class="section-title">📖 Semaines individuelles</div>
+            <ul id="weeks-list">
+                <!-- Généré dynamiquement par JavaScript -->
+            </ul>
+        </div>
+
+        <!-- Right Panel - Random Exercise, Checklist, Progress -->
+        <div class="right-panel">
+            <!-- Random Exercise -->
+            <div class="random-container">
+                <div class="random-header">🎲 Exercice aléatoire</div>
+                <div class="random-display" id="random-display">
+                    <div class="random-week">Clique sur le bouton ci-dessous</div>
+                    <div class="random-exercise">---</div>
+                </div>
+                <button class="random-btn" id="random-btn">
+                    <span>🎲</span>
+                    <span>Nouveau tirage</span>
+                </button>
+            </div>
+
+            <!-- Checklist - Collapsible -->
+            <div class="collapsible-section">
+                <div class="collapsible-header" onclick="toggleCollapse('checklist')">
+                    <div class="collapsible-title">
+                        <span class="collapse-arrow" id="checklist-arrow">▶</span>
+                        <span class="collapsible-label">Révisions</span>
+                    </div>
+                    <span id="review-count">0 à réviser</span>
+                </div>
+                <div class="collapsible-content" id="checklist-content-wrapper">
+                    <div class="collapsible-inner">
+                        <div class="checklist-content" id="checklist-content">
+                            <!-- Généré dynamiquement par JavaScript -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Progress Bar - Collapsible -->
+            <div class="collapsible-section">
+                <div class="collapsible-header" onclick="toggleCollapse('progress')">
+                    <div class="collapsible-title">
+                        <span class="collapse-arrow" id="progress-arrow">▶</span>
+                        <span class="collapsible-label">Progression</span>
+                    </div>
+                    <span class="progress-stats" id="progress-stats">0 / 0 (0%)</span>
+                </div>
+                <div class="collapsible-content" id="progress-content">
+                    <div class="collapsible-inner">
+                        <div class="progress-bar">
+                            <div class="progress-fill" id="progress-fill"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        Généré automatiquement via GitHub Actions & LaTeX
+    </footer>
+
+    <script>
+        // --- État de l'application ---
+        let exercisesData = null;
+        let progressData = {};
+
+        // --- Collapse functionality ---
+        function toggleCollapse(section) {
+            const content = document.getElementById(`${section}-content-wrapper`) || document.getElementById(`${section}-content`);
+            const arrow = document.getElementById(`${section}-arrow`);
+            
+            if (content.classList.contains('open')) {
+                content.classList.remove('open');
+                arrow.classList.remove('open');
+            } else {
+                content.classList.add('open');
+                arrow.classList.add('open');
+            }
+        }
+
+        // --- Chargement des données ---
+        async function loadExercisesData() {
+            try {
+                const response = await fetch('exercises.json');
+                exercisesData = await response.json();
+                loadProgress();
+                renderWeeks();
+                renderChecklist();
+                updateProgressBar();
+            } catch (error) {
+                console.error('Erreur chargement exercices:', error);
+            }
+        }
+
+        // --- Spaced Repetition System (SM-2 Algorithm) ---
+        // Intervals: First review: 1 day, Second: 3 days, Third: 7 days, Fourth: 14 days, etc.
+        function calculateNextReviewDate(reviewCount) {
+            const intervals = [1, 3, 7, 14, 30, 60, 120]; // days
+            const days = reviewCount < intervals.length ? intervals[reviewCount] : intervals[intervals.length - 1] * 2;
+            const nextDate = new Date();
+            nextDate.setDate(nextDate.getDate() + days);
+            return nextDate.toISOString();
+        }
+
+        function isExerciseDueForReview(exerciseData) {
+            if (!exerciseData || !exerciseData.completed) return false;
+            if (!exerciseData.nextReview) return true;
+            return new Date(exerciseData.nextReview) <= new Date();
+        }
+
+        function getDaysUntilReview(nextReview) {
+            const today = new Date();
+            const reviewDate = new Date(nextReview);
+            const diffTime = reviewDate - today;
+            const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+            return diffDays;
+        }
+
+        // --- Gestion de la progression (localStorage) ---
+        function loadProgress() {
+            const saved = localStorage.getItem('colles-progress');
+            if (saved) {
+                progressData = JSON.parse(saved);
+            }
+        }
+
+        function saveProgress() {
+            localStorage.setItem('colles-progress', JSON.stringify(progressData));
+            updateProgressBar();
+            renderChecklist();
+        }
+
+        function toggleExercise(weekId, exerciseId) {
+            const key = `${weekId}_${exerciseId}`;
+            
+            if (!progressData[key]) {
+                // First time completing
+                progressData[key] = {
+                    completed: true,
+                    reviewCount: 0,
+                    nextReview: calculateNextReviewDate(0),
+                    lastReview: new Date().toISOString()
+                };
+            } else if (progressData[key].completed) {
+                // Mark as reviewed again (increase review count)
+                progressData[key].reviewCount++;
+                progressData[key].nextReview = calculateNextReviewDate(progressData[key].reviewCount);
+                progressData[key].lastReview = new Date().toISOString();
+            } else {
+                // Re-completing after unmarking
+                progressData[key].completed = true;
+                progressData[key].nextReview = calculateNextReviewDate(progressData[key].reviewCount);
+                progressData[key].lastReview = new Date().toISOString();
+            }
+            
+            saveProgress();
+        }
+
+        function uncheckExercise(weekId, exerciseId) {
+            const key = `${weekId}_${exerciseId}`;
+            if (progressData[key]) {
+                progressData[key].completed = false;
+            }
+            saveProgress();
+        }
+
+        function isExerciseCompleted(weekId, exerciseId) {
+            const key = `${weekId}_${exerciseId}`;
+            return progressData[key] && progressData[key].completed;
+        }
+
+        function getExerciseData(weekId, exerciseId) {
+            const key = `${weekId}_${exerciseId}`;
+            return progressData[key];
+        }
+
+        function updateProgressBar() {
+            if (!exercisesData) return;
+            
+            let total = 0;
+            let completed = 0;
+            
+            exercisesData.weeks.forEach(week => {
+                week.exercises.forEach(ex => {
+                    total++;
+                    if (isExerciseCompleted(week.id, ex)) {
+                        completed++;
+                    }
+                });
+            });
+            
+            const percentage = total > 0 ? Math.round((completed / total) * 100) : 0;
+            
+            document.getElementById('progress-stats').textContent = 
+                `${completed} / ${total} (${percentage}%)`;
+            document.getElementById('progress-fill').style.width = `${percentage}%`;
+        }
+
+        // --- Affichage des semaines (simple, no collapse) ---
+        function renderWeeks() {
+            if (!exercisesData) return;
+            
+            const weeksList = document.getElementById('weeks-list');
+            weeksList.innerHTML = '';
+            
+            // Ordre décroissant
+            const sortedWeeks = [...exercisesData.weeks].reverse();
+            
+            sortedWeeks.forEach(week => {
+                const li = document.createElement('li');
+                
+                const weekRow = document.createElement('div');
+                weekRow.className = 'row';
+                weekRow.innerHTML = `
+                    <a href="pdfs/main_s${week.number}.pdf" target="_blank">
+                        <span class="icon">📄</span>
+                        <span class="name">Semaine ${week.number} - ${week.title}</span>
+                    </a>
+                    <a href="pdfs/indications_s${week.number}.pdf"
+                       target="_blank"
+                       class="indications-btn"
+                       onclick="event.stopPropagation()">Indications</a>
+                `;
+                
+                li.appendChild(weekRow);
+                weeksList.appendChild(li);
+            });
+        }
+
+        // --- Affichage de la checklist ---
+        function renderChecklist() {
+            if (!exercisesData) return;
+            
+            const checklistContent = document.getElementById('checklist-content');
+            checklistContent.innerHTML = '';
+            
+            let reviewCount = 0;
+            
+            // Ordre décroissant des semaines
+            const sortedWeeks = [...exercisesData.weeks].reverse();
+            
+            sortedWeeks.forEach(week => {
+                const weekDiv = document.createElement('div');
+                weekDiv.className = 'checklist-week';
+                
+                const weekTitle = document.createElement('div');
+                weekTitle.className = 'checklist-week-title';
+                weekTitle.textContent = `Semaine ${week.number}`;
+                weekDiv.appendChild(weekTitle);
+                
+                week.exercises.forEach(ex => {
+                    const exData = getExerciseData(week.id, ex);
+                    const completed = isExerciseCompleted(week.id, ex);
+                    const isDue = isExerciseDueForReview(exData);
+                    
+                    if (completed && isDue) {
+                        reviewCount++;
+                    }
+                    
+                    const item = document.createElement('div');
+                    item.className = 'checklist-item';
+                    if (completed) item.classList.add('completed');
+                    
+                    // Add review status
+                    if (exData && exData.nextReview) {
+                        const daysUntil = getDaysUntilReview(exData.nextReview);
+                        if (daysUntil < 0) {
+                            item.classList.add('overdue');
+                        } else if (daysUntil <= 1) {
+                            item.classList.add('due-soon');
+                        }
+                    }
+                    
+                    const checkbox = document.createElement('div');
+                    checkbox.className = `checkbox ${completed ? 'checked' : ''}`;
+                    
+                    const text = document.createElement('div');
+                    text.className = 'checklist-item-text';
+                    text.textContent = ex.charAt(0).toUpperCase() + ex.slice(1);
+                    
+                    // Review date display
+                    if (exData && exData.nextReview) {
+                        const daysUntil = getDaysUntilReview(exData.nextReview);
+                        const reviewSpan = document.createElement('span');
+                        reviewSpan.className = 'review-date';
+                        if (daysUntil < 0) {
+                            reviewSpan.textContent = `(en retard!)`;
+                            reviewSpan.style.color = 'var(--danger)';
+                        } else if (daysUntil === 0) {
+                            reviewSpan.textContent = `(aujourd'hui)`;
+                            reviewSpan.style.color = 'var(--warning)';
+                        } else if (daysUntil === 1) {
+                            reviewSpan.textContent = `(demain)`;
+                            reviewSpan.style.color = 'var(--warning)';
+                        } else {
+                            reviewSpan.textContent = `(dans ${daysUntil}j)`;
+                        }
+                        text.appendChild(reviewSpan);
+                    }
+                    
+                    item.appendChild(checkbox);
+                    item.appendChild(text);
+                    
+                    // Click handler
+                    checkbox.addEventListener('click', (e) => {
+                        e.stopPropagation();
+                        if (completed) {
+                            uncheckExercise(week.id, ex);
+                        } else {
+                            toggleExercise(week.id, ex);
+                        }
+                    });
+                    
+                    // Open PDF on item click
+                    item.addEventListener('click', () => {
+                        window.open(`pdfs/main_s${week.number}.pdf`, '_blank');
+                    });
+                    
+                    weekDiv.appendChild(item);
+                });
+                
+                checklistContent.appendChild(weekDiv);
+            });
+            
+            document.getElementById('review-count').textContent = 
+                reviewCount === 0 ? 'Aucune révision' : 
+                reviewCount === 1 ? '1 à réviser' : 
+                `${reviewCount} à réviser`;
+        }
+
+        // --- Mode révision aléatoire ---
+        function openRandomExercise() {
+            if (!exercisesData) return;
+            
+            // Récupérer tous les exercices NON terminés
+            const uncompletedExercises = [];
+            
+            exercisesData.weeks.forEach(week => {
+                week.exercises.forEach(ex => {
+                    if (!isExerciseCompleted(week.id, ex)) {
+                        uncompletedExercises.push({
+                            week: week,
+                            exercise: ex
+                        });
+                    }
+                });
+            });
+            
+            if (uncompletedExercises.length === 0) {
+                document.getElementById('random-display').innerHTML = `
+                    <div class="random-week">Félicitations ! 🎉</div>
+                    <div class="random-exercise">Tous les exercices sont faits !</div>
+                `;
+                return;
+            }
+            
+            // Choisir un exercice aléatoire
+            const random = uncompletedExercises[
+                Math.floor(Math.random() * uncompletedExercises.length)
+            ];
+            
+            // Afficher l'exercice (ne pas ouvrir de PDF)
+            document.getElementById('random-display').innerHTML = `
+                <div class="random-week">Semaine ${random.week.number}</div>
+                <div class="random-exercise">${random.exercise.toUpperCase()}</div>
+            `;
+        }
+
+        // --- Bouton aléatoire ---
+        document.getElementById('random-btn').addEventListener('click', openRandomExercise);
+
+        // --- PWA Service Worker Registration ---
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('sw.js')
+                    .then(registration => {
+                        console.log('✓ Service Worker enregistré:', registration.scope);
+                    })
+                    .catch(error => {
+                        console.log('✗ Erreur Service Worker:', error);
+                    });
+            });
+        }
+
+        // --- PWA Install Prompt ---
+        let deferredPrompt;
+        window.addEventListener('beforeinstallprompt', (e) => {
+            e.preventDefault();
+            deferredPrompt = e;
+            
+            const installBtn = document.createElement('div');
+            installBtn.innerHTML = `
+                <div style="position: fixed; bottom: 20px; right: 20px; background: var(--accent); color: white; padding: 15px 25px; border-radius: 8px; cursor: pointer; font-size: 14px; box-shadow: 0 4px 12px rgba(52, 152, 219, 0.4); z-index: 1000; display: flex; align-items: center; gap: 10px;">
+                    <span>📱</span>
+                    <span>Installer l'app</span>
+                </div>
+            `;
+            
+            installBtn.addEventListener('click', async () => {
+                if (deferredPrompt) {
+                    deferredPrompt.prompt();
+                    const { outcome } = await deferredPrompt.userChoice;
+                    console.log(`Installation ${outcome}`);
+                    deferredPrompt = null;
+                    document.body.removeChild(installBtn);
+                }
+            });
+            
+            document.body.appendChild(installBtn);
+        });
+
+        window.addEventListener('appinstalled', () => {
+            console.log('✓ PWA installée avec succès!');
+        });
+
+        // --- Initialisation ---
+        if (window.location.search.includes('indi')) {
+            document.body.classList.add('show-indications');
+        }
+        loadExercisesData();
+    </script>
+</body>
+</html>
